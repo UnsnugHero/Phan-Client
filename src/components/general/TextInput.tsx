@@ -1,23 +1,27 @@
 import PropTypes from 'prop-types';
 
-import { TextInputProps } from '../../models/general';
+import { TextInputProps } from '../../models/general.model';
+
+/**
+ * Notes
+ *
+ * = want the maxLength prop to control an error border around the input tentatively...
+ */
 
 const TextInput = (props: TextInputProps) => {
   return (
-    <div>
-      <input
-        className='text-input'
-        maxLength={props.maxLength}
-        onChange={(e) => props.onInputChange(e.target.value)}
-        type='text'
-      ></input>
-    </div>
+    <input
+      className='text-input'
+      onChange={(e) => props.onInputChange(e.target.value)}
+      type='text'
+    ></input>
   );
 };
 
 TextInput.propTypes = {
-  text: PropTypes.string.isRequired,
+  maxLength: PropTypes.number,
   onInputChange: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 export default TextInput;

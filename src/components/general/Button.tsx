@@ -1,20 +1,18 @@
 import PropTypes from 'prop-types';
 
-import { ButtonProps } from '../../models/general';
+import { ButtonProps } from '../../models/general.model';
 
 const Button = (props: ButtonProps) => {
   return (
-    <div>
-      <button className='button' onClick={() => props.onButtonClick()}>
-        {props.text}
-      </button>
-    </div>
+    <button className='button' onClick={() => props.onButtonClick()}>
+      {props.text}
+    </button>
   );
 };
 
 Button.propTypes = {
-  text: PropTypes.string.isRequired,
   onButtonClick: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 export default Button;
