@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 
-import { GeneralCommentProps } from '../../models/general.model';
+import { ChatCommentProps } from '../../models/chat.model';
 
-const GeneralComment = (props: GeneralCommentProps) => {
+const ChatComment = (props: ChatCommentProps) => {
   return (
     <div className='comment-container'>
       <span className='comment-user'>{props.username || 'Anon'}</span>
@@ -11,9 +11,9 @@ const GeneralComment = (props: GeneralCommentProps) => {
   );
 };
 
-GeneralComment.propTypes = {
+ChatComment.propTypes = {
   content: PropTypes.string.isRequired,
   username: PropTypes.string,
 };
 
-export default GeneralComment;
+export default ChatComment;
