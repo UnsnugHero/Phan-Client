@@ -11,7 +11,7 @@ const Chat = () => {
     { content: 'wow4' },
   ];
 
-  const [comments, setComments] = useState(dummyComments);
+  const [comments] = useState(dummyComments);
 
   return (
     <div>

@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 import TextInput from '../general/TextInput';
 import Button from '../general/Button';
@@ -23,7 +22,5 @@ const ChatForm = () => {
     </div>
   );
 };
-
-ChatForm.propTypes = {};
 
 export default ChatForm;
