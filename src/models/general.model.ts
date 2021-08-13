@@ -6,7 +6,8 @@ export interface ButtonProps {
 }
 
 export interface TextInputProps {
-  onInputChange: Function;
-  text: string;
   maxLength?: number;
+  onInputChange: Function;
+  value: string;
+  text: string;
 }

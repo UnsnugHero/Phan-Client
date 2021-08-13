@@ -1,22 +1,51 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { io } from 'socket.io-client';
 
-import ChatCommentList from './ChatCommentList';
+import { ChatComment } from '../../models/chat.model';
+
 import ChatForm from './ChatForm';
+import ChatCommentList from './ChatCommentList';
+
+const socket = io('http://localhost:5000');
 
 const Chat = () => {
-  const dummyComments = [
-    { content: 'wow1', username: 'Anon' },
-    { content: 'wow2', username: 'Neenis' },
-    { content: 'wow3', username: 'Anon' },
-    { content: 'wow4' },
-  ];
+  const initialComments: ChatComment[] = [];
 
-  const [comments] = useState(dummyComments);
+  // hooks
+
+  const [comments, setComments] = useState(initialComments);
+
+  useEffect(() => {
+    subscribeChat();
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
+  // helpers
+
+  const subscribeChat = () => {
+    socket.on('newComment', (comment) => {
+      console.log(comment);
+      const newComment = {
+        content: comment,
+        username: comment.username ? comment.username : 'Anon',
+      };
+
+      setComments((prevComments: ChatComment[]) => [
+        ...prevComments,
+        newComment,
+      ]);
+    });
+  };
+
+  // render
 
   return (
     <div>
       <ChatCommentList comments={comments} />
-      <ChatForm />
+      <ChatForm socket={socket} />
     </div>
   );
 };

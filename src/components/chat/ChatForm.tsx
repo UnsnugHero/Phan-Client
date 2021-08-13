@@ -2,22 +2,30 @@ import { useState } from 'react';
 
 import TextInput from '../general/TextInput';
 import Button from '../general/Button';
+import { ChatFormProps } from '../../models/chat.model';
 
-const ChatForm = () => {
-  const [commentText, setCommentText] = useState('');
+const ChatForm = (props: ChatFormProps) => {
+  // hooks
+  const [commentContent, setCommentContent] = useState('');
 
   // handlers
   const handleInputChange = (text: string) => {
-    setCommentText(text);
+    setCommentContent(text);
   };
 
   const handlePostClick = () => {
-    console.error(commentText);
+    // emit comment to the server
+    props.socket.emit('postComment', commentContent);
+    setCommentContent('');
   };
 
   return (
     <div className='chat-form-container'>
-      <TextInput text='Add a comment...' onInputChange={handleInputChange} />
+      <TextInput
+        text='Add a comment...'
+        onInputChange={handleInputChange}
+        value={commentContent}
+      />
       <Button text='Post' onButtonClick={handlePostClick} />
     </div>
   );
