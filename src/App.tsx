@@ -1,12 +1,12 @@
 import './App.css';
 
 import Chat from './components/chat/Chat';
-import LoginForm from './components/login/LoginForm';
+import LoginCard from './components/login/LoginCard';
 
 function App() {
   return (
     <div className='App'>
-      <LoginForm />
+      <LoginCard />
       <Chat />
     </div>
   );
