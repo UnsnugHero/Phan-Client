@@ -9,8 +9,8 @@ const ChatForm = (props: ChatFormProps) => {
   const [commentContent, setCommentContent] = useState('');
 
   // handlers
-  const handleInputChange = (text: string) => {
-    setCommentContent(text);
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCommentContent(event.target.value);
   };
 
   const handlePostClick = () => {
@@ -22,6 +22,7 @@ const ChatForm = (props: ChatFormProps) => {
   return (
     <div className='chat-form-container'>
       <TextInput
+        name='comment'
         text='Add a comment...'
         onInputChange={handleInputChange}
         value={commentContent}
