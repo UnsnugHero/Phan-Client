@@ -1,14 +1,21 @@
 import './App.css';
 
-import Chat from './components/chat/Chat';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import Landing from './components/landing/Landing';
 import LoginCard from './components/login/LoginCard';
 
 function App() {
   return (
-    <div className='App'>
-      <LoginCard />
-      <Chat />
-    </div>
+    <>
+      <Router>
+        <Route exact path='/' component={Landing} />
+        <Switch>
+          <Route exact path='/login' component={LoginCard} />
+          {/* <Route exact path='/register' /> */}
+        </Switch>
+      </Router>
+    </>
   );
 }
 
