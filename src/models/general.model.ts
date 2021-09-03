@@ -13,9 +13,11 @@ export interface CheckboxProps {
 }
 
 export interface TextInputProps {
+  autocomplete?: 'on' | 'off';
   maxLength?: number;
   name: string;
   onInputChange: Function;
   value: string;
   placeholder: string;
+  type: 'text' | 'password';
 }

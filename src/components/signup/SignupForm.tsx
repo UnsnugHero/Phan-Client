@@ -46,18 +46,21 @@ const SignupForm = (props: SignupFormProps) => {
         name='username'
         placeholder='Username'
         onInputChange={handleInputChange}
+        type='text'
         value={signupFormContent.username}
       />
       <TextInput
         name='password'
         placeholder='Password'
         onInputChange={handleInputChange}
+        type='password'
         value={signupFormContent.password}
       />
       <TextInput
         name='confirmPassword'
         placeholder='Confirm Password'
         onInputChange={handleInputChange}
+        type='password'
         value={signupFormContent.confirmPassword}
       />
       <Checkbox

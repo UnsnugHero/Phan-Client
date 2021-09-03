@@ -32,12 +32,14 @@ const LoginForm = (props: LoginFormProps) => {
         name='username'
         placeholder='Username'
         onInputChange={handleInputChange}
+        type='text'
         value={loginFormContent.username}
       />
       <TextInput
         name='password'
         placeholder='Password'
         onInputChange={handleInputChange}
+        type='password'
         value={loginFormContent.password}
       />
       <Button text='Submit' onButtonClick={handleSubmitForm} />

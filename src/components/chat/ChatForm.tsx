@@ -25,6 +25,7 @@ const ChatForm = (props: ChatFormProps) => {
         name='comment'
         placeholder='Add a comment...'
         onInputChange={handleInputChange}
+        type='text'
         value={commentContent}
       />
       <Button text='Post' onButtonClick={handlePostClick} />

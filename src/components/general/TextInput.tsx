@@ -11,11 +11,12 @@ import { TextInputProps } from '../../models/general.model';
 const TextInput = (props: TextInputProps) => {
   return (
     <input
+      autoComplete={props.autocomplete || 'off'}
       className='text-input'
       name={props.name}
       onChange={(e) => props.onInputChange(e)}
       placeholder={props.placeholder}
-      type='text'
+      type={props.type}
       value={props.value}
     ></input>
   );
