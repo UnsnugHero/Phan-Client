@@ -1,10 +1,5 @@
-import { History } from 'history';
-
 import LoginForm from './LoginForm';
-
-export interface LoginCardProps {
-  history: History;
-}
+import { LoginCardProps } from '../../models/login.model';
 
 const LoginCard = (props: LoginCardProps) => {
   return (

@@ -1,15 +1,6 @@
 import axios from 'axios';
 
-export interface LoginPayload {
-  username: string;
-  password: string;
-}
-
-export interface LoginResponse {
-  data: {
-    accessToken: string;
-  };
-}
+import { LoginPayload, LoginResponse } from '../models/login.model';
 
 class AuthService {
   private readonly TOKEN_KEY = 'authtoken';

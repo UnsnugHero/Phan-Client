@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
-import { History } from 'history';
 
 import Button from '../general/Button';
 import TextInput from '../general/TextInput';
 
 import AuthService from '../../services/auth.service';
-
-export interface LoginFormProps {
-  history: History;
-}
+import { LoginFormProps } from '../../models/login.model';
 
 const LoginForm = (props: LoginFormProps) => {
   const [loginFormContent, setForm] = useState({
