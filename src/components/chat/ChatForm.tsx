@@ -13,14 +13,16 @@ const ChatForm = (props: ChatFormProps) => {
     setCommentContent(event.target.value);
   };
 
-  const handlePostClick = () => {
+  const handlePostClick = (event: React.ChangeEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
     // emit comment to the server
     props.socket.emit('postComment', commentContent);
     setCommentContent('');
   };
 
   return (
-    <div className='chat-form-container'>
+    <form className='chat-form-container'>
       <TextInput
         name='comment'
         placeholder='Add a comment...'
@@ -29,7 +31,7 @@ const ChatForm = (props: ChatFormProps) => {
         value={commentContent}
       />
       <Button text='Post' onButtonClick={handlePostClick} />
-    </div>
+    </form>
   );
 };
 

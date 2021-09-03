@@ -4,7 +4,7 @@ import { ButtonProps } from '../../models/general.model';
 
 const Button = (props: ButtonProps) => {
   return (
-    <button className='button' onClick={() => props.onButtonClick()}>
+    <button className='button' onClick={(e) => props.onButtonClick(e)}>
       {props.text}
     </button>
   );

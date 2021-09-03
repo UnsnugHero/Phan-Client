@@ -15,7 +15,9 @@ const LoginForm = (props: LoginFormProps) => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setForm({ ...loginFormContent, [event.target.name]: event.target.value });
 
-  const handleSubmitForm = async () => {
+  const handleSubmitForm = async (event: React.ChangeEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
     const { username, password } = loginFormContent;
     const authSuccess = await AuthService.login({ username, password });
 
@@ -28,21 +30,23 @@ const LoginForm = (props: LoginFormProps) => {
 
   return (
     <>
-      <TextInput
-        name='username'
-        placeholder='Username'
-        onInputChange={handleInputChange}
-        type='text'
-        value={loginFormContent.username}
-      />
-      <TextInput
-        name='password'
-        placeholder='Password'
-        onInputChange={handleInputChange}
-        type='password'
-        value={loginFormContent.password}
-      />
-      <Button text='Submit' onButtonClick={handleSubmitForm} />
+      <form autoComplete='off'>
+        <TextInput
+          name='username'
+          placeholder='Username'
+          onInputChange={handleInputChange}
+          type='text'
+          value={loginFormContent.username}
+        />
+        <TextInput
+          name='password'
+          placeholder='Password'
+          onInputChange={handleInputChange}
+          type='password'
+          value={loginFormContent.password}
+        />
+        <Button text='Submit' onButtonClick={handleSubmitForm} />
+      </form>
     </>
   );
 };

@@ -21,7 +21,9 @@ const SignupForm = (props: SignupFormProps) => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setForm({ ...signupFormContent, [event.target.name]: event.target.value });
 
-  const handleSubmitForm = async () => {
+  const handleSubmitForm = async (event: React.ChangeEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
     const { username, password, confirmPassword } = signupFormContent;
 
     if (password !== confirmPassword) {
@@ -42,34 +44,36 @@ const SignupForm = (props: SignupFormProps) => {
 
   return (
     <>
-      <TextInput
-        name='username'
-        placeholder='Username'
-        onInputChange={handleInputChange}
-        type='text'
-        value={signupFormContent.username}
-      />
-      <TextInput
-        name='password'
-        placeholder='Password'
-        onInputChange={handleInputChange}
-        type='password'
-        value={signupFormContent.password}
-      />
-      <TextInput
-        name='confirmPassword'
-        placeholder='Confirm Password'
-        onInputChange={handleInputChange}
-        type='password'
-        value={signupFormContent.confirmPassword}
-      />
-      <Checkbox
-        checked={signupFormContent.isAnonymous}
-        name='isAnonymous'
-        text='Appear Anonymous on Site?'
-        onInputChange={handleCheckboxClick}
-      />
-      <Button text='Submit' onButtonClick={handleSubmitForm} />
+      <form autoComplete='off'>
+        <TextInput
+          name='username'
+          placeholder='Username'
+          onInputChange={handleInputChange}
+          type='text'
+          value={signupFormContent.username}
+        />
+        <TextInput
+          name='password'
+          placeholder='Password'
+          onInputChange={handleInputChange}
+          type='password'
+          value={signupFormContent.password}
+        />
+        <TextInput
+          name='confirmPassword'
+          placeholder='Confirm Password'
+          onInputChange={handleInputChange}
+          type='password'
+          value={signupFormContent.confirmPassword}
+        />
+        <Checkbox
+          checked={signupFormContent.isAnonymous}
+          name='isAnonymous'
+          text='Appear Anonymous on Site?'
+          onInputChange={handleCheckboxClick}
+        />
+        <Button text='Submit' onButtonClick={handleSubmitForm} />
+      </form>
     </>
   );
 };
