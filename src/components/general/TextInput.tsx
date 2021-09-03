@@ -14,8 +14,9 @@ const TextInput = (props: TextInputProps) => {
       className='text-input'
       name={props.name}
       onChange={(e) => props.onInputChange(e)}
-      value={props.value}
+      placeholder={props.placeholder}
       type='text'
+      value={props.value}
     ></input>
   );
 };
@@ -23,7 +24,6 @@ const TextInput = (props: TextInputProps) => {
 TextInput.propTypes = {
   maxLength: PropTypes.number,
   onInputChange: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired,
 };
 
 export default TextInput;

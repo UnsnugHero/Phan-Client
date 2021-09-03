@@ -10,5 +10,5 @@ export interface TextInputProps {
   name: string;
   onInputChange: Function;
   value: string;
-  text: string;
+  placeholder: string;
 }

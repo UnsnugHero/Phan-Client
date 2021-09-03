@@ -23,7 +23,7 @@ const ChatForm = (props: ChatFormProps) => {
     <div className='chat-form-container'>
       <TextInput
         name='comment'
-        text='Add a comment...'
+        placeholder='Add a comment...'
         onInputChange={handleInputChange}
         value={commentContent}
       />
