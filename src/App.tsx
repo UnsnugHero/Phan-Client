@@ -13,6 +13,8 @@ function App() {
         <Switch>
           <Route exact path='/login' component={LoginCard} />
           {/* <Route exact path='/register' /> */}
+          {/* <Route exact path='/profile/:id' /> */}
+          {/* <Route exact path='/requests' /> */}
         </Switch>
       </Router>
     </>

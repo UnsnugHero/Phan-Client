@@ -1,10 +1,16 @@
+import { History } from 'history';
+
 import LoginForm from './LoginForm';
 
-const LoginCard = () => {
+export interface LoginCardProps {
+  history: History;
+}
+
+const LoginCard = (props: LoginCardProps) => {
   return (
     <div className='login-card'>
       <h3>Log In</h3>
-      <LoginForm />
+      <LoginForm history={props.history} />
       {/* im thinking a text that says: */}
       {/* 'New to the Phan-site? Sign up' */}
       {/* with sign up being a clickable link */}

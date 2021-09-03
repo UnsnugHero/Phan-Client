@@ -5,9 +5,28 @@ export interface LoginPayload {
   password: string;
 }
 
+export interface LoginResponse {
+  data: {
+    accessToken: string;
+  };
+}
+
 class AuthService {
-  public async login(payload: LoginPayload) {
-    const { data } = await axios.post('api/auth/login', payload);
+  private readonly TOKEN_KEY = 'authtoken';
+
+  public async login(payload: LoginPayload): Promise<boolean> {
+    try {
+      const response: LoginResponse = await axios.post('/api/auth/login', payload);
+      localStorage.setItem(this.TOKEN_KEY, response.data.accessToken);
+      return true;
+    } catch (error) {
+      // show a message to user login auth failed
+      return false;
+    }
+  }
+
+  public getAuthToken() {
+    return localStorage.getItem(this.TOKEN_KEY);
   }
 }
 
