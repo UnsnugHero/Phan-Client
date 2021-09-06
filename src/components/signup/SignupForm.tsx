@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import TextInput from '../general/TextInput';
 import Button from '../general/Button';
 
-import AuthService from '../../services/auth.service';
-import { SignupFormProps } from '../../models/signup.model';
 import Checkbox from '../general/Checkbox';
+import UserService from '../../services/user.service';
+import { SignupFormProps } from '../../models/signup.model';
 
 const SignupForm = (props: SignupFormProps) => {
   const [signupFormContent, setForm] = useState({
@@ -24,16 +24,9 @@ const SignupForm = (props: SignupFormProps) => {
   const handleSubmitForm = async (event: React.ChangeEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
-    const { username, password, confirmPassword } = signupFormContent;
+    const { username, password, isAnonymous } = signupFormContent;
 
-    if (password !== confirmPassword) {
-      // TODO: show message to user indicating passwords do not match
-      // TODO: we probably want a more than 8 character validation here too
-      // and it cant be empty, and that should be a input validation
-      return;
-    }
-
-    const authSuccess = await AuthService.login({ username, password });
+    const authSuccess = await UserService.createUser({ username, password, isAnonymous });
 
     if (authSuccess) {
       props.history.push('/');

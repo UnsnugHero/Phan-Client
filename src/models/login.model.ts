@@ -8,9 +8,7 @@ export interface LoginPayload {
 }
 
 export interface LoginResponse {
-  data: {
-    accessToken: string;
-  };
+  accessToken: string;
 }
 
 // props
