@@ -1,3 +1,17 @@
+export interface PhanError {
+  message: string;
+  status: string;
+  statusCode: number;
+  validationErrors?: {
+    errors: {
+      location: string;
+      msg: string;
+      param: string;
+      value: any;
+    }[];
+  };
+}
+
 // Props Models
 
 export interface ButtonProps {

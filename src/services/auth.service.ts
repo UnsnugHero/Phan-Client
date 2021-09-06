@@ -1,6 +1,9 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import { PhanError } from '../models/general.model';
 
 import { LoginPayload, LoginResponse } from '../models/login.model';
+import { handleError } from '../util/helpers';
 
 class AuthService {
   private readonly TOKEN_KEY = 'authtoken';
@@ -11,7 +14,7 @@ class AuthService {
       localStorage.setItem(this.TOKEN_KEY, response.data.accessToken);
       return true;
     } catch (error) {
-      // show a message to user login auth failed
+      handleError(error);
       return false;
     }
   }
