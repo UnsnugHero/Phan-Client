@@ -13,6 +13,11 @@ export interface CreateUserResponse {
   user: User;
 }
 
+export interface GetUserResponse {
+  message: string;
+  user: User;
+}
+
 export interface User {
   isAnonymous: boolean;
   role: UserRole;

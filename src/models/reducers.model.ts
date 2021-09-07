@@ -2,7 +2,14 @@ import { UserRole } from './user.model';
 
 // Auth
 
-export type AuthActionType = 'LOGIN_SUCCESS' | 'LOGIN_FAIL' | 'LOGOUT';
+export type AuthActionType =
+  | 'LOGIN_SUCCESS'
+  | 'LOGIN_FAIL'
+  | 'LOGOUT'
+  | 'AUTH_ERROR'
+  | 'SIGNUP_SUCCESS'
+  | 'SIGNUP_FAIL'
+  | 'USER_LOADED';
 
 export interface AuthState {
   authToken: string | null;
@@ -12,5 +19,5 @@ export interface AuthState {
 
 export interface AuthAction {
   type: AuthActionType;
-  payload: any;
+  payload?: any;
 }
