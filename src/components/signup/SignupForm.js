@@ -5,9 +5,8 @@ import Button from '../general/Button';
 
 import Checkbox from '../general/Checkbox';
 import UserService from '../../services/user.service';
-import { SignupFormProps } from '../../models/signup.model';
 
-const SignupForm = (props: SignupFormProps) => {
+const SignupForm = (props) => {
   const [signupFormContent, setForm] = useState({
     username: '',
     password: '',
@@ -15,24 +14,22 @@ const SignupForm = (props: SignupFormProps) => {
     isAnonymous: true,
   });
 
-  const handleCheckboxClick = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setForm({ ...signupFormContent, [event.target.name]: event.target.checked });
+  const handleCheckboxClick = (event) => setForm({ ...signupFormContent, [event.target.name]: event.target.checked });
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setForm({ ...signupFormContent, [event.target.name]: event.target.value });
+  const handleInputChange = (event) => setForm({ ...signupFormContent, [event.target.name]: event.target.value });
 
-  const handleSubmitForm = async (event: React.ChangeEvent<HTMLButtonElement>) => {
+  const handleSubmitForm = async (event) => {
     event.preventDefault();
 
-    const { username, password, isAnonymous } = signupFormContent;
+    // const { username, password, isAnonymous } = signupFormContent;
 
-    const authSuccess = await UserService.createUser({ username, password, isAnonymous });
+    // const authSuccess = await UserService.createUser({ username, password, isAnonymous });
 
-    if (authSuccess) {
-      props.history.push('/');
-    } else {
-      // show a message to user indicating login error
-    }
+    // if (authSuccess) {
+    //   props.history.push('/');
+    // } else {
+    //   // show a message to user indicating login error
+    // }
   };
 
   return (

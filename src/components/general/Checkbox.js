@@ -1,6 +1,4 @@
-import { CheckboxProps } from '../../models/general.model';
-
-const Checkbox = (props: CheckboxProps) => {
+const Checkbox = (props) => {
   return (
     <label>
       <input

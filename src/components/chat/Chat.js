@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react';
 import { io } from 'socket.io-client';
 
-import { ChatComment } from '../../models/chat.model';
-
 import ChatForm from './ChatForm';
 import ChatCommentList from './ChatCommentList';
 
 const socket = io('http://localhost:5000');
 
 const Chat = () => {
-  const initialComments: ChatComment[] = [];
+  const initialComments = [];
 
   // hooks
 
@@ -33,10 +31,7 @@ const Chat = () => {
         username: comment.username ? comment.username : 'Anon',
       };
 
-      setComments((prevComments: ChatComment[]) => [
-        ...prevComments,
-        newComment,
-      ]);
+      setComments((prevComments) => [...prevComments, newComment]);
     });
   };
 

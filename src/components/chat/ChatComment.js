@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { ChatCommentProps } from '../../models/chat.model';
-
-const ChatComment = (props: ChatCommentProps) => {
+const ChatComment = (props) => {
   return (
     <div className='comment-container'>
       <span className='comment-user'>{props.author || 'Anon'}</span>:

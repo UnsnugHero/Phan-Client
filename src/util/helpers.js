@@ -1,10 +1,8 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-import { PhanError } from '../models/general.model';
-
-export const handleError = (error: any) => {
-  const phanError: PhanError = error.response.data;
+export const handleError = (error) => {
+  const phanError = error.response.data;
 
   toast.error(phanError.message, {
     theme: 'colored',
@@ -19,7 +17,7 @@ export const handleError = (error: any) => {
   }
 };
 
-export const setAxiosHeaderAuthToken = (token: string | null) => {
+export const setAxiosHeaderAuthToken = (token) => {
   if (token) {
     axios.defaults.headers.common['x-auth-token'] = token;
   } else {

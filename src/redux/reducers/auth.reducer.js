@@ -1,13 +1,12 @@
-import { AuthAction, AuthState } from '../../models/reducers.model';
 import storageService from '../../services/storage.service';
 
-const initialState: AuthState = {
+const initialState = {
   authToken: storageService.getItem('authToken'),
   isAuthenticated: false,
   userRole: 'user',
 };
 
-export const authReducer = (state = initialState, action: AuthAction) => {
+export const authReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {

@@ -2,18 +2,17 @@ import { useState } from 'react';
 
 import TextInput from '../general/TextInput';
 import Button from '../general/Button';
-import { ChatFormProps } from '../../models/chat.model';
 
-const ChatForm = (props: ChatFormProps) => {
+const ChatForm = (props) => {
   // hooks
   const [commentContent, setCommentContent] = useState('');
 
   // handlers
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event) => {
     setCommentContent(event.target.value);
   };
 
-  const handlePostClick = (event: React.ChangeEvent<HTMLButtonElement>) => {
+  const handlePostClick = (event) => {
     event.preventDefault();
 
     // emit comment to the server

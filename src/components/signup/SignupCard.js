@@ -1,7 +1,6 @@
-import { SignupCardProps } from '../../models/signup.model';
 import SignupForm from './SignupForm';
 
-const SignupCard = (props: SignupCardProps) => {
+const SignupCard = (props) => {
   return (
     <div className='signup-card'>
       <h3>Sign Up</h3>

@@ -1,15 +1,13 @@
-type StorageKey = 'authToken';
-
 class StorageService {
-  public storeItem(key: StorageKey, item: any) {
+  storeItem(key, item) {
     localStorage.setItem(key, item);
   }
 
-  public getItem(key: StorageKey) {
+  getItem(key) {
     return localStorage.getItem(key);
   }
 
-  public deleteItem(key: StorageKey) {
+  deleteItem(key) {
     localStorage.removeItem(key);
   }
 }

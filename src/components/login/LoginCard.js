@@ -1,7 +1,6 @@
 import LoginForm from './LoginForm';
-import { LoginCardProps } from '../../models/login.model';
 
-const LoginCard = (props: LoginCardProps) => {
+const LoginCard = (props) => {
   return (
     <div className='login-card'>
       <h3>Log In</h3>

@@ -3,29 +3,24 @@ import React, { useState } from 'react';
 import Button from '../general/Button';
 import TextInput from '../general/TextInput';
 
-import AuthService from '../../services/auth.service';
-import { LoginFormProps } from '../../models/login.model';
-
-const LoginForm = (props: LoginFormProps) => {
+const LoginForm = (props) => {
   const [loginFormContent, setForm] = useState({
     username: '',
     password: '',
   });
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setForm({ ...loginFormContent, [event.target.name]: event.target.value });
+  const handleInputChange = (event) => setForm({ ...loginFormContent, [event.target.name]: event.target.value });
 
-  const handleSubmitForm = async (event: React.ChangeEvent<HTMLButtonElement>) => {
+  const handleSubmitForm = async (event) => {
     event.preventDefault();
 
     const { username, password } = loginFormContent;
-    const authSuccess = await AuthService.login({ username, password });
 
-    if (authSuccess) {
-      props.history.push('/');
-    } else {
-      // show a message to user indicating login error
-    }
+    // if (authSuccess) {
+    //   props.history.push('/');
+    // } else {
+    //   // show a message to user indicating login error
+    // }
   };
 
   return (
