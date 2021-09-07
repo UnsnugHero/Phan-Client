@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { toast } from 'react-toastify';
 
 import { PhanError } from '../models/general.model';
@@ -15,5 +16,13 @@ export const handleError = (error: any) => {
         theme: 'colored',
       });
     });
+  }
+};
+
+export const setAxiosHeaderAuthToken = (token: string | null) => {
+  if (token) {
+    axios.defaults.headers.common['x-auth-token'] = token;
+  } else {
+    delete axios.defaults.headers.common['x-auth-token'];
   }
 };
