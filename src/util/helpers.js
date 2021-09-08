@@ -4,15 +4,11 @@ import { toast } from 'react-toastify';
 export const handleError = (error) => {
   const phanError = error.response.data;
 
-  toast.error(phanError.message, {
-    theme: 'colored',
-  });
+  toast.error(phanError.message);
 
   if (phanError.validationErrors) {
     phanError.validationErrors.errors.forEach((validationErr) => {
-      toast.error(`${validationErr.param}: ${validationErr.msg}`, {
-        theme: 'colored',
-      });
+      toast.error(`${validationErr.param}: ${validationErr.msg}`);
     });
   }
 };

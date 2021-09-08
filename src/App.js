@@ -40,6 +40,7 @@ const App = () => {
           draggable={false}
           hideProgressBar={true}
           position={toast.POSITION.BOTTOM_CENTER}
+          theme='colored'
           transition={Slide}
         />
       </div>
