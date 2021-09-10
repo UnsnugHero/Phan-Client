@@ -11,7 +11,7 @@ export const loadUser = () => async (dispatch) => {
   }
 
   try {
-    const response = (await axios.post('/api/user')).data;
+    const response = (await axios.get('/api/user')).data;
 
     dispatch({
       type: 'USER_LOADED',
@@ -26,7 +26,7 @@ export const loadUser = () => async (dispatch) => {
 
 export const login = (loginPayload) => async (dispatch) => {
   try {
-    const response = (await axios.post('/api/auth/login'), loginPayload).data;
+    const response = (await axios.post('/api/auth/login', loginPayload)).data;
 
     dispatch({
       type: LOGIN_SUCCESS,

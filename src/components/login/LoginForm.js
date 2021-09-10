@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
 import Button from '../general/Button';
 import TextInput from '../general/TextInput';
+import { login } from '../../redux/actions/auth.action';
+import { Redirect } from 'react-router';
 
-const LoginForm = (props) => {
+const LoginForm = ({ isAuthenticated, login }) => {
   const [loginFormContent, setForm] = useState({
     username: '',
     password: '',
@@ -11,17 +14,15 @@ const LoginForm = (props) => {
 
   const handleInputChange = (event) => setForm({ ...loginFormContent, [event.target.name]: event.target.value });
 
-  const handleSubmitForm = async (event) => {
+  const handleSubmitForm = (event) => {
     event.preventDefault();
 
-    const { username, password } = loginFormContent;
-
-    // if (authSuccess) {
-    //   props.history.push('/');
-    // } else {
-    //   // show a message to user indicating login error
-    // }
+    login(loginFormContent);
   };
+
+  if (isAuthenticated) {
+    return <Redirect to='/' />;
+  }
 
   return (
     <>
@@ -46,4 +47,12 @@ const LoginForm = (props) => {
   );
 };
 
-export default LoginForm;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+const mapDispatchToProps = {
+  login,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

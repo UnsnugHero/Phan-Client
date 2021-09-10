@@ -1,4 +1,5 @@
 import storageService from '../../services/storage.service';
+import { LOGIN_SUCCESS, LOGIN_FAIL, AUTH_ERROR, LOGOUT, USER_LOADED } from '../actions/types';
 
 const initialState = {
   authToken: storageService.getItem('authToken'),
@@ -10,22 +11,21 @@ export const authReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case 'LOGIN_SUCCESS':
+    case LOGIN_SUCCESS:
       storageService.storeItem('authToken', payload.authToken);
       return {
         ...state,
-        ...payload,
         isAuthenticated: true,
       };
-    case 'LOGIN_FAIL':
-    case 'LOGOUT':
-      localStorage.removeItem('token');
+    case AUTH_ERROR:
+    case LOGIN_FAIL:
+    case LOGOUT:
+      localStorage.removeItem('authToken');
       return {
         ...state,
-        token: null,
         isAuthenticated: false,
       };
-    case 'USER_LOADED':
+    case USER_LOADED:
       return {
         ...state,
         isAuthenticated: true,
