@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import TextInput from '../general/TextInput';
 import Button from '../general/Button';
-
 import Checkbox from '../general/Checkbox';
-import UserService from '../../services/user.service';
+import { signup } from '../../redux/actions/auth.action';
 
-const SignupForm = (props) => {
+const SignupForm = ({ isAuthenticated, signup }) => {
   const [signupFormContent, setForm] = useState({
     username: '',
     password: '',
@@ -21,16 +23,12 @@ const SignupForm = (props) => {
   const handleSubmitForm = async (event) => {
     event.preventDefault();
 
-    // const { username, password, isAnonymous } = signupFormContent;
-
-    // const authSuccess = await UserService.createUser({ username, password, isAnonymous });
-
-    // if (authSuccess) {
-    //   props.history.push('/');
-    // } else {
-    //   // show a message to user indicating login error
-    // }
+    signup(signupFormContent);
   };
+
+  if (isAuthenticated) {
+    return <Redirect to='/' />;
+  }
 
   return (
     <>
@@ -68,4 +66,17 @@ const SignupForm = (props) => {
   );
 };
 
-export default SignupForm;
+SignupForm.propTypes = {
+  signup: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+const mapDispatchToProps = {
+  signup,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);

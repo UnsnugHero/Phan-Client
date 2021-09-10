@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import LoginForm from './LoginForm';
 
 const LoginCard = (props) => {
@@ -7,7 +8,7 @@ const LoginCard = (props) => {
       <LoginForm history={props.history} />
       <div>
         {'New to the Phansite? '}
-        <a href='/signup'>Sign up</a>
+        <Link to='/signup'>Sign up</Link>
       </div>
     </div>
   );
