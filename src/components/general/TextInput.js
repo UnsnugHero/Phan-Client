@@ -15,8 +15,12 @@ const TextInput = (props) => {
 };
 
 TextInput.propTypes = {
+  autoComplete: PropTypes.string,
   maxLength: PropTypes.number,
+  name: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
+  value: PropTypes.any
 };
 
 export default TextInput;

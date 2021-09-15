@@ -1,23 +1,55 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 
 import Button from '../general/Button';
 import TextInput from '../general/TextInput';
 import { login } from '../../redux/actions/auth.action';
-import { Redirect } from 'react-router';
 
 const LoginForm = ({ isAuthenticated, login }) => {
   const [loginFormContent, setForm] = useState({
     username: '',
     password: '',
+    errors: {},
   });
 
-  const handleInputChange = (event) => setForm({ ...loginFormContent, [event.target.name]: event.target.value });
+  const handleInputChange = (formFieldKey) => (event) =>
+    setForm({
+      ...loginFormContent,
+      [formFieldKey]: event.target.value,
+    });
 
   const handleSubmitForm = (event) => {
     event.preventDefault();
 
-    login(loginFormContent);
+    if (handleFormValidation()) {
+      const loginPayload = {
+        username: loginFormContent.username,
+        password: loginFormContent.password,
+      };
+
+      login(loginPayload);
+    }
+  };
+
+  const handleFormValidation = () => {
+    let isValidForm = true;
+    const errors = {};
+
+    // username validations
+    if (loginFormContent.username === '') {
+      errors['username'] = 'Field is required';
+      isValidForm = false;
+    }
+
+    // password validations
+    if (loginFormContent.password === '') {
+      errors['password'] = 'Field is required';
+      isValidForm = false;
+    }
+
+    setForm({ ...loginFormContent, errors });
+    return isValidForm;
   };
 
   if (isAuthenticated) {
@@ -30,16 +62,16 @@ const LoginForm = ({ isAuthenticated, login }) => {
         <TextInput
           name='username'
           placeholder='Username'
-          onInputChange={handleInputChange}
+          onInputChange={handleInputChange('username')}
           type='text'
-          value={loginFormContent.username}
+          value={loginFormContent.username.value}
         />
         <TextInput
           name='password'
           placeholder='Password'
-          onInputChange={handleInputChange}
+          onInputChange={handleInputChange('password')}
           type='password'
-          value={loginFormContent.password}
+          value={loginFormContent.password.value}
         />
         <Button text='Submit' onButtonClick={handleSubmitForm} />
       </form>
