@@ -6,7 +6,7 @@ import { logout } from '../../redux/actions/auth.action';
 
 const Header = ({ isAuthenticated, loading, logout }) => {
   const unauthLinks = (
-    <ul className='unauth-links'>
+    <ul className='conditional-links'>
       <li>
         <Link to='/login'>Login</Link>
       </li>
@@ -17,7 +17,7 @@ const Header = ({ isAuthenticated, loading, logout }) => {
   );
 
   const authLinks = (
-    <ul className='auth-links'>
+    <ul className='conditional-links'>
       <li>
         <Link to='/profile'>Profile</Link>
       </li>

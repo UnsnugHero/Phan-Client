@@ -3,7 +3,7 @@ import { useState } from 'react';
 import TextInput from '../general/TextInput';
 import Button from '../general/Button';
 
-const ChatForm = (props) => {
+const ChatForm = ({ socket }) => {
   // hooks
   const [commentContent, setCommentContent] = useState('');
 
@@ -16,7 +16,7 @@ const ChatForm = (props) => {
     event.preventDefault();
 
     // emit comment to the server
-    props.socket.emit('postComment', commentContent);
+    socket.emit('postComment', commentContent);
     setCommentContent('');
   };
 

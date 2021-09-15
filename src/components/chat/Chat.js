@@ -25,10 +25,9 @@ const Chat = () => {
 
   const subscribeChat = () => {
     socket.on('newComment', (comment) => {
-      console.log(comment);
       const newComment = {
         content: comment,
-        username: comment.username ? comment.username : 'Anon',
+        username: comment.username ? comment.username : 'Anon'
       };
 
       setComments((prevComments) => [...prevComments, newComment]);
