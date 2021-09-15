@@ -10,7 +10,7 @@ const LoginForm = ({ isAuthenticated, login }) => {
   const [loginFormContent, setForm] = useState({
     username: '',
     password: '',
-    errors: {},
+    errors: { username: null, password: null },
   });
 
   const handleInputChange = (formFieldKey) => (event) =>
@@ -34,7 +34,7 @@ const LoginForm = ({ isAuthenticated, login }) => {
 
   const handleFormValidation = () => {
     let isValidForm = true;
-    const errors = {};
+    const errors = { username: null, password: null };
 
     // username validations
     if (loginFormContent.username === '') {
@@ -61,6 +61,7 @@ const LoginForm = ({ isAuthenticated, login }) => {
       <form autoComplete='off'>
         <TextInput
           name='username'
+          error={loginFormContent.errors.username}
           placeholder='Username'
           onInputChange={handleInputChange('username')}
           type='text'
@@ -68,6 +69,7 @@ const LoginForm = ({ isAuthenticated, login }) => {
         />
         <TextInput
           name='password'
+          error={loginFormContent.errors.password}
           placeholder='Password'
           onInputChange={handleInputChange('password')}
           type='password'
