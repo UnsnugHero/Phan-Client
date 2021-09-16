@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
+import { isEmpty } from 'lodash';
 
+import { login } from '../../redux/actions/auth.action';
 import Button from '../general/Button';
 import TextInput from '../general/TextInput';
-import { login } from '../../redux/actions/auth.action';
 
 const LoginForm = ({ isAuthenticated, login }) => {
   const [loginFormContent, setForm] = useState({
@@ -33,23 +34,20 @@ const LoginForm = ({ isAuthenticated, login }) => {
   };
 
   const handleFormValidation = () => {
-    let isValidForm = true;
     const errors = { username: null, password: null };
 
     // username validations
     if (loginFormContent.username === '') {
       errors['username'] = 'Field is required';
-      isValidForm = false;
     }
 
     // password validations
     if (loginFormContent.password === '') {
       errors['password'] = 'Field is required';
-      isValidForm = false;
     }
 
     setForm({ ...loginFormContent, errors });
-    return isValidForm;
+    return isEmpty(errors);
   };
 
   if (isAuthenticated) {

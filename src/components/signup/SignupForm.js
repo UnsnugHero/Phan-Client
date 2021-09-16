@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
+import { isEmpty } from 'lodash';
 import PropTypes from 'prop-types';
 
+import { signup } from '../../redux/actions/auth.action';
 import TextInput from '../general/TextInput';
 import Button from '../general/Button';
 import Checkbox from '../general/Checkbox';
-import { signup } from '../../redux/actions/auth.action';
 
 const SignupForm = ({ isAuthenticated, signup }) => {
   const [signupFormContent, setForm] = useState({
@@ -14,16 +15,44 @@ const SignupForm = ({ isAuthenticated, signup }) => {
     password: '',
     confirmPassword: '',
     isAnonymous: true,
+    errors: { username: null, password: null, confirmPassword: null },
   });
 
-  const handleCheckboxClick = (event) => setForm({ ...signupFormContent, [event.target.name]: event.target.checked });
+  const handleCheckboxClick = (fieldKey) => (event) =>
+    setForm({ ...signupFormContent, [fieldKey]: event.target.checked });
 
-  const handleInputChange = (event) => setForm({ ...signupFormContent, [event.target.name]: event.target.value });
+  const handleInputChange = (fieldKey) => (event) => setForm({ ...signupFormContent, [fieldKey]: event.target.value });
 
   const handleSubmitForm = async (event) => {
     event.preventDefault();
 
-    signup(signupFormContent);
+    if (handleFormValidation()) {
+      const signupPayload = {
+        username: signupFormContent.username,
+        password: signupFormContent.password,
+      };
+
+      signup(signupPayload);
+    }
+  };
+
+  const handleFormValidation = () => {
+    const errors = { username: null, password: null, confirmPassword: null };
+
+    if (signupFormContent.username === '') {
+      errors['username'] = 'Field is required';
+    }
+
+    if (signupFormContent.password === '') {
+      errors['password'] = 'Field is required';
+    }
+
+    if (signupFormContent.password !== signupFormContent.confirmPassword) {
+      errors['confirmPassword'] = 'Passwords must match';
+    }
+
+    setForm({ ...signupFormContent, errors });
+    return isEmpty(errors);
   };
 
   if (isAuthenticated) {
@@ -34,23 +63,26 @@ const SignupForm = ({ isAuthenticated, signup }) => {
     <>
       <form autoComplete='off'>
         <TextInput
+          error={signupFormContent.errors.username}
           name='username'
+          onInputChange={handleInputChange('username')}
           placeholder='Username'
-          onInputChange={handleInputChange}
           type='text'
           value={signupFormContent.username}
         />
         <TextInput
+          error={signupFormContent.errors.password}
           name='password'
           placeholder='Password'
-          onInputChange={handleInputChange}
+          onInputChange={handleInputChange('password')}
           type='password'
           value={signupFormContent.password}
         />
         <TextInput
+          error={signupFormContent.errors.confirmPassword}
           name='confirmPassword'
           placeholder='Confirm Password'
-          onInputChange={handleInputChange}
+          onInputChange={handleInputChange('confirmPassword')}
           type='password'
           value={signupFormContent.confirmPassword}
         />
@@ -58,7 +90,7 @@ const SignupForm = ({ isAuthenticated, signup }) => {
           checked={signupFormContent.isAnonymous}
           name='isAnonymous'
           text='Appear Anonymous on Site?'
-          onInputChange={handleCheckboxClick}
+          onInputChange={handleCheckboxClick('isAnonymous')}
         />
         <Button text='Submit' onButtonClick={handleSubmitForm} />
       </form>
