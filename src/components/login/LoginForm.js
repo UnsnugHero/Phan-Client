@@ -22,8 +22,12 @@ const LoginForm = ({ isAuthenticated, login }) => {
 
   const handleSubmitForm = (event) => {
     event.preventDefault();
+    console.log('nee');
 
-    if (handleFormValidation()) {
+    const errors = getFormErrors();
+    setForm({ ...loginFormContent, errors });
+
+    if (isEmpty(errors)) {
       const loginPayload = {
         username: loginFormContent.username,
         password: loginFormContent.password,
@@ -33,7 +37,7 @@ const LoginForm = ({ isAuthenticated, login }) => {
     }
   };
 
-  const handleFormValidation = () => {
+  const getFormErrors = () => {
     const errors = { username: null, password: null };
 
     // username validations

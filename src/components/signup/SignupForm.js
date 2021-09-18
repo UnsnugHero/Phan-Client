@@ -26,7 +26,10 @@ const SignupForm = ({ isAuthenticated, signup }) => {
   const handleSubmitForm = async (event) => {
     event.preventDefault();
 
-    if (handleFormValidation()) {
+    const errors = getFormErrors();
+    setForm({ ...signupFormContent, errors });
+
+    if (isEmpty(errors)) {
       const signupPayload = {
         username: signupFormContent.username,
         password: signupFormContent.password,
@@ -36,7 +39,7 @@ const SignupForm = ({ isAuthenticated, signup }) => {
     }
   };
 
-  const handleFormValidation = () => {
+  const getFormErrors = () => {
     const errors = { username: null, password: null, confirmPassword: null };
 
     if (signupFormContent.username === '') {
@@ -51,8 +54,7 @@ const SignupForm = ({ isAuthenticated, signup }) => {
       errors['confirmPassword'] = 'Passwords must match';
     }
 
-    setForm({ ...signupFormContent, errors });
-    return isEmpty(errors);
+    return errors;
   };
 
   if (isAuthenticated) {
