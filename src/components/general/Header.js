@@ -8,7 +8,7 @@ import {
   HeaderList,
   HeaderLogo,
   LinksContainer,
-  LogoWrapper,
+  LogoLink,
 } from '../../styled-components/Header';
 
 import logo from '../../assets/logo.png';
@@ -40,9 +40,9 @@ const Header = ({ isAuthenticated, loading, logout }) => {
 
   return (
     <HeaderContainer>
-      <LogoWrapper>
+      <LogoLink to='/'>
         <HeaderLogo src={logo} />
-      </LogoWrapper>
+      </LogoLink>
       {!loading && (
         <LinksContainer>
           <HeaderList className='permanent-links'>

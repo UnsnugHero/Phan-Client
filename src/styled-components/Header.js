@@ -8,7 +8,7 @@ export const HeaderContainer = styled.div`
   max-height: 56px;
   width: 100%;
   z-index: 1;
-  margin-bottom: 32px; // works?
+  margin-bottom: 32px;
 `;
 
 export const HeaderList = styled.ul`
@@ -23,8 +23,15 @@ export const HeaderList = styled.ul`
 export const HeaderLink = styled(Link)`
   color: white;
   font-family: 'PhanHeader';
-  font-size: 32px; /* play with size */
+  font-size: xx-large;
   text-decoration: none;
+`;
+
+export const LogoLink = styled(HeaderLink)`
+  align-items: center;
+  height: 56px;
+  display: flex;
+  margin-left: 32px;
 `;
 
 export const LogoWrapper = styled.div`
