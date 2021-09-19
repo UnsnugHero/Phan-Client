@@ -1,61 +1,72 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { logout } from '../../redux/actions/auth.action';
+import {
+  HeaderContainer,
+  HeaderLink,
+  HeaderList,
+  HeaderLogo,
+  LinksContainer,
+  LogoWrapper,
+} from '../../styled-components/Header';
+
+import logo from '../../assets/logo.png';
 
 const Header = ({ isAuthenticated, loading, logout }) => {
   const unauthLinks = (
-    <ul className='conditional-links'>
+    <HeaderList className='conditional-links'>
       <li>
-        <Link to='/login'>Login</Link>
+        <HeaderLink to='/login'>Login</HeaderLink>
       </li>
       <li>
-        <Link to='/signup'>Signup</Link>
+        <HeaderLink to='/signup'>Signup</HeaderLink>
       </li>
-    </ul>
+    </HeaderList>
   );
 
   const authLinks = (
-    <ul className='conditional-links'>
+    <HeaderList className='conditional-links'>
       <li>
-        <Link to='/profile'>Profile</Link>
+        <HeaderLink to='/profile'>Profile</HeaderLink>
       </li>
       <li>
-        <Link to='/' onClick={logout}>
+        <HeaderLink to='/' onClick={logout}>
           Logout
-        </Link>
+        </HeaderLink>
       </li>
-    </ul>
+    </HeaderList>
   );
 
   return (
-    <div className='phan-header'>
-      {/* something for the home button here? the phan thieves icon */}
+    <HeaderContainer>
+      <LogoWrapper>
+        <HeaderLogo src={logo} />
+      </LogoWrapper>
       {!loading && (
-        <div className='links'>
-          <ul className='permanent-links'>
+        <LinksContainer>
+          <HeaderList className='permanent-links'>
             <li>
-              <Link to='/requests'>Requests</Link>
+              <HeaderLink to='/requests'>Requests</HeaderLink>
             </li>
             <li>
-              <Link to='/forum'>Forum</Link>
+              <HeaderLink to='/forum'>Forum</HeaderLink>
             </li>
-          </ul>
+          </HeaderList>
           {isAuthenticated ? authLinks : unauthLinks}
-        </div>
+        </LinksContainer>
       )}
-    </div>
+    </HeaderContainer>
   );
 };
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  loading: state.auth.loading
+  loading: state.auth.loading,
 });
 
 const mapDispatchToProps = {
-  logout
+  logout,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
