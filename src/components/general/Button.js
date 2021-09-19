@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 
+import { StyledButton } from '../styles/Button.style';
+
 const Button = (props) => {
   return (
-    <button className='button' onClick={(e) => props.onButtonClick(e)}>
+    <StyledButton className='button' onClick={(e) => props.onButtonClick(e)}>
       {props.text}
-    </button>
+    </StyledButton>
   );
 };
 

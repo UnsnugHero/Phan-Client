@@ -9,7 +9,7 @@ import {
   HeaderLogo,
   LinksContainer,
   LogoLink,
-} from '../../styled-components/Header';
+} from '../styles/Header.style';
 
 import logo from '../../assets/logo.png';
 
