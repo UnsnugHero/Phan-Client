@@ -6,7 +6,7 @@ const TextInput = (props) => {
   let hasInputError = !!props.error;
 
   return (
-    <TextInputContainer>
+    <TextInputContainer className={props.className}>
       <StyledTextInput
         autoComplete={props.autocomplete || 'off'}
         className='text-input'

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
-import { isEmpty } from 'lodash';
+import { isEmpty, omitBy, isNil } from 'lodash';
 import PropTypes from 'prop-types';
 
 import { signup } from '../../redux/actions/auth.action';
@@ -54,7 +54,7 @@ const SignupForm = ({ isAuthenticated, signup }) => {
       errors['confirmPassword'] = 'Passwords must match';
     }
 
-    return errors;
+    return omitBy(errors, isNil);
   };
 
   if (isAuthenticated) {

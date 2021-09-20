@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
-import { isEmpty } from 'lodash';
+import { isEmpty, omitBy, isNil } from 'lodash';
 
 import { login } from '../../redux/actions/auth.action';
 import Button from '../general/Button';
 import TextInput from '../general/TextInput';
+import { LoginFormContainer } from '../styles/LoginForm.style';
 
 const LoginForm = ({ isAuthenticated, login }) => {
   const [loginFormContent, setForm] = useState({
@@ -49,7 +50,7 @@ const LoginForm = ({ isAuthenticated, login }) => {
       errors['password'] = 'Field is required';
     }
 
-    return errors;
+    return omitBy(errors, isNil);
   };
 
   if (isAuthenticated) {
@@ -57,9 +58,10 @@ const LoginForm = ({ isAuthenticated, login }) => {
   }
 
   return (
-    <>
+    <LoginFormContainer>
       <form autoComplete='off'>
         <TextInput
+          className='username-input input'
           name='username'
           error={loginFormContent.errors.username}
           placeholder='Username'
@@ -68,6 +70,7 @@ const LoginForm = ({ isAuthenticated, login }) => {
           value={loginFormContent.username.value}
         />
         <TextInput
+          className='password-input input'
           name='password'
           error={loginFormContent.errors.password}
           placeholder='Password'
@@ -75,9 +78,9 @@ const LoginForm = ({ isAuthenticated, login }) => {
           type='password'
           value={loginFormContent.password.value}
         />
-        <Button text='Submit' onButtonClick={handleSubmitForm} />
+        <Button text='Log in' onButtonClick={handleSubmitForm} />
       </form>
-    </>
+    </LoginFormContainer>
   );
 };
 
