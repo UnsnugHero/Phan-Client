@@ -1,13 +1,13 @@
 /* Fonts */
 
 @font-face {
-  font-family: 'PhanNormal'; /*a name to be used later*/
-  src: url('./assets/normal-font.ttf'); /*URL to font*/
+  font-family: 'PhanNormal';
+  src: url('./assets/PhanFont.ttf');
 }
 
 @font-face {
-  font-family: 'PhanHeader'; /*a name to be used later*/
-  src: url('./assets/header-font.ttf'); /*URL to font*/
+  font-family: 'PhanHeader';
+  src: url('./assets/header-font.ttf');
 }
 
 /* styles  */
