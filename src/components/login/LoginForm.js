@@ -22,7 +22,6 @@ const LoginForm = ({ isAuthenticated, login }) => {
 
   const handleSubmitForm = (event) => {
     event.preventDefault();
-    console.log('nee');
 
     const errors = getFormErrors();
     setForm({ ...loginFormContent, errors });
@@ -50,8 +49,7 @@ const LoginForm = ({ isAuthenticated, login }) => {
       errors['password'] = 'Field is required';
     }
 
-    setForm({ ...loginFormContent, errors });
-    return isEmpty(errors);
+    return errors;
   };
 
   if (isAuthenticated) {

@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 
-import { StyledTextInput } from '../styles/TextInput.style';
+import { StyledTextInput, TextInputContainer, TextInputError } from '../styles/TextInput.style';
 
 const TextInput = (props) => {
   let hasInputError = !!props.error;
 
   return (
-    <div className='text-input-container'>
+    <TextInputContainer>
       <StyledTextInput
         autoComplete={props.autocomplete || 'off'}
         className='text-input'
@@ -16,8 +16,8 @@ const TextInput = (props) => {
         type={props.type}
         value={props.value}
       ></StyledTextInput>
-      {hasInputError && <span className='text-input-error'>{props.error}</span>}
-    </div>
+      {hasInputError && <TextInputError>{props.error}</TextInputError>}
+    </TextInputContainer>
   );
 };
 
