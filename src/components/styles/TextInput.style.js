@@ -12,6 +12,7 @@ export const TextInputError = styled.span`
 export const StyledTextInput = styled.input`
   background-color: transparent;
   border: 3px solid #db1b0d;
+  box-sizing: border-box;
   color: white;
   font-family: 'PhanNormal';
   font-size: 1em;

@@ -3,6 +3,7 @@ import { io } from 'socket.io-client';
 
 import ChatForm from './ChatForm';
 import ChatCommentList from './ChatCommentList';
+import { ChatContainer } from '../styles/Chat.style';
 
 const socket = io('http://localhost:5000');
 
@@ -24,10 +25,12 @@ const Chat = () => {
   // helpers
 
   const subscribeChat = () => {
+    socket.on('connect', () => {});
+
     socket.on('newComment', (comment) => {
       const newComment = {
         content: comment,
-        username: comment.username ? comment.username : 'Anon'
+        username: comment.username ? comment.username : 'Anon',
       };
 
       setComments((prevComments) => [...prevComments, newComment]);
@@ -37,10 +40,11 @@ const Chat = () => {
   // render
 
   return (
-    <div>
+    <ChatContainer>
+      <h1>Phantom Aficionado Chat</h1>
       <ChatCommentList comments={comments} />
       <ChatForm socket={socket} />
-    </div>
+    </ChatContainer>
   );
 };
 

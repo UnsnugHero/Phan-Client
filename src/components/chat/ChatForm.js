@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import TextInput from '../general/TextInput';
 import Button from '../general/Button';
+import { StyledChatForm } from '../styles/Chat.style';
 
 const ChatForm = ({ socket }) => {
   // hooks
@@ -21,7 +22,7 @@ const ChatForm = ({ socket }) => {
   };
 
   return (
-    <form className='chat-form-container'>
+    <StyledChatForm>
       <TextInput
         name='comment'
         placeholder='Add a comment...'
@@ -30,7 +31,7 @@ const ChatForm = ({ socket }) => {
         value={commentContent}
       />
       <Button text='Post' onButtonClick={handlePostClick} />
-    </form>
+    </StyledChatForm>
   );
 };
 

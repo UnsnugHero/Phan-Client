@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
+import { CommentContainer } from '../styles/Chat.style';
 
 const ChatComment = (props) => {
   return (
-    <div className='comment-container'>
-      <span className='comment-user'>{props.author || 'Anon'}</span>:
+    <CommentContainer className='comment-container'>
+      <span className='comment-user'>{props.author || 'Anon'}</span>:{' '}
       <span className='comment-text'>{props.content}</span>
-    </div>
+    </CommentContainer>
   );
 };
 
