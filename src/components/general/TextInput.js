@@ -13,6 +13,7 @@ const TextInput = (props) => {
         name={props.name}
         onChange={(e) => props.onInputChange(e)}
         placeholder={props.placeholder}
+        ref={props.innerRef}
         type={props.type}
         value={props.value}
       ></StyledTextInput>
@@ -24,6 +25,7 @@ const TextInput = (props) => {
 TextInput.propTypes = {
   autoComplete: PropTypes.string,
   error: PropTypes.string,
+  innerRef: PropTypes.object,
   maxLength: PropTypes.number,
   name: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
