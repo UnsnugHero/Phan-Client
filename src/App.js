@@ -16,6 +16,7 @@ import { setAxiosHeaderAuthToken } from './util/helpers';
 import { useEffect } from 'react';
 import { loadUser } from './redux/actions/auth.action';
 import { AUTH_TOKEN_STORAGE_KEY } from './util/constants';
+import Footer from './components/general/Footer';
 
 if (storageService.getItem(AUTH_TOKEN_STORAGE_KEY)) {
   setAxiosHeaderAuthToken(storageService.getItem(AUTH_TOKEN_STORAGE_KEY));
@@ -38,6 +39,7 @@ const App = () => {
             {/* <Route exact path='/profile/:id' /> */}
             {/* <Route exact path='/requests' /> */}
           </Switch>
+          <Footer />
         </Router>
         <ToastContainer
           draggable={false}
