@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <FooterContainer>
       <FooterColumn columnHeader='About' links={FOOTER_ABOUT_LINKS} />
-      <FooterColumn columnHeader='Coomunity' links={FOOTER_COMMUNITY_LINKS} />
+      <FooterColumn columnHeader='Community' links={FOOTER_COMMUNITY_LINKS} />
       <FooterColumn columnHeader='Socials' links={FOOTER_SOCIAL_LINKS} />
     </FooterContainer>
   );

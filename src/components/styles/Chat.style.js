@@ -35,3 +35,7 @@ export const StyledChatForm = styled.form`
 export const CommentContainer = styled.div`
   margin-bottom: 5px;
 `;
+
+export const ChatHeader = styled.h1`
+  font-family: 'PhanHeader'
+`

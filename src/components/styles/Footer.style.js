@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const FooterContainer = styled.div`
   border-top: 2px solid #db1b0d;
   height: 100px;
-  margin-top: 30px;
+  margin-top: 100px;
   padding: 15px;
   width: 98%;
 

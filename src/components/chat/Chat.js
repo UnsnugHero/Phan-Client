@@ -3,7 +3,7 @@ import { io } from 'socket.io-client';
 
 import ChatForm from './ChatForm';
 import ChatCommentList from './ChatCommentList';
-import { ChatContainer } from '../styles/Chat.style';
+import { ChatContainer, ChatHeader } from '../styles/Chat.style';
 
 const socket = io('http://localhost:5000');
 
@@ -41,7 +41,7 @@ const Chat = () => {
 
   return (
     <ChatContainer>
-      <h1>Phantom Aficionado Chat</h1>
+      <ChatHeader>Phantom Chat Room</ChatHeader>
       <ChatCommentList comments={comments} />
       <ChatForm socket={socket} />
     </ChatContainer>
