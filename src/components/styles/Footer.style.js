@@ -1,15 +1,46 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const FooterContainer = styled.div`
-  background-color: #db1b0d;
-  height: 75px;
+  border-top: 2px solid #db1b0d;
+  height: 100px;
   margin-top: 30px;
-  width: 100%;
+  padding: 15px;
+  width: 98%;
 
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+`;
+
+export const FooterColumnContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const FooterColumnHeader = styled.span`
+  font-size: x-large;
+  font-weight: bold;
+`;
+
+export const FooterColumnLinks = styled.ul`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+
+  li {
+    margin-bottom: 10px;
+  }
+`;
+
+export const FooterLink = styled(Link)`
   color: white;
-  text-align: center;
+  text-decoration: none;
+
+  :hover {
+    text-decoration: underline;
+  }
 `;
