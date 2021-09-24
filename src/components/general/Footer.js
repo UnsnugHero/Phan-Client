@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import { FooterContainer } from '../styles/Footer.style';
 import { FOOTER_ABOUT_LINKS, FOOTER_COMMUNITY_LINKS, FOOTER_SOCIAL_LINKS } from './Footer.constants';

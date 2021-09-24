@@ -9,7 +9,7 @@ const FooterColumn = ({ columnHeader, links }) => {
       <FooterColumnHeader>{columnHeader}</FooterColumnHeader>
       <FooterColumnLinks>
         {links.map((link, idx) => (
-          <li id={idx}>
+          <li key={idx}>
             <FooterLink to={link.path}>{link.displayText}</FooterLink>
           </li>
         ))}

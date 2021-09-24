@@ -14,3 +14,17 @@ export const PercentageBar = styled.div`
   background-color: #db1b0d;
   height: 32px;
 `;
+
+export const PollFormContainer = styled.div``;
+
+export const PollVoteButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+`;
+
+export const PollVoteButton = styled.span`
+  cursor: pointer;
+  font-family: 'PhanHeader';
+  font-size: 3.5em;
+`;
