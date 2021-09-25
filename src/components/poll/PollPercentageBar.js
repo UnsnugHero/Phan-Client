@@ -1,18 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { PollPercentageBarContainer, PercentageBar, PollYesLabel } from '../styles/Poll.style';
+import {
+  PollPercentageBarBorder,
+  PercentageBar,
+  PercentageNumber,
+  PollPercentageBarContainer,
+} from '../styles/Poll.style';
 
 const PollPercentageBar = ({ yesVotes, totalVotes }) => {
-  const yesVotePercentage = totalVotes ? (yesVotes / totalVotes) * 100 : 0;
+  const yesVotePercentage = totalVotes ? ((yesVotes / totalVotes) * 100).toFixed(1) : 0;
 
   return (
-    <>
-      <PollPercentageBarContainer>
+    <PollPercentageBarContainer>
+      <PollPercentageBarBorder>
         <PercentageBar style={{ width: `${yesVotePercentage}%` }} />
-      </PollPercentageBarContainer>
-      <PollYesLabel>Yes</PollYesLabel>
-    </>
+      </PollPercentageBarBorder>
+      <PercentageNumber>{yesVotePercentage}%</PercentageNumber>
+    </PollPercentageBarContainer>
   );
 };
 

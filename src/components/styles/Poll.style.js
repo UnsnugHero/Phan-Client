@@ -1,11 +1,18 @@
 import styled from 'styled-components';
 
 export const PollPercentageBarContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const PollPercentageBarBorder = styled.div`
   border: 8px solid white;
   box-sizing: border-box;
   height: 50px;
   display: flex;
   flex-direction: row;
+  flex: 1;
+  margin-right: 15px;
 
   transform: skew(-10deg) rotate(0deg);
   -webkit-transform: skew(-10deg) rotate(0deg);
@@ -15,6 +22,13 @@ export const PollPercentageBarContainer = styled.div`
 export const PercentageBar = styled.div`
   background-color: #db1b0d;
   height: 32px;
+`;
+
+export const PercentageNumber = styled.span`
+  color: #db1b0d;
+  font-family: sans-serif;
+  font-weight: 900;
+  font-size: 1.5em;
 `;
 
 export const PollFormContainer = styled.div``;
@@ -27,22 +41,7 @@ export const PollVoteButtonsContainer = styled.div`
 
 export const PollVoteButton = styled.span`
   cursor: pointer;
-  font-size: 3.5em;
-`;
-
-export const PollYesLabel = styled.span`
-  background-color: black;
-  display: inline-block;
-  font-family: 'PhanHeader';
-  font-size: 2em;
-  position: relative;
-  bottom: 30px;
-  left: 450px;
-  z-index: 1;
-
-  transform: rotate(1deg);
-  -webkit-transform: rotate(1deg);
-  -moz-transform: rotate(1deg);
+  font-size: 3em;
 `;
 
 export const PollQuestionText = styled.span`

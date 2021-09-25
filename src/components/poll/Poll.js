@@ -9,7 +9,7 @@ const Poll = () => {
     <>
       <PollHeader>Poll</PollHeader>
       <PollQuestion />
-      <PollPercentageBar totalVotes={100} yesVotes={75} />
+      <PollPercentageBar totalVotes={200} yesVotes={77} />
       <PollForm />
     </>
   );
