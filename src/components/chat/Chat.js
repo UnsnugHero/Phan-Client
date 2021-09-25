@@ -41,7 +41,7 @@ const Chat = () => {
 
   return (
     <ChatContainer>
-      <ChatHeader>Phantom Chat Room</ChatHeader>
+      <ChatHeader>Chat Room</ChatHeader>
       <ChatCommentList comments={comments} />
       <ChatForm socket={socket} />
     </ChatContainer>

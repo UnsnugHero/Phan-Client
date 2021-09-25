@@ -8,7 +8,7 @@ export const HeaderContainer = styled.div`
   max-height: 56px;
   width: 100%;
   z-index: 1;
-  margin-bottom: 32px;
+  margin-bottom: 35px;
 `;
 
 export const HeaderList = styled.ul`

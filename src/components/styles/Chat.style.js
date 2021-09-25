@@ -37,5 +37,6 @@ export const CommentContainer = styled.div`
 `;
 
 export const ChatHeader = styled.h1`
-  font-family: 'PhanHeader'
-`
+  font-family: 'PhanHeader';
+  font-size: 3em;
+`;
