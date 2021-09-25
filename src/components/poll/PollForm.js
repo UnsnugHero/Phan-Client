@@ -18,7 +18,7 @@ const PollForm = ({ isAuthenticated }) => {
 
   return (
     <PollFormContainer>
-      {isAuthenticated && (
+      {true && (
         <PollVoteButtonsContainer>
           <PollVoteButton onClick={onVoteButtonClick(true)}>Yes</PollVoteButton>
           <PollVoteButton onClick={onVoteButtonClick(false)}>No</PollVoteButton>

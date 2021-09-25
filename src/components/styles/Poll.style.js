@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 
+export const PollContainer = styled.div`
+  margin-bottom: 50px;
+`;
+
+// Poll Percentage Bar
+
 export const PollPercentageBarContainer = styled.div`
   display: flex;
   flex-direction: row;
+  margin-bottom: 90px;
 `;
 
 export const PollPercentageBarBorder = styled.div`
@@ -24,12 +31,7 @@ export const PercentageBar = styled.div`
   height: 32px;
 `;
 
-export const PercentageNumber = styled.span`
-  color: #db1b0d;
-  font-family: sans-serif;
-  font-weight: 900;
-  font-size: 1.5em;
-`;
+// Poll Form Styles
 
 export const PollFormContainer = styled.div``;
 
@@ -44,15 +46,24 @@ export const PollVoteButton = styled.span`
   font-size: 3em;
 `;
 
-export const PollQuestionText = styled.span`
-  font-size: 1.3em;
-  position: absolute;
-  bottom: 0;
+// Poll Question Styles
+
+export const PollQuestionAndPercentContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
 `;
 
-export const PollQuestionRedText = styled.span`
-  font-size: 1.2em;
-  color: #db1b0d;
+export const PollQuestionContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  position: relative;
+
+  transform: rotate(-2deg);
+  -webkit-transform: rotate(-2deg);
+  -moz-transform: rotate(-2deg);
 `;
 
 export const PollQuestionLabel = styled.span`
@@ -66,17 +77,37 @@ export const PollQuestionLabel = styled.span`
   z-index: 1;
 `;
 
-export const PollQuestionContainer = styled.div`
-  position: relative;
+export const PollQuestionTextContainer = styled.div`
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+`;
 
-  transform: rotate(-2deg);
-  -webkit-transform: rotate(-2deg);
-  -moz-transform: rotate(-2deg);
+export const PollQuestionText = styled.span`
+  font-size: 1.6em;
+`;
+
+export const PollQuestionRedText = styled.span`
+  font-size: 1.1em;
+  color: #db1b0d;
+`;
+
+export const PollPercentageWholeNumber = styled.span`
+  color: #db1b0d;
+  font-family: 'Aha';
+  font-weight: 900;
+  font-size: 2em;
+`;
+
+export const PollPercentageDecimalAndPercent = styled.span`
+  color: #db1b0d;
+  font-family: 'Aha';
+  fonnt-weight: 900;
+  font-size: 1.2em;
 `;
 
 export const PollHeader = styled.h1`
   font-family: 'PhanHeader';
   font-size: 3em;
-  margin-bottom: 0;
   text-align: center;
 `;

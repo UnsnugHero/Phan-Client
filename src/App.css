@@ -10,6 +10,11 @@
   src: url('./assets/header-font.ttf');
 }
 
+@font-face {
+  font-family: 'Aha';
+  src: url('./assets/aAhaWow.ttf');
+}
+
 /* styles  */
 
 .App {
@@ -18,5 +23,5 @@
   justify-content: center;
   align-items: center;
   font-family: 'PhanNormal';
-  font-size: 1.2em;
+  font-size: 24px;
 }

@@ -1,29 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  PollPercentageBarBorder,
-  PercentageBar,
-  PercentageNumber,
-  PollPercentageBarContainer,
-} from '../styles/Poll.style';
+import { PollPercentageBarBorder, PercentageBar, PollPercentageBarContainer } from '../styles/Poll.style';
 
-const PollPercentageBar = ({ yesVotes, totalVotes }) => {
-  const yesVotePercentage = totalVotes ? ((yesVotes / totalVotes) * 100).toFixed(1) : 0;
-
+const PollPercentageBar = ({ yesVotePercentage }) => {
   return (
-    <PollPercentageBarContainer>
-      <PollPercentageBarBorder>
-        <PercentageBar style={{ width: `${yesVotePercentage}%` }} />
+    <PollPercentageBarContainer className='poll-percentage-bar-container'>
+      <PollPercentageBarBorder className='poll-percentage-bar-border'>
+        <PercentageBar className='percentage-bar' style={{ width: `${yesVotePercentage}%` }} />
       </PollPercentageBarBorder>
-      <PercentageNumber>{yesVotePercentage}%</PercentageNumber>
     </PollPercentageBarContainer>
   );
 };
 
 PollPercentageBar.propTypes = {
-  yesVotes: PropTypes.number.isRequired,
-  totalVotes: PropTypes.number.isRequired,
+  yesVotePercentage: PropTypes.number.isRequired,
 };
 
 export default PollPercentageBar;
