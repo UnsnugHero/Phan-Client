@@ -17,7 +17,7 @@ import { useEffect } from 'react';
 import { loadUser } from './redux/actions/auth.action';
 import { AUTH_TOKEN_STORAGE_KEY } from './util/constants';
 import Footer from './components/general/Footer';
-import { AppBody } from './components/styles/App.style';
+import { AppBlackBackgroundContainer, AppContainer } from './components/styles/App.style';
 
 if (storageService.getItem(AUTH_TOKEN_STORAGE_KEY)) {
   setAxiosHeaderAuthToken(storageService.getItem(AUTH_TOKEN_STORAGE_KEY));
@@ -33,15 +33,17 @@ const App = () => {
       <div className='App'>
         <Router>
           <Header />
-          <AppBody>
-            <Route exact path='/' component={Landing} />
-            <Switch>
-              <Route exact path='/login' component={LoginCard} />
-              <Route exact path='/signup' component={SignupCard} />
-              {/* <Route exact path='/profile/:id' /> */}
-              {/* <Route exact path='/requests' /> */}
-            </Switch>
-          </AppBody>
+          <AppBlackBackgroundContainer className='app-black-background-container'>
+            <AppContainer className='app-container'>
+              <Route exact path='/' component={Landing} />
+              <Switch>
+                <Route exact path='/login' component={LoginCard} />
+                <Route exact path='/signup' component={SignupCard} />
+                {/* <Route exact path='/profile/:id' /> */}
+                {/* <Route exact path='/requests' /> */}
+              </Switch>
+            </AppContainer>
+          </AppBlackBackgroundContainer>
           <Footer />
         </Router>
         <ToastContainer

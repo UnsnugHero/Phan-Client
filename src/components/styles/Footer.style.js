@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 export const FooterContainer = styled.div`
   border-top: 2px solid #db1b0d;
-  height: 100px;
-  margin-top: 100px;
+  height: 100%;
   padding: 15px;
   width: 98%;
+  background-color: black;
 
   display: flex;
   flex-direction: row;
