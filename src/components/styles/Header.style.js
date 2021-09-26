@@ -5,7 +5,8 @@ export const HeaderContainer = styled.div`
   background-color: #db1b0d;
   display: flex;
   flex-direction: row;
-  max-height: 56px;
+  justify-content: center;
+  max-height: 68px;
   width: 100%;
   z-index: 1;
 `;
@@ -22,13 +23,13 @@ export const HeaderList = styled.ul`
 export const HeaderLink = styled(Link)`
   color: white;
   font-family: 'PhanHeader';
-  font-size: xx-large;
+  font-size: 1.5em;
   text-decoration: none;
 `;
 
 export const LogoLink = styled(HeaderLink)`
   align-items: center;
-  height: 56px;
+  height: 68px;
   display: flex;
   margin-left: 32px;
 `;
@@ -41,11 +42,12 @@ export const LogoWrapper = styled.div`
 `;
 
 export const HeaderLogo = styled.img`
-  width: 48px;
+  width: 56px;
 `;
 
 export const LinksContainer = styled.div`
-  width: 100%;
+  width: 1350px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 `;

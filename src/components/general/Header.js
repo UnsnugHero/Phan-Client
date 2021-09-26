@@ -32,12 +32,9 @@ const Header = ({ isAuthenticated, loading, logout }) => {
   );
 
   return (
-    <HeaderContainer>
-      <LogoLink to='/'>
-        <HeaderLogo src={logo} />
-      </LogoLink>
+    <HeaderContainer className='header-container'>
       {!loading && (
-        <LinksContainer>
+        <LinksContainer className='links-container'>
           <HeaderList className='permanent-links'>
             <li>
               <HeaderLink to='/requests'>Requests</HeaderLink>
@@ -46,6 +43,9 @@ const Header = ({ isAuthenticated, loading, logout }) => {
               <HeaderLink to='/forum'>Forum</HeaderLink>
             </li>
           </HeaderList>
+          <LogoLink to='/'>
+            <HeaderLogo className='header-logo' src={logo} />
+          </LogoLink>
           {isAuthenticated ? authLinks : unauthLinks}
         </LinksContainer>
       )}
