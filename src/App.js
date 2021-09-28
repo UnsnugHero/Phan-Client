@@ -13,7 +13,7 @@ import { AUTH_TOKEN_STORAGE_KEY } from './util/constants';
 import { AppBlackBackgroundContainer, AppContainer } from './components/styles/App.style';
 
 import Landing from './components/landing/Landing';
-import LoginCard from './components/login/LoginCard';
+import Login from './components/login/Login';
 import SignupCard from './components/signup/SignupCard';
 import Header from './components/general/Header';
 import storageService from './services/storage.service';
@@ -39,7 +39,7 @@ const App = () => {
             <AppContainer className='app-container'>
               <Route exact path='/' component={Landing} />
               <Switch>
-                <Route exact path='/login' component={LoginCard} />
+                <Route exact path='/login' component={Login} />
                 <Route exact path='/signup' component={SignupCard} />
                 {/* <Route exact path='/profile/:id' /> */}
                 {/* <Route exact path='/requests' /> */}

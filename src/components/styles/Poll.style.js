@@ -113,9 +113,3 @@ export const PollPercentageDecimalAndPercent = styled.span`
   fonnt-weight: 900;
   font-size: 1.2em;
 `;
-
-export const PollHeader = styled.h1`
-  font-family: 'PhanHeader';
-  font-size: 3em;
-  text-align: center;
-`;

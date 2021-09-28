@@ -1,8 +1,8 @@
 import React from 'react';
+import { GeneralXLHeader } from '../styles/App.style';
 
 import {
   PollContainer,
-  PollHeader,
   PollPercentageDecimalAndPercent,
   PollPercentageWholeNumber,
   PollQuestionAndPercentContainer,
@@ -23,7 +23,7 @@ const Poll = () => {
 
   return (
     <PollContainer>
-      <PollHeader className='poll-header'>Poll</PollHeader>
+      <GeneralXLHeader className='poll-header'>Poll</GeneralXLHeader>
       <PollQuestionAndPercentContainer className='poll-question-and-percent-container'>
         <PollQuestion />
         <div>

@@ -13,3 +13,9 @@ export const AppContainer = styled.div`
   background-color: black;
   padding: 35px 0 100px 0;
 `;
+
+export const GeneralXLHeader = styled.h1`
+  font-family: 'PhanHeader';
+  font-size: 2.75em;
+  text-align: center;
+`;

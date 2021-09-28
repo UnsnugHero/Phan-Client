@@ -5,10 +5,19 @@ import { isEmpty, omitBy, isNil } from 'lodash';
 
 import { login } from '../../redux/actions/auth.action';
 import Button from '../general/Button';
-import TextInput from '../general/TextInput';
-import { LoginFormContainer } from '../styles/LoginForm.style';
+import { GeneralXLHeader } from '../styles/App.style';
+import { Link } from 'react-router-dom';
+import {
+  LoginButton,
+  LoginContainer,
+  LoginForm,
+  LoginFormFooter,
+  LoginFormInput,
+  SignUpLink,
+  SignUpText,
+} from '../styles/Login.style';
 
-const LoginForm = ({ isAuthenticated, login }) => {
+const Login = ({ isAuthenticated, login }) => {
   const [loginFormContent, setForm] = useState({
     username: '',
     password: '',
@@ -58,9 +67,10 @@ const LoginForm = ({ isAuthenticated, login }) => {
   }
 
   return (
-    <LoginFormContainer>
-      <form autoComplete='off'>
-        <TextInput
+    <LoginContainer>
+      <GeneralXLHeader>Log In</GeneralXLHeader>
+      <LoginForm autoComplete='off'>
+        <LoginFormInput
           className='username-input input'
           name='username'
           error={loginFormContent.errors.username}
@@ -69,7 +79,7 @@ const LoginForm = ({ isAuthenticated, login }) => {
           type='text'
           value={loginFormContent.username.value}
         />
-        <TextInput
+        <LoginFormInput
           className='password-input input'
           name='password'
           error={loginFormContent.errors.password}
@@ -78,9 +88,14 @@ const LoginForm = ({ isAuthenticated, login }) => {
           type='password'
           value={loginFormContent.password.value}
         />
-        <Button text='Log in' onButtonClick={handleSubmitForm} />
-      </form>
-    </LoginFormContainer>
+        <LoginFormFooter>
+          <LoginButton text='Log in' onButtonClick={handleSubmitForm} />
+          <SignUpText>
+            New to the Phansite? <SignUpLink to='/signup'>Sign up</SignUpLink>
+          </SignUpText>
+        </LoginFormFooter>
+      </LoginForm>
+    </LoginContainer>
   );
 };
 
@@ -92,4 +107,4 @@ const mapDispatchToProps = {
   login,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

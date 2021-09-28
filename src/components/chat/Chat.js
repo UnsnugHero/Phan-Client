@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { io } from 'socket.io-client';
 
+import { ChatContainer } from '../styles/Chat.style';
+import { GeneralXLHeader } from '../styles/App.style';
+
 import ChatForm from './ChatForm';
 import ChatCommentList from './ChatCommentList';
-import { ChatContainer, ChatHeader } from '../styles/Chat.style';
 
 const socket = io('http://localhost:5000');
 
@@ -41,7 +43,7 @@ const Chat = () => {
 
   return (
     <ChatContainer>
-      <ChatHeader>Chat Room</ChatHeader>
+      <GeneralXLHeader>Chat Room</GeneralXLHeader>
       <ChatCommentList comments={comments} />
       <ChatForm socket={socket} />
     </ChatContainer>
