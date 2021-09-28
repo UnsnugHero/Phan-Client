@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { logout } from '../../redux/actions/auth.action';
 import { HeaderContainer, HeaderLink, HeaderList, HeaderLogo, LinksContainer, LogoLink } from '../styles/Header.style';
 
-import logo from '../../assets/logo.png';
+import logo from '../../assets/joker-mask.png';
 
 const Header = ({ isAuthenticated, loading, logout }) => {
   const unauthLinks = (

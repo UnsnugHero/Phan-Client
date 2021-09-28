@@ -14,6 +14,7 @@ export const LoginForm = styled.form`
   display: flex;
   flex-direction: column;
   width: 350px;
+  margin-bottom: 48px;
 `;
 
 export const LoginFormInput = styled(TextInput)`
@@ -41,4 +42,8 @@ export const SignUpLink = styled(Link)`
   :hover {
     text-decoration: underline;
   }
+`;
+
+export const LogoImage = styled.img`
+  width: 200px;
 `;

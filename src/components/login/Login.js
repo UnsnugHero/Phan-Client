@@ -4,18 +4,19 @@ import { Redirect } from 'react-router';
 import { isEmpty, omitBy, isNil } from 'lodash';
 
 import { login } from '../../redux/actions/auth.action';
-import Button from '../general/Button';
 import { GeneralXLHeader } from '../styles/App.style';
-import { Link } from 'react-router-dom';
 import {
   LoginButton,
   LoginContainer,
   LoginForm,
   LoginFormFooter,
   LoginFormInput,
+  LogoImage,
   SignUpLink,
   SignUpText,
 } from '../styles/Login.style';
+
+import logo from '../../assets/logo-with-text.png';
 
 const Login = ({ isAuthenticated, login }) => {
   const [loginFormContent, setForm] = useState({
@@ -95,6 +96,7 @@ const Login = ({ isAuthenticated, login }) => {
           </SignUpText>
         </LoginFormFooter>
       </LoginForm>
+      <LogoImage src={logo} />
     </LoginContainer>
   );
 };
