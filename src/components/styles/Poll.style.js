@@ -44,6 +44,14 @@ export const PollVoteButtonsContainer = styled.div`
 export const PollVoteButton = styled.span`
   cursor: pointer;
   font-size: 3em;
+
+  .selected {
+    color: #db1b0d;
+  }
+
+  :hover {
+    color: #db1b0d;
+  }
 `;
 
 // Poll Question Styles
