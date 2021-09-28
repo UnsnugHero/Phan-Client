@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const AppBlackBackgroundContainer = styled.div`
   background-color: black;
   width: 1350px;
-  z-index: -1;
   display: flex;
   justify-content: center;
 `;

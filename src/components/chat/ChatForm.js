@@ -37,7 +37,7 @@ const ChatForm = ({ socket }) => {
         type='text'
         value={commentContent}
       />
-      <Button text='Post' onButtonClick={handlePostClick} />
+      <Button className='chat-post-button' text='Post' onButtonClick={handlePostClick} />
     </StyledChatForm>
   );
 };

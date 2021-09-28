@@ -30,6 +30,10 @@ export const StyledChatForm = styled.form`
   .text-input-container {
     flex: 1;
   }
+
+  .button {
+    margin-left: 15px;
+  }
 `;
 
 export const CommentContainer = styled.div`

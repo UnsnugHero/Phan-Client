@@ -13,4 +13,11 @@ export const StyledButton = styled.button`
   padding: 11px 1.2em;
   text-align: center;
   transition: all 0.2s;
+
+  cursor: pointer;
+
+  :hover {
+    // background-color: #8b8b8b;
+    background-color: #9f170e;
+  }
 `;
