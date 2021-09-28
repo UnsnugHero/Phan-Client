@@ -14,7 +14,7 @@ import { AppBlackBackgroundContainer, AppContainer } from './components/styles/A
 
 import Landing from './components/landing/Landing';
 import Login from './components/login/Login';
-import SignupCard from './components/signup/SignupCard';
+import Signup from './components/signup/Signup';
 import Header from './components/general/Header';
 import storageService from './services/storage.service';
 import Footer from './components/general/Footer';
@@ -40,7 +40,7 @@ const App = () => {
               <Route exact path='/' component={Landing} />
               <Switch>
                 <Route exact path='/login' component={Login} />
-                <Route exact path='/signup' component={SignupCard} />
+                <Route exact path='/signup' component={Signup} />
                 {/* <Route exact path='/profile/:id' /> */}
                 {/* <Route exact path='/requests' /> */}
               </Switch>

@@ -5,11 +5,13 @@ import { isEmpty, omitBy, isNil } from 'lodash';
 import PropTypes from 'prop-types';
 
 import { signup } from '../../redux/actions/auth.action';
-import TextInput from '../general/TextInput';
-import Button from '../general/Button';
-import Checkbox from '../general/Checkbox';
+import { SignupButton, SignupCheckbox, SignupContainer, SignupForm, SignupFormInput } from '../styles/Signup.style';
+import { GeneralXLHeader } from '../styles/App.style';
+import { LogoImage } from '../styles/Login.style';
 
-const SignupForm = ({ isAuthenticated, signup }) => {
+import logo from '../../assets/logo-with-text.png';
+
+const Signup = ({ isAuthenticated, signup }) => {
   const [signupFormContent, setForm] = useState({
     username: '',
     password: '',
@@ -62,9 +64,10 @@ const SignupForm = ({ isAuthenticated, signup }) => {
   }
 
   return (
-    <>
-      <form autoComplete='off'>
-        <TextInput
+    <SignupContainer>
+      <GeneralXLHeader>Sign Up</GeneralXLHeader>
+      <SignupForm autoComplete='off'>
+        <SignupFormInput
           error={signupFormContent.errors.username}
           name='username'
           onInputChange={handleInputChange('username')}
@@ -72,7 +75,7 @@ const SignupForm = ({ isAuthenticated, signup }) => {
           type='text'
           value={signupFormContent.username}
         />
-        <TextInput
+        <SignupFormInput
           error={signupFormContent.errors.password}
           name='password'
           placeholder='Password'
@@ -80,7 +83,7 @@ const SignupForm = ({ isAuthenticated, signup }) => {
           type='password'
           value={signupFormContent.password}
         />
-        <TextInput
+        <SignupFormInput
           error={signupFormContent.errors.confirmPassword}
           name='confirmPassword'
           placeholder='Confirm Password'
@@ -88,19 +91,20 @@ const SignupForm = ({ isAuthenticated, signup }) => {
           type='password'
           value={signupFormContent.confirmPassword}
         />
-        <Checkbox
+        <SignupCheckbox
           checked={signupFormContent.isAnonymous}
           name='isAnonymous'
           text='Appear Anonymous on Site?'
           onInputChange={handleCheckboxClick('isAnonymous')}
         />
-        <Button text='Submit' onButtonClick={handleSubmitForm} />
-      </form>
-    </>
+        <SignupButton text='Submit' onButtonClick={handleSubmitForm} />
+      </SignupForm>
+      <LogoImage src={logo} />
+    </SignupContainer>
   );
 };
 
-SignupForm.propTypes = {
+Signup.propTypes = {
   signup: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
 };
@@ -113,4 +117,4 @@ const mapDispatchToProps = {
   signup,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
