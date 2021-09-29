@@ -8,7 +8,7 @@ export const ChatContainer = styled.div`
 `;
 
 export const ChatListContainer = styled.div`
-  border: 2px solid #db1b0d;
+  border: 3px solid #db1b0d;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -17,6 +17,7 @@ export const ChatListContainer = styled.div`
   margin-bottom: 15px;
   padding: 18px;
   width: 100%;
+  overflow: auto;
 `;
 
 export const StyledChatForm = styled.form`

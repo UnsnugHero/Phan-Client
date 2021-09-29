@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const FooterContainer = styled.div`
-  border-top: 2px solid #db1b0d;
+  border-top: 3px solid #db1b0d;
   height: 100%;
   padding: 15px;
   width: 98%;
