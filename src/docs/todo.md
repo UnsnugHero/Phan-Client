@@ -4,7 +4,6 @@
 
 ## chat
 
-- fix scroll bar showing over the border
 - fix the scrolling issue where hitting top/bottom of comment scrolling proceeds to scroll rest of page
 - implement support for non-user messages in the chat (specifically welcome message and error messages)
 - show welcome message on connect
