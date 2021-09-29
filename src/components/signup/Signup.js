@@ -15,7 +15,6 @@ import {
   SignupFormInput,
   SignupHeader,
 } from '../styles/Signup.style';
-import { GeneralXLHeader } from '../styles/App.style';
 import { LogoImage } from '../styles/Login.style';
 
 import logo from '../../assets/logo-with-text.png';

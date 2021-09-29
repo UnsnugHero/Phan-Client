@@ -1,14 +1,16 @@
 import PropTypes from 'prop-types';
 
-import { ChatListContainer } from '../styles/Chat.style';
+import { ChatList, ChatListContainer } from '../styles/Chat.style';
 import ChatComment from './ChatComment';
 
 const ChatCommentList = (props) => {
   return (
     <ChatListContainer>
-      {props.comments.map((comment, idx) => (
-        <ChatComment key={idx} content={comment.content} author={comment.author} />
-      ))}
+      <ChatList>
+        {props.comments.map((comment, idx) => (
+          <ChatComment key={idx} content={comment.content} author={comment.author} />
+        ))}
+      </ChatList>
     </ChatListContainer>
   );
 };
