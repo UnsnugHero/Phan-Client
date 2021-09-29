@@ -5,7 +5,16 @@ import { isEmpty, omitBy, isNil } from 'lodash';
 import PropTypes from 'prop-types';
 
 import { signup } from '../../redux/actions/auth.action';
-import { SignupButton, SignupCheckbox, SignupContainer, SignupForm, SignupFormInput } from '../styles/Signup.style';
+import {
+  LoginLink,
+  LoginText,
+  SignupButton,
+  SignupCheckbox,
+  SignupContainer,
+  SignupForm,
+  SignupFormInput,
+  SignupHeader,
+} from '../styles/Signup.style';
 import { GeneralXLHeader } from '../styles/App.style';
 import { LogoImage } from '../styles/Login.style';
 
@@ -65,7 +74,10 @@ const Signup = ({ isAuthenticated, signup }) => {
 
   return (
     <SignupContainer>
-      <GeneralXLHeader>Sign Up</GeneralXLHeader>
+      <SignupHeader>Sign Up</SignupHeader>
+      <LoginText>
+        Already have an account? <LoginLink to='/login'>Login</LoginLink>
+      </LoginText>
       <SignupForm autoComplete='off'>
         <SignupFormInput
           error={signupFormContent.errors.username}
