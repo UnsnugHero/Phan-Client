@@ -17,8 +17,6 @@ export const ChatListContainer = styled.div`
   margin-bottom: 15px;
   padding: 18px;
   width: 100%;
-
-  // make responsive width
 `;
 
 export const StyledChatForm = styled.form`

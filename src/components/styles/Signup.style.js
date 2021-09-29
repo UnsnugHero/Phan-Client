@@ -10,7 +10,9 @@ export const SignupForm = styled(LoginForm)``;
 export const SignupFormInput = styled(LoginFormInput)``;
 
 export const SignupCheckbox = styled(Checkbox)`
-  margin-bottom: 24px;
+  .checkbox-container {
+    margin-bottom: 24px;
+  }
 `;
 
 export const SignupButton = styled(LoginButton)``;
