@@ -19,6 +19,7 @@ import Header from './components/general/Header';
 import storageService from './services/storage.service';
 import Footer from './components/general/Footer';
 import ScrollToTop from './components/routing/ScrollToTop';
+import Requests from './components/requests/Requests';
 
 if (storageService.getItem(AUTH_TOKEN_STORAGE_KEY)) {
   setAxiosHeaderAuthToken(storageService.getItem(AUTH_TOKEN_STORAGE_KEY));
@@ -42,7 +43,7 @@ const App = () => {
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/signup' component={Signup} />
                 {/* <Route exact path='/profile/:id' /> */}
-                {/* <Route exact path='/requests' /> */}
+                <Route exact path='/requests' component={Requests} />
               </Switch>
             </AppContainer>
           </AppBlackBackgroundContainer>
