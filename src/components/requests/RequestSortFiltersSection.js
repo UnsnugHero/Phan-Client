@@ -14,7 +14,7 @@ const RequestSortFiltersSection = (props) => {
 
   return (
     <>
-      <RequestFilterTitle style={{ paddingLeft: '8px', marginBottom: '16px' }}>Sort Filters</RequestFilterTitle>
+      <RequestFilterTitle>Sort Filters</RequestFilterTitle>
       <SortFiltersSection>
         {filters.map((filter, idx) => {
           return (

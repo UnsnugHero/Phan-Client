@@ -106,7 +106,7 @@ const Signup = ({ isAuthenticated, signup }) => {
           checked={signupFormContent.isAnonymous}
           name='isAnonymous'
           text='Appear Anonymous on Site?'
-          onInputChange={handleCheckboxClick('isAnonymous')}
+          onCheckboxClick={handleCheckboxClick('isAnonymous')}
         />
         <SignupButton text='Submit' onButtonClick={handleSubmitForm} />
       </SignupForm>

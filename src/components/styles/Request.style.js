@@ -64,14 +64,18 @@ export const FilterMenu = styled.div`
 
 export const RequestFilterTitle = styled.span`
   padding-left: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
   display: block;
 `;
 
 export const FiltersSection = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  // grid if needed later
+  display: flex;
+  width: 100%;
+
+  .checkbox-container {
+    padding-left: 8px;
+  }
 `;
 
 export const SortFiltersSection = styled.div`
