@@ -1,11 +1,24 @@
 import React from 'react';
 import { useState } from 'react';
+
+import Radio from '../general/Radio';
 import { RequestFilterMenuContainer, RequestFilterMenuButton, FilterMenu } from '../styles/Request.style';
+import { REQUEST_SORT_FILTERS } from './Requests.constants';
 
 const RequestFilterMenu = () => {
   const [menuState, setState] = useState({
     isMenuExpanded: false,
+    selectedSort: { sortOn: 'postedDate', sortDir: 'desc' },
   });
+
+  const onRadioClick = (value) => {
+    setState({
+      ...menuState,
+      selectedSort: value,
+    });
+
+    // call the parent set form function here or whatever on propsf
+  };
 
   return (
     <RequestFilterMenuContainer>
@@ -17,7 +30,11 @@ const RequestFilterMenu = () => {
           });
         }}
       >{`${menuState.isMenuExpanded ? '- Remove' : '+ Add'} filters`}</RequestFilterMenuButton>
-      <FilterMenu className={`${menuState.isMenuExpanded ? 'expanded' : ''}`}>{/* Add sort filters here */}</FilterMenu>
+      <FilterMenu className={`${menuState.isMenuExpanded ? 'expanded' : ''}`}>
+        {REQUEST_SORT_FILTERS.map((filter, idx) => {
+          return <Radio key={idx} name='sort' onClick={onRadioClick} text={filter.displayText} value={filter.value} />;
+        })}
+      </FilterMenu>
     </RequestFilterMenuContainer>
   );
 };
