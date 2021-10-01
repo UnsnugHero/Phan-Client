@@ -9,7 +9,7 @@ const Radio = (props) => {
       <RadioLabel className='label'>
         <RadioInput
           className='radio'
-          checked={props.checked}
+          defaultChecked={props.defaultChecked}
           name={props.name}
           type='radio'
           onClick={() => props.onClick(props.value)}
@@ -23,7 +23,7 @@ const Radio = (props) => {
 
 Radio.propTypes = {
   className: PropTypes.string,
-  checked: PropTypes.bool.isRequired,
+  defaultChecked: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.object,

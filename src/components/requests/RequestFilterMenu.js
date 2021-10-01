@@ -1,9 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 
-import Radio from '../general/Radio';
 import { RequestFilterMenuContainer, RequestFilterMenuButton, FilterMenu } from '../styles/Request.style';
-import { REQUEST_SORT_FILTERS } from './Requests.constants';
+import RequestSortFiltersSection from './RequestSortFiltersSection';
 
 const RequestFilterMenu = () => {
   const [menuState, setState] = useState({
@@ -11,36 +10,24 @@ const RequestFilterMenu = () => {
     selectedSort: { sortOn: 'postedDate', sortDir: 'desc' },
   });
 
-  const onRadioClick = (value) => {
+  const onExpandMenu = () => {
     setState({
-      ...menuState,
-      selectedSort: value,
+      isMenuExpanded: !menuState.isMenuExpanded,
     });
-
-    // call the parent set form function here or whatever on propsf
   };
+
+  const onSortFilterClick = (value) => {};
 
   return (
     <RequestFilterMenuContainer>
-      <RequestFilterMenuButton
-        className={`${menuState.isMenuExpanded ? 'active' : ''}`}
-        onClick={() => {
-          setState({
-            isMenuExpanded: !menuState.isMenuExpanded,
-          });
-        }}
-      >{`${menuState.isMenuExpanded ? '- Remove' : '+ Add'} filters`}</RequestFilterMenuButton>
-      <FilterMenu className={`${menuState.isMenuExpanded ? 'expanded' : ''}`}>
-        {REQUEST_SORT_FILTERS.map((filter, idx) => {
-          return <Radio key={idx} name='sort' onClick={onRadioClick} text={filter.displayText} value={filter.value} />;
-        })}
+      <RequestFilterMenuButton className={`${menuState.isMenuExpanded ? 'active' : ''}`} onClick={onExpandMenu}>{`${
+        menuState.isMenuExpanded ? '- Remove' : '+ Add'
+      } filters`}</RequestFilterMenuButton>
+      <FilterMenu isExpanded={menuState.isMenuExpanded}>
+        <RequestSortFiltersSection onSortFilterClick={onSortFilterClick} />
       </FilterMenu>
     </RequestFilterMenuContainer>
   );
 };
-
-// ideas
-// make this a filters menu where you can add some other filters (right now just thinking of filtering out completed requests)
-//
 
 export default RequestFilterMenu;

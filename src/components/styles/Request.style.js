@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import TextInput from '../general/TextInput';
 
@@ -22,10 +22,6 @@ export const RequestFilterMenuContainer = styled.div`
   .active {
     background-color: #2a2a2a;
   }
-
-  .expanded {
-    height: fit-content;
-  }
 `;
 
 export const RequestFilterMenuButton = styled.button`
@@ -46,8 +42,39 @@ export const RequestFilterMenuButton = styled.button`
 `;
 
 export const FilterMenu = styled.div`
-  padding: 0 12px;
+  padding: 12px;
   overflow: hidden;
   background-color: #333;
-  height: 0;
+  height: fit-content;
+  display: none;
+
+  ${(props) =>
+    props.isExpanded &&
+    css`
+      display: block;
+    `}
+
+  .radio-container {
+    padding: 8px;
+    margin-bottom: 0px;
+  }
+`;
+
+export const RequestFilterTitle = styled.span`
+  padding-left: 8px;
+  margin-bottom: 8px;
+  display: block;
+`;
+
+export const FiltersSection = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+`;
+
+export const SortFiltersSection = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
 `;
