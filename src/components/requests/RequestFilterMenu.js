@@ -16,11 +16,15 @@ const RequestFilterMenu = () => {
     });
   };
 
-  const onSortFilterClick = (value) => {};
+  const onFilterClick = () => {};
+
+  const onSortFilterClick = (value) => {
+    console.log(value);
+  };
 
   return (
     <RequestFilterMenuContainer>
-      <RequestFilterMenuButton className={`${menuState.isMenuExpanded ? 'active' : ''}`} onClick={onExpandMenu}>{`${
+      <RequestFilterMenuButton isExpanded={menuState.isMenuExpanded} onClick={onExpandMenu}>{`${
         menuState.isMenuExpanded ? '- Remove' : '+ Add'
       } filters`}</RequestFilterMenuButton>
       <FilterMenu isExpanded={menuState.isMenuExpanded}>

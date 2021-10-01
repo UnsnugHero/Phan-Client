@@ -18,10 +18,6 @@ export const RequestSearchBar = styled(TextInput)`
 
 export const RequestFilterMenuContainer = styled.div`
   width: 750px;
-
-  .active {
-    background-color: #2a2a2a;
-  }
 `;
 
 export const RequestFilterMenuButton = styled.button`
@@ -39,6 +35,12 @@ export const RequestFilterMenuButton = styled.button`
   :hover {
     background-color: #2a2a2a;
   }
+
+  ${(props) =>
+    props.isExpanded &&
+    css`
+      background-color: #2a2a2a;
+    `}
 `;
 
 export const FilterMenu = styled.div`

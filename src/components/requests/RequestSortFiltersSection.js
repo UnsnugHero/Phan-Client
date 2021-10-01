@@ -1,6 +1,7 @@
 import React from 'react';
-import Radio from '../general/Radio';
+import PropTypes from 'prop-types';
 
+import Radio from '../general/Radio';
 import { RequestFilterTitle, SortFiltersSection } from '../styles/Request.style';
 import { REQUEST_SORT_FILTERS } from './Requests.constants';
 
@@ -30,6 +31,10 @@ const RequestSortFiltersSection = (props) => {
       </SortFiltersSection>
     </>
   );
+};
+
+RequestSortFiltersSection.propTypes = {
+  onSortFilterClick: PropTypes.func.isRequired,
 };
 
 export default RequestSortFiltersSection;
