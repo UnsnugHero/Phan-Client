@@ -1,16 +1,20 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 import { RequestFilterMenuContainer, RequestFilterMenuButton, FilterMenu } from '../styles/Request.style';
 import RequestFiltersSection from './RequestFiltersSection';
 import RequestSortFiltersSection from './RequestSortFiltersSection';
 
-const RequestFilterMenu = () => {
+const RequestFilterMenu = ({ onMenuAction }) => {
   const [menuState, setState] = useState({
     isMenuExpanded: false,
     filters: { hideCompleted: false },
     selectedSort: { sortOn: 'postedDate', sortDir: 'desc' },
   });
+
+  useEffect(() => {
+    onMenuAction(menuState);
+  }, [menuState, onMenuAction]);
 
   const onExpandMenu = () => {
     setState({
@@ -24,9 +28,6 @@ const RequestFilterMenu = () => {
       ...menuState,
       filters: filterState,
     });
-
-    // call an on sort changed fn passed from parent, this
-    // should update the search with newly applied filter
   };
 
   const onSortFilterClick = (selectedSort) => {
@@ -34,8 +35,6 @@ const RequestFilterMenu = () => {
       ...menuState,
       selectedSort,
     });
-
-    // call an on sort changed fn passed from parent
   };
 
   return (
@@ -49,6 +48,10 @@ const RequestFilterMenu = () => {
       </FilterMenu>
     </RequestFilterMenuContainer>
   );
+};
+
+RequestFilterMenu.propTypes = {
+  onMenuAction: PropTypes.func.isRequired,
 };
 
 export default RequestFilterMenu;
