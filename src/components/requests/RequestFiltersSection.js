@@ -19,7 +19,7 @@ const RequestFiltersSection = (props) => {
         <Checkbox
           name='hideCompleted'
           text='Hide Completed'
-          checked={props.filters?.hideCompleted || false}
+          checked={props.filters.hideCompleted || false}
           onCheckboxClick={onCheckboxClick}
         />
       </FiltersSection>
@@ -28,7 +28,7 @@ const RequestFiltersSection = (props) => {
 };
 
 RequestFiltersSection.propTypes = {
-  filters: PropTypes.object,
+  filters: PropTypes.object.isRequired,
   onFilterClick: PropTypes.func.isRequired,
 };
 

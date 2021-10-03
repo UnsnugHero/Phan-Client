@@ -14,6 +14,7 @@ const RequestFilterMenu = () => {
 
   const onExpandMenu = () => {
     setState({
+      ...menuState,
       isMenuExpanded: !menuState.isMenuExpanded,
     });
   };
