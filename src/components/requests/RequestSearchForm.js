@@ -1,5 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
+import { debounce } from 'lodash';
 import { useState } from 'react';
+
 import { RequestSearchFormContainer, RequestSearchBar } from '../styles/Request.style';
 import RequestFilterMenu from './RequestFilterMenu';
 
@@ -11,8 +13,16 @@ const RequestSearchForm = () => {
     selectedSort: { sortOn: 'postedDate', sortDir: 'desc' },
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const search = useCallback(
+    debounce((searchPayload) => {
+      console.log('I just searched with ', searchPayload);
+    }, 300),
+    []
+  );
+
   useEffect(() => {
-    console.log(formState);
+    search(formState);
     // call search here yo
   });
 
