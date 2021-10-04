@@ -2,10 +2,35 @@ import React, { useEffect, useCallback } from 'react';
 import { debounce } from 'lodash';
 import { useState } from 'react';
 
-import { RequestSearchFormContainer, RequestSearchBar } from '../styles/Request.style';
+import { RequestSearchBar, RequestSearchContainer } from '../styles/Request.style';
 import RequestFilterMenu from './RequestFilterMenu';
+import RequestList from './RequestList';
 
-const RequestSearchForm = () => {
+const RequestSearch = () => {
+  const mockRequests = [
+    {
+      subject: 'Help!',
+      location: 'Shinjuku',
+      completed: false,
+      postedDate: new Date('2021-10-1').toLocaleDateString('en-US'),
+      likesCount: 156,
+    },
+    {
+      subject: 'Someone please',
+      location: 'Chiba',
+      completed: true,
+      postedDate: new Date('2021-5-31').toLocaleDateString('en-US'),
+      likesCount: 81,
+    },
+    {
+      subject: 'This needs to stop',
+      location: 'Shibuya',
+      completed: false,
+      postedDate: new Date('2021-9-13').toLocaleDateString('en-US'),
+      likesCount: 23,
+    },
+  ];
+
   const [formState, setForm] = useState({
     subject: '',
     areFiltersActive: false,
@@ -40,7 +65,7 @@ const RequestSearchForm = () => {
   };
 
   return (
-    <RequestSearchFormContainer>
+    <RequestSearchContainer>
       <RequestSearchBar
         className='request-search-bar'
         name='search'
@@ -50,8 +75,9 @@ const RequestSearchForm = () => {
         value={formState.subject}
       />
       <RequestFilterMenu onMenuAction={onMenuAction} />
-    </RequestSearchFormContainer>
+      <RequestList requests={mockRequests} />
+    </RequestSearchContainer>
   );
 };
 
-export default RequestSearchForm;
+export default RequestSearch;

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import TextInput from '../general/TextInput';
 
-export const RequestSearchFormContainer = styled.div`
+export const RequestSearchContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,6 +18,7 @@ export const RequestSearchBar = styled(TextInput)`
 
 export const RequestFilterMenuContainer = styled.div`
   width: 750px;
+  margin-bottom: 48px;
 `;
 
 export const RequestFilterMenuButton = styled.button`
@@ -33,13 +34,13 @@ export const RequestFilterMenuButton = styled.button`
   font-family: 'PhanNormal';
 
   :hover {
-    background-color: #2a2a2a;
+    background-color: #202020;
   }
 
   ${(props) =>
     props.isExpanded &&
     css`
-      background-color: #2a2a2a;
+      background-color: #202020;
     `}
 `;
 
@@ -85,21 +86,47 @@ export const SortFiltersSection = styled.div`
   width: 100%;
 `;
 
+// Request List
+
+export const RequestListContainer = styled.div`
+  width: 100%;
+`;
+
 // Request List Entry
 
 export const RequestListEntryContainer = styled.div`
   width: 100%;
-  border: 1px solid #db1b0d;
+  background-color: #333;
+
+  :not(:last-child) {
+    margin-bottom: 24px;
+  }
+
+  :hover {
+    cursor: pointer;
+
+    .list-entry-body {
+      background-color: #202020;
+    }
+  }
 `;
 
 export const RequestListEntryHeader = styled.h2`
   color: white;
+  background-color: #202020;
+  margin: 0;
+  padding-bottom: 18px;
+  padding-left: 18px;
+  padding-top: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 export const RequestListEntryBody = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-apart;
+  justify-content: space-between;
+  padding: 18px;
 `;
 
 export const RequestListEntryText = styled.span``;
@@ -112,8 +139,16 @@ export const RequestListEntryLeftInfo = styled.div`
 export const RequestListEntryLikesContainer = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
 `;
 
-export const RequestListEntryRightInfo = styled.div``;
+export const RequestListEntryRightInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
-export const ThumbsUpImg = styled.img``;
+export const ThumbsUpImg = styled.img`
+  width: 25px;
+  margin-right: 8px;
+  padding-bottom: 5px;
+`;

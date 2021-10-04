@@ -12,20 +12,22 @@ import {
   ThumbsUpImg,
 } from '../styles/Request.style';
 
+import thumbsUp from '../../assets/thumbs-up-solid.svg';
+
 const RequestListEntry = ({ subject, location, likesCount, postedDate, completed }) => {
   return (
     <RequestListEntryContainer className='list-entry-container'>
       <RequestListEntryHeader className='list-entry-header'>{subject}</RequestListEntryHeader>
       <RequestListEntryBody className='list-entry-body'>
         <RequestListEntryLeftInfo className='list-entry-left-info'>
-          <RequestListEntryText>{location}</RequestListEntryText>
+          <RequestListEntryText style={{ marginBottom: '12px' }}>{location}</RequestListEntryText>
           <RequestListEntryLikesContainer>
-            <ThumbsUpImg src='../../assets/thumbs-up-solid.svg' />
+            <ThumbsUpImg src={thumbsUp} />
             <RequestListEntryText>{likesCount}</RequestListEntryText>
           </RequestListEntryLikesContainer>
         </RequestListEntryLeftInfo>
         <RequestListEntryRightInfo className='list-entry-right-info'>
-          <RequestListEntryText>{postedDate}</RequestListEntryText>
+          <RequestListEntryText style={{ marginBottom: '12px' }}>{postedDate}</RequestListEntryText>
           <RequestListEntryText style={{ color: completed ? 'green' : '#db1b0d' }}>{`${
             completed ? 'Completed' : 'Open'
           }`}</RequestListEntryText>
