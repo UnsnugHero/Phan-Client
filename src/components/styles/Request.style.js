@@ -7,6 +7,7 @@ export const RequestSearchContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  height: 100%;
 `;
 
 export const RequestSearchBar = styled(TextInput)`
@@ -90,6 +91,16 @@ export const SortFiltersSection = styled.div`
 
 export const RequestListContainer = styled.div`
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const LoadingGif = styled.img`
+  width: 250px;
+  object-fit: cover;
 `;
 
 // Request List Entry
@@ -104,10 +115,6 @@ export const RequestListEntryContainer = styled.div`
 
   :hover {
     cursor: pointer;
-
-    .list-entry-body {
-      background-color: #202020;
-    }
   }
 `;
 
@@ -115,11 +122,7 @@ export const RequestListEntryHeader = styled.h2`
   color: white;
   background-color: #202020;
   margin: 0;
-  padding-bottom: 18px;
-  padding-left: 18px;
-  padding-top: 18px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  padding: 18px;
 `;
 
 export const RequestListEntryBody = styled.div`

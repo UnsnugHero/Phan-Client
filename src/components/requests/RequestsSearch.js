@@ -3,6 +3,7 @@ import { debounce } from 'lodash';
 import { useState } from 'react';
 
 import { RequestSearchBar, RequestSearchContainer } from '../styles/Request.style';
+import { GeneralXLHeader } from '../styles/App.style';
 import RequestFilterMenu from './RequestFilterMenu';
 import RequestList from './RequestList';
 
@@ -36,6 +37,7 @@ const RequestSearch = () => {
     areFiltersActive: false,
     filters: { hideCompleted: false },
     selectedSort: { sortOn: 'postedDate', sortDir: 'desc' },
+    isLoading: true,
   });
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -66,6 +68,7 @@ const RequestSearch = () => {
 
   return (
     <RequestSearchContainer>
+      <GeneralXLHeader>Request Search</GeneralXLHeader>
       <RequestSearchBar
         className='request-search-bar'
         name='search'
@@ -75,7 +78,7 @@ const RequestSearch = () => {
         value={formState.subject}
       />
       <RequestFilterMenu onMenuAction={onMenuAction} />
-      <RequestList requests={mockRequests} />
+      <RequestList requests={mockRequests} loading={formState.isLoading} />
     </RequestSearchContainer>
   );
 };

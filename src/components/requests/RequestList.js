@@ -1,20 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { RequestListContainer } from '../styles/Request.style';
+import { LoadingGif, RequestListContainer } from '../styles/Request.style';
 import RequestListEntry from './RequestListEntry';
 
-const RequestList = ({ requests }) => {
+import loader from '../../assets/take_your_time.gif';
+
+const RequestList = ({ loading, requests }) => {
+  const mappedRequests = requests.map((request, idx) => <RequestListEntry key={idx} {...request} />);
+
+  if (loading) {
+    return (
+      <RequestListContainer>
+        <LoadingGif src={loader} />
+      </RequestListContainer>
+    );
+  }
+
   return (
     <RequestListContainer>
-      {requests.map((request, idx) => (
-        <RequestListEntry key={idx} {...request} />
-      ))}
+      {mappedRequests && mappedRequests.length
+        ? mappedRequests
+        : {
+            /* a no results for this search message here */
+          }}
     </RequestListContainer>
   );
 };
 
 RequestList.propTypes = {
+  loading: PropTypes.bool.isRequired,
   requests: PropTypes.array.isRequired,
 };
 
