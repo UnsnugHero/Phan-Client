@@ -84,3 +84,36 @@ export const SortFiltersSection = styled.div`
   gap: 10px;
   width: 100%;
 `;
+
+// Request List Entry
+
+export const RequestListEntryContainer = styled.div`
+  width: 100%;
+  border: 1px solid #db1b0d;
+`;
+
+export const RequestListEntryHeader = styled.h2`
+  color: white;
+`;
+
+export const RequestListEntryBody = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-apart;
+`;
+
+export const RequestListEntryText = styled.span``;
+
+export const RequestListEntryLeftInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const RequestListEntryLikesContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const RequestListEntryRightInfo = styled.div``;
+
+export const ThumbsUpImg = styled.img``;
