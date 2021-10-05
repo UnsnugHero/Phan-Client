@@ -78,7 +78,7 @@ const Login = ({ isAuthenticated, login }) => {
           placeholder='Username'
           onInputChange={handleInputChange('username')}
           type='text'
-          value={loginFormContent.username.value}
+          value={loginFormContent.username}
         />
         <LoginFormInput
           className='password-input input'
@@ -87,7 +87,7 @@ const Login = ({ isAuthenticated, login }) => {
           placeholder='Password'
           onInputChange={handleInputChange('password')}
           type='password'
-          value={loginFormContent.password.value}
+          value={loginFormContent.password}
         />
         <LoginFormFooter>
           <LoginButton text='Log in' onButtonClick={handleSubmitForm} />

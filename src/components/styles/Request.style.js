@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import Button from '../general/Button';
+import TextArea from '../general/TextArea';
 import TextInput from '../general/TextInput';
 
 export const RequestSearchContainer = styled.div`
@@ -174,6 +175,10 @@ export const MakeRequestForm = styled.div`
   display: flex;
   flex-direction: column;
   width: 350px;
+
+  .text-area {
+    margin-bottom: 24px;
+  }
 `;
 
 export const MakeRequestInput = styled(TextInput)`
@@ -188,4 +193,8 @@ export const MakeRequestButtons = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+`;
+
+export const MakeRequestTextArea = styled(TextArea)`
+  margin-bottom: 24px;
 `;

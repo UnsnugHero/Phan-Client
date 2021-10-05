@@ -8,6 +8,7 @@ import {
   MakeRequestContainer,
   MakeRequestForm,
   MakeRequestInput,
+  MakeRequestTextArea,
 } from '../styles/Request.style';
 import Button from '../general/Button';
 
@@ -40,7 +41,7 @@ const MakeRequest = () => {
           type='text'
           onInputChange={handleInputChange('subject')}
         />
-        {/* text area */}
+        <MakeRequestTextArea onTextAreaChange={handleInputChange('description')} placeholder='Description' rows={10} />
         <MakeRequestInput
           maxLength={30}
           placeholder='Location'
