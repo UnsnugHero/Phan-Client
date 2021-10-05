@@ -39,6 +39,7 @@ const MakeRequest = () => {
           maxLength={30}
           placeholder='Subject'
           type='text'
+          name='subject'
           onInputChange={handleInputChange('subject')}
         />
         <MakeRequestTextArea onTextAreaChange={handleInputChange('description')} placeholder='Description' rows={10} />
@@ -46,6 +47,7 @@ const MakeRequest = () => {
           maxLength={30}
           placeholder='Location'
           type='text'
+          name='location'
           onInputChange={handleInputChange('location')}
         />
         <MakeRequestButtons>
