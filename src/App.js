@@ -19,7 +19,7 @@ import Header from './components/general/Header';
 import storageService from './services/storage.service';
 import Footer from './components/general/Footer';
 import ScrollToTop from './components/routing/ScrollToTop';
-import RequestsSearch from './components/requests/RequestsSearch';
+import RequestsSearch from './components/request-search/RequestsSearch';
 
 if (storageService.getItem(AUTH_TOKEN_STORAGE_KEY)) {
   setAxiosHeaderAuthToken(storageService.getItem(AUTH_TOKEN_STORAGE_KEY));

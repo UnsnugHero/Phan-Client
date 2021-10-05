@@ -7,8 +7,9 @@ import { MakeRequestButton, RequestSearchBar, RequestSearchContainer } from '../
 import { GeneralXLHeader } from '../styles/App.style';
 import RequestFilterMenu from './RequestFilterMenu';
 import RequestList from './RequestList';
+import { connect } from 'react-redux';
 
-const RequestSearch = () => {
+const RequestSearch = ({ isAuthenticated }) => {
   const mockRequests = [
     {
       subject: 'Help!',
@@ -76,7 +77,9 @@ const RequestSearch = () => {
   return (
     <RequestSearchContainer>
       <GeneralXLHeader>Request Search</GeneralXLHeader>
-      <MakeRequestButton text='Make A Request' onButtonClick={handleMakeRequestButtonClick}></MakeRequestButton>
+      {isAuthenticated && (
+        <MakeRequestButton text='Make A Request' onButtonClick={handleMakeRequestButtonClick}></MakeRequestButton>
+      )}
       <RequestSearchBar
         className='request-search-bar'
         name='search'
@@ -91,4 +94,8 @@ const RequestSearch = () => {
   );
 };
 
-export default RequestSearch;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps)(RequestSearch);

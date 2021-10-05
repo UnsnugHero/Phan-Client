@@ -12,7 +12,7 @@ export const RequestSearchContainer = styled.div`
 `;
 
 export const MakeRequestButton = styled(Button)`
-  margin-bottom: 24px;
+  margin-bottom: 44.22px;
 `;
 
 export const RequestSearchBar = styled(TextInput)`
