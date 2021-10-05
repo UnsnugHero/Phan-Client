@@ -171,7 +171,7 @@ export const MakeRequestContainer = styled.div`
   width: 100%;
 `;
 
-export const MakeRequestForm = styled.div`
+export const MakeRequestForm = styled.form`
   display: flex;
   flex-direction: column;
   width: 350px;
@@ -187,6 +187,10 @@ export const MakeRequestInput = styled(TextInput)`
 
 export const CancelButton = styled(Button)`
   background-color: #333;
+
+  :hover {
+    background-color: #202020;
+  }
 `;
 
 export const MakeRequestButtons = styled.div`
