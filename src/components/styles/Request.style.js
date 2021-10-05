@@ -160,3 +160,12 @@ export const ThumbsUpImg = styled.img`
   margin-right: 8px;
   padding-bottom: 5px;
 `;
+
+// Make Request
+
+export const MakeRequestContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+`;
