@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 
+import Button from '../general/Button';
 import TextInput from '../general/TextInput';
 
 export const RequestSearchContainer = styled.div`
@@ -8,6 +9,10 @@ export const RequestSearchContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   height: 100%;
+`;
+
+export const MakeRequestButton = styled(Button)`
+  margin-bottom: 24px;
 `;
 
 export const RequestSearchBar = styled(TextInput)`

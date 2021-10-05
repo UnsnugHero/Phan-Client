@@ -1,8 +1,9 @@
 import React, { useEffect, useCallback } from 'react';
 import { debounce } from 'lodash';
 import { useState } from 'react';
+import { useHistory } from 'react-router';
 
-import { RequestSearchBar, RequestSearchContainer } from '../styles/Request.style';
+import { MakeRequestButton, RequestSearchBar, RequestSearchContainer } from '../styles/Request.style';
 import { GeneralXLHeader } from '../styles/App.style';
 import RequestFilterMenu from './RequestFilterMenu';
 import RequestList from './RequestList';
@@ -53,6 +54,8 @@ const RequestSearch = () => {
     // call search here yo
   });
 
+  const history = useHistory();
+
   const onMenuAction = useCallback((menuState) => {
     setForm((newState) => ({
       ...newState,
@@ -66,9 +69,14 @@ const RequestSearch = () => {
     setForm({ ...formState, subject: event.target.value });
   };
 
+  const handleMakeRequestButtonClick = () => {
+    history.push('/make-request');
+  };
+
   return (
     <RequestSearchContainer>
       <GeneralXLHeader>Request Search</GeneralXLHeader>
+      <MakeRequestButton text='Make A Request' onButtonClick={handleMakeRequestButtonClick}></MakeRequestButton>
       <RequestSearchBar
         className='request-search-bar'
         name='search'
