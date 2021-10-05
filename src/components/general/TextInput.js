@@ -10,6 +10,7 @@ const TextInput = (props) => {
       <StyledTextInput
         autoComplete={props.autocomplete || 'off'}
         className='text-input'
+        maxLength={props.maxLength}
         name={props.name}
         onChange={(e) => props.onInputChange(e)}
         placeholder={props.placeholder}

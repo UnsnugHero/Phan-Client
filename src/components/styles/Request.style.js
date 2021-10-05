@@ -169,3 +169,23 @@ export const MakeRequestContainer = styled.div`
   align-items: center;
   width: 100%;
 `;
+
+export const MakeRequestForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+`;
+
+export const MakeRequestInput = styled(TextInput)`
+  margin-bottom: 24px;
+`;
+
+export const CancelButton = styled(Button)`
+  background-color: #333;
+`;
+
+export const MakeRequestButtons = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+`;
