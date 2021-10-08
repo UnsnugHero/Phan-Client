@@ -7,24 +7,32 @@ import {
   RequestListEntryLeftInfo,
   RequestListEntryRightInfo,
   RequestListEntryContainer,
-  RequestListEntryLikesContainer,
+  RequestListEntryCountsContainer,
   RequestListEntryText,
-  ThumbsUpImg,
+  Icon,
+  RequestListEntryLeftBottomRow,
 } from '../styles/Request.style';
 
 import thumbsUp from '../../assets/thumbs-up-solid.svg';
+import commentIcon from '../../assets/chat_white_24dp.svg';
 
-const RequestListEntry = ({ subject, location, likesCount, postedDate, completed }) => {
+const RequestListEntry = ({ subject, location, likesCount, postedDate, completed, comments }) => {
   return (
     <RequestListEntryContainer className='list-entry-container'>
       <RequestListEntryHeader className='list-entry-header'>{subject}</RequestListEntryHeader>
       <RequestListEntryBody className='list-entry-body'>
         <RequestListEntryLeftInfo className='list-entry-left-info'>
           <RequestListEntryText style={{ marginBottom: '12px' }}>{location}</RequestListEntryText>
-          <RequestListEntryLikesContainer>
-            <ThumbsUpImg src={thumbsUp} />
-            <RequestListEntryText>{likesCount}</RequestListEntryText>
-          </RequestListEntryLikesContainer>
+          <RequestListEntryLeftBottomRow>
+            <RequestListEntryCountsContainer style={{ marginRight: '12px' }}>
+              <Icon src={thumbsUp} style={{ paddingBottom: '5px' }} />
+              <RequestListEntryText>{likesCount}</RequestListEntryText>
+            </RequestListEntryCountsContainer>
+            <RequestListEntryCountsContainer>
+              <Icon src={commentIcon} />
+              <RequestListEntryText>{comments.length}</RequestListEntryText>
+            </RequestListEntryCountsContainer>
+          </RequestListEntryLeftBottomRow>
         </RequestListEntryLeftInfo>
         <RequestListEntryRightInfo className='list-entry-right-info'>
           <RequestListEntryText style={{ marginBottom: '12px' }}>{postedDate}</RequestListEntryText>
@@ -43,6 +51,7 @@ RequestListEntry.propTypes = {
   likesCount: PropTypes.number.isRequired,
   postedDate: PropTypes.string.isRequired,
   completed: PropTypes.bool.isRequired,
+  comments: PropTypes.array.isRequired,
 };
 
 export default RequestListEntry;

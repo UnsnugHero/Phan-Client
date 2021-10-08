@@ -17,6 +17,7 @@ const RequestSearch = ({ isAuthenticated }) => {
       completed: false,
       postedDate: new Date('2021-10-1').toLocaleDateString('en-US'),
       likesCount: 156,
+      comments: [],
     },
     {
       subject: 'Someone please',
@@ -24,6 +25,7 @@ const RequestSearch = ({ isAuthenticated }) => {
       completed: true,
       postedDate: new Date('2021-5-31').toLocaleDateString('en-US'),
       likesCount: 81,
+      comments: [{}, {}],
     },
     {
       subject: 'This needs to stop',
@@ -31,6 +33,7 @@ const RequestSearch = ({ isAuthenticated }) => {
       completed: false,
       postedDate: new Date('2021-9-13').toLocaleDateString('en-US'),
       likesCount: 23,
+      comments: [{}, {}, {}, {}],
     },
   ];
 

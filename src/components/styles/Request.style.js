@@ -145,7 +145,12 @@ export const RequestListEntryLeftInfo = styled.div`
   flex-direction: column;
 `;
 
-export const RequestListEntryLikesContainer = styled.div`
+export const RequestListEntryLeftBottomRow = styled.div`
+  display: flex;
+  flex-directin: row;
+`;
+
+export const RequestListEntryCountsContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -156,10 +161,9 @@ export const RequestListEntryRightInfo = styled.div`
   flex-direction: column;
 `;
 
-export const ThumbsUpImg = styled.img`
+export const Icon = styled.img`
   width: 25px;
   margin-right: 8px;
-  padding-bottom: 5px;
 `;
 
 // Make Request
