@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 const RequestSearch = ({ isAuthenticated }) => {
   const mockRequests = [
     {
+      id: 1,
       subject: 'Help!',
       location: 'Shinjuku',
       completed: false,
@@ -20,6 +21,7 @@ const RequestSearch = ({ isAuthenticated }) => {
       comments: [],
     },
     {
+      id: 2,
       subject: 'Someone please',
       location: 'Chiba',
       completed: true,
@@ -28,6 +30,7 @@ const RequestSearch = ({ isAuthenticated }) => {
       comments: [{}, {}],
     },
     {
+      id: 3,
       subject: 'This needs to stop',
       location: 'Shibuya',
       completed: false,

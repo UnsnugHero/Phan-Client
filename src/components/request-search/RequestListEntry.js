@@ -15,10 +15,17 @@ import {
 
 import thumbsUp from '../../assets/thumbs-up-solid.svg';
 import commentIcon from '../../assets/chat_white_24dp.svg';
+import { useHistory } from 'react-router';
 
-const RequestListEntry = ({ subject, location, likesCount, postedDate, completed, comments }) => {
+const RequestListEntry = ({ id, subject, location, likesCount, postedDate, completed, comments }) => {
+  const history = useHistory();
+
+  const handleEntryClick = () => {
+    history.push(`/requests/${id}`);
+  };
+
   return (
-    <RequestListEntryContainer className='list-entry-container'>
+    <RequestListEntryContainer className='list-entry-container' onClick={handleEntryClick}>
       <RequestListEntryHeader className='list-entry-header'>{subject}</RequestListEntryHeader>
       <RequestListEntryBody className='list-entry-body'>
         <RequestListEntryLeftInfo className='list-entry-left-info'>

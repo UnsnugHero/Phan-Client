@@ -17,7 +17,8 @@ import Login from './components/login/Login';
 import Signup from './components/signup/Signup';
 import Header from './components/general/Header';
 import Footer from './components/general/Footer';
-import RequestsSearch from './components/request-search/RequestsSearch';
+import RequestSearch from './components/request-search/RequestSearch';
+import RequestDetails from './components/request-details/RequestDetails';
 import MakeRequest from './components/make-request/MakeRequest';
 
 import ScrollToTop from './components/routing/ScrollToTop';
@@ -46,7 +47,8 @@ const App = () => {
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/signup' component={Signup} />
                 {/* <Route exact path='/profile/:id' /> */}
-                <Route exact path='/requests' component={RequestsSearch} />
+                <Route exact path='/requests' component={RequestSearch} />
+                <Route exact path='/requests/:requestId' component={RequestDetails} />
                 <PrivateRoute exact path='/make-request' component={MakeRequest} />
               </Switch>
             </AppContainer>

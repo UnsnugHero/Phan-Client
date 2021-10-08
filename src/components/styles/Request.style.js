@@ -206,3 +206,13 @@ export const MakeRequestButtons = styled.div`
 export const MakeRequestTextArea = styled(TextArea)`
   margin-bottom: 24px;
 `;
+
+// Request Details
+
+export const RequestDetailsContainer = styled.div``;
+
+export const RequestDetailsBodyContainer = styled.div``;
+
+export const RequestDetailsCommentListContainer = styled.div``;
+
+export const RequestDetailsCommentContainer = styled.div``;
