@@ -39,7 +39,7 @@ const RequestSearch = ({ isAuthenticated }) => {
     areFiltersActive: false,
     filters: { hideCompleted: false },
     selectedSort: { sortOn: 'postedDate', sortDir: 'desc' },
-    isLoading: true,
+    isLoading: false,
   });
 
   // eslint-disable-next-line react-hooks/exhaustive-deps

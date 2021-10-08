@@ -174,7 +174,7 @@ export const MakeRequestContainer = styled.div`
 export const MakeRequestForm = styled.form`
   display: flex;
   flex-direction: column;
-  width: 350px;
+  width: 500px;
 
   .text-area {
     margin-bottom: 24px;

@@ -13,7 +13,7 @@ export const LoginContainer = styled.div`
 export const LoginForm = styled.form`
   display: flex;
   flex-direction: column;
-  width: 350px;
+  width: 500px;
   margin-bottom: 48px;
 `;
 
