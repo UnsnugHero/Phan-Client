@@ -37,7 +37,7 @@ const RequestDetails = () => {
 
   return (
     <RequestDetailsContainer>
-      <GeneralXLHeader>Request Info</GeneralXLHeader>
+      <GeneralXLHeader>Request Details</GeneralXLHeader>
       <RequestDetailsBody request={mockRequest} />
       <RequestDetailsCommentList />
     </RequestDetailsContainer>

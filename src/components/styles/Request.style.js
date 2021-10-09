@@ -217,7 +217,6 @@ export const RequestDetailsContainer = styled.div`
 `;
 
 export const RequestDetailsBodyContainer = styled.div`
-  background-color: #333;
   max-width: 750px;
 `;
 
@@ -227,7 +226,17 @@ export const RequestDetailsBodyTopInfo = styled.div`
   justify-content: space-between;
 `;
 
-export const RequestCompleteStatus = styled.div``;
+export const RequestDetailsRowsContainer = styled.div`
+  background-color: #333;
+`;
+
+export const RequestCompletionStatus = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding: 12px;
+`;
+
+export const CompletionStatusLabel = styled.span``;
 
 export const RequestDetailsRow = styled.div`
   display: flex;
