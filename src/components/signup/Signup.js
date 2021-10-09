@@ -24,7 +24,6 @@ const Signup = ({ isAuthenticated, signup }) => {
     username: '',
     password: '',
     confirmPassword: '',
-    isAnonymous: true,
     errors: { username: null, password: null, confirmPassword: null },
   });
 
@@ -101,12 +100,6 @@ const Signup = ({ isAuthenticated, signup }) => {
           onInputChange={handleInputChange('confirmPassword')}
           type='password'
           value={signupFormContent.confirmPassword}
-        />
-        <SignupCheckbox
-          checked={signupFormContent.isAnonymous}
-          name='isAnonymous'
-          text='Appear Anonymous on Site?'
-          onCheckboxClick={handleCheckboxClick('isAnonymous')}
         />
         <SignupButton text='Submit' onButtonClick={handleSubmitForm} />
       </SignupForm>

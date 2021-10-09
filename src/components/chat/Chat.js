@@ -32,7 +32,7 @@ const Chat = () => {
     socket.on('newComment', (comment) => {
       const newComment = {
         content: comment,
-        username: comment.username ? comment.username : 'Anon',
+        username: 'Anon',
       };
 
       setComments((prevComments) => [...prevComments, newComment]);
