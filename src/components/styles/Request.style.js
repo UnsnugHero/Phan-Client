@@ -209,12 +209,25 @@ export const MakeRequestTextArea = styled(TextArea)`
 
 // Request Details
 
-export const RequestDetailsContainer = styled.div``;
+export const RequestDetailsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const RequestDetailsBodyContainer = styled.div`
   background-color: #333;
   max-width: 750px;
 `;
+
+export const RequestDetailsBodyTopInfo = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const RequestCompleteStatus = styled.div``;
 
 export const RequestDetailsRow = styled.div`
   display: flex;
@@ -223,10 +236,14 @@ export const RequestDetailsRow = styled.div`
 `;
 
 export const RequestDetailsRowHeader = styled.div`
+  font-size: 1.5em;
   background-color: #202020;
+  padding: 12px;
 `;
 
-export const RequestDetailsRowBody = styled.div``;
+export const RequestDetailsRowBody = styled.div`
+  padding: 12px;
+`;
 
 export const RequestDetailsCommentListContainer = styled.div``;
 

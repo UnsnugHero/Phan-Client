@@ -9,7 +9,6 @@ import {
   LoginLink,
   LoginText,
   SignupButton,
-  SignupCheckbox,
   SignupContainer,
   SignupForm,
   SignupFormInput,
@@ -26,9 +25,6 @@ const Signup = ({ isAuthenticated, signup }) => {
     confirmPassword: '',
     errors: { username: null, password: null, confirmPassword: null },
   });
-
-  const handleCheckboxClick = (fieldKey) => (event) =>
-    setForm({ ...signupFormContent, [fieldKey]: event.target.checked });
 
   const handleInputChange = (fieldKey) => (event) => setForm({ ...signupFormContent, [fieldKey]: event.target.value });
 

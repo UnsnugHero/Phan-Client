@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router';
 
+import { GeneralXLHeader } from '../styles/App.style';
 import { RequestDetailsContainer } from '../styles/Request.style';
 import RequestDetailsBody from './RequestDetailsBody';
 import RequestDetailsCommentList from './RequestDetailsCommentList';
@@ -18,6 +19,7 @@ const RequestDetails = () => {
     subject: 'Help me please!',
     description: 'There is someone harassing commuters everyday in the station, someone please stop them!',
     location: 'Shibuya Station',
+    postedBy: 'username',
     user: '610214eaf9da275564227959',
     postedDate: '2021-07-29T02:58:38.001Z',
     updatedDate: '2021-07-29T02:58:38.001Z',
@@ -35,6 +37,7 @@ const RequestDetails = () => {
 
   return (
     <RequestDetailsContainer>
+      <GeneralXLHeader>Request Info</GeneralXLHeader>
       <RequestDetailsBody request={mockRequest} />
       <RequestDetailsCommentList />
     </RequestDetailsContainer>

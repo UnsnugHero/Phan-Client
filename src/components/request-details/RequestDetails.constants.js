@@ -1,7 +1,7 @@
 export const REQUEST_DETAILS_ROWS = [
-  { rowHeader: 'Subject', valueKey: 'subject' },
-  { rowHeader: 'Location', valueKey: 'location' },
-  { rowHeader: 'Description', valueKey: 'description' },
-  { rowHeader: 'Posted By', valueKey: 'username' },
-  { rowHeader: 'Posted Date', valueKey: 'postedDate' },
+  { header: 'Subject', valueKey: 'subject' },
+  { header: 'Location', valueKey: 'location' },
+  { header: 'Description', valueKey: 'description' },
+  { header: 'Posted By', valueKey: 'postedBy' },
+  { header: 'Posted Date', valueKey: 'postedDate' },
 ];
