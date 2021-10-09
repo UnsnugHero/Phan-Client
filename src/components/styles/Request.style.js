@@ -211,7 +211,22 @@ export const MakeRequestTextArea = styled(TextArea)`
 
 export const RequestDetailsContainer = styled.div``;
 
-export const RequestDetailsBodyContainer = styled.div``;
+export const RequestDetailsBodyContainer = styled.div`
+  background-color: #333;
+  max-width: 750px;
+`;
+
+export const RequestDetailsRow = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+export const RequestDetailsRowHeader = styled.div`
+  background-color: #202020;
+`;
+
+export const RequestDetailsRowBody = styled.div``;
 
 export const RequestDetailsCommentListContainer = styled.div``;
 

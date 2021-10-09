@@ -1,11 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { useParams } from 'react-router';
 
 import { RequestDetailsContainer } from '../styles/Request.style';
 import RequestDetailsBody from './RequestDetailsBody';
 import RequestDetailsCommentList from './RequestDetailsCommentList';
 
 const RequestDetails = () => {
+  const { requestId } = useParams();
+
   const mockRequest = {
     likes: [],
     likesCount: 0,
@@ -32,7 +35,7 @@ const RequestDetails = () => {
 
   return (
     <RequestDetailsContainer>
-      <RequestDetailsBody />
+      <RequestDetailsBody request={mockRequest} />
       <RequestDetailsCommentList />
     </RequestDetailsContainer>
   );
