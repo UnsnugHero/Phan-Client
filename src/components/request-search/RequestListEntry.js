@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router';
 
 import {
   RequestListEntryBody,
@@ -15,7 +16,6 @@ import {
 
 import thumbsUp from '../../assets/thumbs-up-solid.svg';
 import commentIcon from '../../assets/chat_white_24dp.svg';
-import { useHistory } from 'react-router';
 
 const RequestListEntry = ({ id, subject, location, likesCount, postedDate, completed, comments }) => {
   const history = useHistory();

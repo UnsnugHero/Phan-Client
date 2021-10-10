@@ -29,6 +29,7 @@ const RequestDetails = () => {
         edited: true,
         _id: '6105da5f451a0f623cc2e42a',
         userId: '610214eaf9da275564227959',
+        username: 'commentGuy1',
         text: 'Is this a truly real?',
         postedDate: '2021-07-31T23:18:55.160Z',
       },
@@ -39,7 +40,7 @@ const RequestDetails = () => {
     <RequestDetailsContainer>
       <GeneralXLHeader>Request Details</GeneralXLHeader>
       <RequestDetailsBody request={mockRequest} />
-      <RequestDetailsCommentList />
+      <RequestDetailsCommentList comments={mockRequest.comments} />
     </RequestDetailsContainer>
   );
 };

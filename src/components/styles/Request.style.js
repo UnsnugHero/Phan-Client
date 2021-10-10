@@ -218,6 +218,7 @@ export const RequestDetailsContainer = styled.div`
 
 export const RequestDetailsBodyContainer = styled.div`
   max-width: 750px;
+  margin-bottom: 24px;
 `;
 
 export const RequestDetailsBodyTopInfo = styled.div`
@@ -254,6 +255,39 @@ export const RequestDetailsRowBody = styled.div`
   padding: 12px;
 `;
 
-export const RequestDetailsCommentListContainer = styled.div``;
+export const RequestDetailsCommentListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 750px;
+  width: 100%;
+`;
 
-export const RequestDetailsCommentContainer = styled.div``;
+export const CommentListHeader = styled.span`
+  font-size: 1.5em;
+  padding: 12px;
+`;
+
+export const RequestDetailsCommentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #333;
+  max-width: 750px;
+  width: 100%;
+`;
+
+export const CommentHeaderContainer = styled.div`
+  background-color: #202020;
+  padding: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 750px;
+`;
+
+export const CommentHeaderText = styled.span``;
+
+export const CommentHeaderEditedText = styled.span``;
+
+export const CommentText = styled.div`
+  padding: 12px;
+`;
