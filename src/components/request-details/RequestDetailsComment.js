@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import {
   CommentHeaderContainer,
@@ -9,7 +10,7 @@ import {
   RequestDetailsCommentContainer,
 } from '../styles/Request.style';
 
-const RequestDetailsComment = ({ postedBy, postedDate, edited, text }) => {
+const RequestDetailsComment = ({ postedBy, postedDate, edited, text, auth }) => {
   return (
     <RequestDetailsCommentContainer>
       <CommentHeaderContainer>
@@ -30,4 +31,8 @@ RequestDetailsComment.propTypes = {
   text: PropTypes.string.isRequired,
 };
 
-export default RequestDetailsComment;
+const mapDispatchToProps = ({ auth }) => ({
+  auth,
+});
+
+export default connect(mapDispatchToProps)(RequestDetailsComment);

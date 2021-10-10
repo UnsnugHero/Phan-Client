@@ -286,6 +286,11 @@ export const CommentHeaderContainer = styled.div`
 
 export const CommentHeaderText = styled.span``;
 
+export const CommentEditContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 export const CommentHeaderEditedText = styled.span``;
 
 export const CommentText = styled.div`
