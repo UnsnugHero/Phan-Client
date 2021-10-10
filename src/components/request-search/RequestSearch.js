@@ -2,12 +2,12 @@ import React, { useEffect, useCallback } from 'react';
 import { debounce } from 'lodash';
 import { useState } from 'react';
 import { useHistory } from 'react-router';
+import { connect } from 'react-redux';
 
 import { MakeRequestButton, RequestSearchBar, RequestSearchContainer } from '../styles/Request.style';
 import { GeneralXLHeader } from '../styles/App.style';
 import RequestFilterMenu from './RequestFilterMenu';
 import RequestList from './RequestList';
-import { connect } from 'react-redux';
 
 const RequestSearch = ({ isAuthenticated }) => {
   const mockRequests = [

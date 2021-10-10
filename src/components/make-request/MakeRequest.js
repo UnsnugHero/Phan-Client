@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
+import { isEmpty, isNil, omitBy } from 'lodash';
 
 import { GeneralXLHeader } from '../styles/App.style';
 import {
@@ -10,8 +11,9 @@ import {
   MakeRequestInput,
   MakeRequestTextArea,
 } from '../styles/Request.style';
+import { makeRequest } from '../../services/request.service';
 import Button from '../general/Button';
-import { isEmpty, isNil, omitBy } from 'lodash';
+import Loader from '../general/Loader';
 
 const MakeRequest = () => {
   const history = useHistory();
@@ -22,6 +24,8 @@ const MakeRequest = () => {
     location: '',
     errors: { subject: null, location: null },
   });
+
+  const [isLoading, setLoading] = useState(false);
 
   const handleInputChange = (formFieldKey) => (event) => {
     setForm({
@@ -48,50 +52,59 @@ const MakeRequest = () => {
     history.push('/requests');
   };
 
-  const handleSubmitRequest = (event) => {
+  const handleSubmitRequest = async (event) => {
     event.preventDefault();
 
     const errors = getFormErrors();
     setForm({ ...makeRequestState, errors });
 
     if (isEmpty(errors)) {
-      // form payload and make api call to create request
-      // then route to its detail page
-      console.log(makeRequestState);
+      setLoading(true);
+      const { subject, location, description } = makeRequestState;
+      const makeRequestPayload = { subject, location, description };
+      const success = await makeRequest(makeRequestPayload, history);
+
+      if (!success) {
+        setLoading(false);
+      }
     }
   };
+
+  const requestForm = (
+    <MakeRequestForm>
+      <MakeRequestInput
+        maxLength={30}
+        placeholder='Subject'
+        type='text'
+        name='subject'
+        onInputChange={handleInputChange('subject')}
+        error={makeRequestState.errors.subject}
+      />
+      <MakeRequestTextArea
+        onTextAreaChange={handleInputChange('description')}
+        placeholder='Description'
+        rows={14}
+        maxLength={250}
+      />
+      <MakeRequestInput
+        maxLength={30}
+        placeholder='Location'
+        type='text'
+        name='location'
+        onInputChange={handleInputChange('location')}
+        error={makeRequestState.errors.location}
+      />
+      <MakeRequestButtons>
+        <CancelButton text='Cancel' onButtonClick={handleCancel} />
+        <Button text='Submit' onButtonClick={handleSubmitRequest} />
+      </MakeRequestButtons>
+    </MakeRequestForm>
+  );
 
   return (
     <MakeRequestContainer>
       <GeneralXLHeader>Make Request</GeneralXLHeader>
-      <MakeRequestForm>
-        <MakeRequestInput
-          maxLength={30}
-          placeholder='Subject'
-          type='text'
-          name='subject'
-          onInputChange={handleInputChange('subject')}
-          error={makeRequestState.errors.subject}
-        />
-        <MakeRequestTextArea
-          onTextAreaChange={handleInputChange('description')}
-          placeholder='Description'
-          rows={14}
-          maxLength={250}
-        />
-        <MakeRequestInput
-          maxLength={30}
-          placeholder='Location'
-          type='text'
-          name='location'
-          onInputChange={handleInputChange('location')}
-          error={makeRequestState.errors.location}
-        />
-        <MakeRequestButtons>
-          <CancelButton text='Cancel' onButtonClick={handleCancel} />
-          <Button text='Submit' onButtonClick={handleSubmitRequest} />
-        </MakeRequestButtons>
-      </MakeRequestForm>
+      {isLoading ? <Loader /> : requestForm}
     </MakeRequestContainer>
   );
 };

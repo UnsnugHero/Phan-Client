@@ -43,14 +43,15 @@ const RequestDetailsComment = ({ comment, auth }) => {
   };
 
   const handleCancelEdit = () => {
-    console.log('oh nee');
     setState({
       ...requestDetailsState,
       isEditingComment: false,
     });
   };
 
-  const handleSubmitEdit = () => {};
+  const handleSubmitEdit = () => {
+    // submit api call with edit text to edit the selected comment
+  };
 
   return (
     <RequestDetailsCommentContainer className='request-details-comment-container'>
@@ -89,9 +90,3 @@ const mapDispatchToProps = ({ auth }) => ({
 });
 
 export default connect(mapDispatchToProps)(RequestDetailsComment);
-
-// todos
-// make a write a comment box
-// make a working editor within the editing comment box
-// do the delete comment thing
-// consider using redux state for these things

@@ -26,11 +26,11 @@ export const loadUser = () => async (dispatch) => {
 
 export const login = (loginPayload) => async (dispatch) => {
   try {
-    const response = (await axios.post('/api/auth/login', loginPayload)).data;
+    const { data } = await axios.post('/api/auth/login', loginPayload);
 
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: response,
+      payload: data,
     });
   } catch (error) {
     window.alert('Login failed. Try again');
@@ -49,11 +49,11 @@ export const logout = () => async (dispatch) => {
 
 export const signup = (signupPayload) => async (dispatch) => {
   try {
-    const response = (await axios.post('/api/user/create', signupPayload)).data;
+    const { data } = await axios.post('/api/user/create', signupPayload);
 
     dispatch({
       type: SIGNUP_SUCCESS,
-      payload: response,
+      payload: data,
     });
   } catch (error) {
     window.alert('Signup failed. Try again');
