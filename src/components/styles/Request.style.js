@@ -285,6 +285,7 @@ export const CommentHeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   max-width: 750px;
 `;
 
@@ -299,9 +300,11 @@ export const CommentEditContainer = styled.div`
 
 export const CommentHeaderEditedText = styled.span``;
 
-export const CommentText = styled.div`
+export const CommentTextContainer = styled.div`
   padding: 12px;
 `;
+
+export const CommentText = styled.div``;
 
 export const EditIcon = styled.img`
   width: 25px;
@@ -311,4 +314,26 @@ export const EditIcon = styled.img`
 
 export const DeleteIcon = styled(EditIcon)`
   width: 25px;
+`;
+
+// Comment Text Editor
+
+export const CommentTextEditorContainer = styled.div``;
+
+export const CommentTextEditor = styled(TextArea)`
+  background-color: #050505;
+`;
+
+export const TextEditorButtons = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-top: 8px;
+  width: 100%;
+  justify-content: flex-end;
+`;
+
+export const CancelEditIcon = styled(EditIcon)``;
+
+export const ConfirmEditIcon = styled(EditIcon)`
+  magin-left: 10px;
 `;

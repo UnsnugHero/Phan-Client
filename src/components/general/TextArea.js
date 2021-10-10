@@ -15,6 +15,7 @@ const TextArea = (props) => {
         onChange={(e) => props.onTextAreaChange(e)}
         placeholder={props.placeholder}
         rows={props.rows}
+        value={props.value}
       ></StyledTextArea>
       {hasInputError && <TextInputError>{props.error}</TextInputError>}
     </TextAreaContainer>
@@ -25,7 +26,8 @@ TextArea.propTypes = {
   error: PropTypes.string,
   onTextAreaChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
-  rows: PropTypes.number.isRequired,
+  rows: PropTypes.number,
+  value: PropTypes.string,
 };
 
 export default TextArea;

@@ -8,10 +8,12 @@ import {
   CommentHeaderEditedText,
   CommentHeaderText,
   CommentText,
+  CommentTextContainer,
   DeleteIcon,
   EditIcon,
   RequestDetailsCommentContainer,
 } from '../styles/Request.style';
+import RequestCommentTextEditor from './RequestCommentTextEditor';
 
 import editIcon from '../../assets/edit.svg';
 import deleteIcon from '../../assets/delete.svg';
@@ -40,6 +42,16 @@ const RequestDetailsComment = ({ comment, auth }) => {
     }
   };
 
+  const handleCancelEdit = () => {
+    console.log('oh nee');
+    setState({
+      ...requestDetailsState,
+      isEditingComment: false,
+    });
+  };
+
+  const handleSubmitEdit = () => {};
+
   return (
     <RequestDetailsCommentContainer className='request-details-comment-container'>
       <CommentHeaderContainer>
@@ -56,7 +68,13 @@ const RequestDetailsComment = ({ comment, auth }) => {
           )}
         </CommentEditContainer>
       </CommentHeaderContainer>
-      <CommentText>{text}</CommentText>
+      <CommentTextContainer>
+        {requestDetailsState.isEditingComment ? (
+          <RequestCommentTextEditor currentText={text} cancelEdit={handleCancelEdit} submitEdit={handleSubmitEdit} />
+        ) : (
+          <CommentText>{text}</CommentText>
+        )}
+      </CommentTextContainer>
     </RequestDetailsCommentContainer>
   );
 };

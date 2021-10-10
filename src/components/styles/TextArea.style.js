@@ -6,7 +6,7 @@ export const TextAreaContainer = styled.div`
 `;
 
 export const StyledTextArea = styled.textarea`
-  background-color: transparent;
+  background-color: #050505;
   border: 3px solid #db1b0d;
   color: white;
   font-family: 'PhanNormal';
