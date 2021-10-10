@@ -1,8 +1,6 @@
 import './App.css';
-import 'react-toastify/dist/ReactToastify.min.css';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Slide, toast, ToastContainer } from 'react-toastify';
 import { Provider } from 'react-redux';
 
 import { store } from './redux/store';
@@ -55,13 +53,6 @@ const App = () => {
           </AppBlackBackgroundContainer>
           <Footer />
         </Router>
-        <ToastContainer
-          draggable={false}
-          hideProgressBar={true}
-          position={toast.POSITION.BOTTOM_CENTER}
-          theme='colored'
-          transition={Slide}
-        />
       </div>
     </Provider>
   );

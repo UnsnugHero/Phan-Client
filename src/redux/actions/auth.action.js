@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
 
 import storageService from '../../services/storage.service';
 import { setAxiosHeaderAuthToken } from '../../util/helpers';
@@ -34,7 +33,7 @@ export const login = (loginPayload) => async (dispatch) => {
       payload: response,
     });
   } catch (error) {
-    toast.error('Login failed. Try again');
+    window.alert('Login failed. Try again');
 
     dispatch({
       type: LOGIN_FAIL,
@@ -57,7 +56,7 @@ export const signup = (signupPayload) => async (dispatch) => {
       payload: response,
     });
   } catch (error) {
-    toast.error('Signup failed. Try again');
+    window.alert('Signup failed. Try again');
 
     dispatch({
       type: SIGNUP_FAIL,

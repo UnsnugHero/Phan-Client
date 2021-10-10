@@ -1,14 +1,13 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
 
 export const handleError = (error) => {
   const phanError = error.response.data;
 
-  toast.error(phanError.message);
+  window.alert(phanError.message);
 
   if (phanError.validationErrors) {
     phanError.validationErrors.errors.forEach((validationErr) => {
-      toast.error(`${validationErr.param}: ${validationErr.msg}`);
+      window.alert(`${validationErr.param}: ${validationErr.msg}`);
     });
   }
 };
