@@ -7,13 +7,13 @@ import {
   LOGOUT,
   USER_LOADED,
   SIGNUP_SUCCESS,
-  SIGNUP_FAIL
+  SIGNUP_FAIL,
 } from '../actions/types';
 
 const initialState = {
   isAuthenticated: false,
   loading: true,
-  userRole: null
+  user: null,
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -26,7 +26,8 @@ export const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isAuthenticated: true,
-        loading: false
+        user: payload.user,
+        loading: false,
       };
     case AUTH_ERROR:
     case LOGIN_FAIL:
@@ -36,15 +37,15 @@ export const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isAuthenticated: false,
-        userRole: null,
-        loading: false
+        user: null,
+        loading: false,
       };
     case USER_LOADED:
       return {
         ...state,
         isAuthenticated: true,
-        userRole: payload.role,
-        loading: false
+        user: payload.user,
+        loading: false,
       };
     default:
       return state;
