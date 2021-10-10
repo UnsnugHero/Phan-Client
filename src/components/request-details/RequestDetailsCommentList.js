@@ -10,15 +10,7 @@ const RequestDetailsCommentList = ({ comments }) => {
       <CommentListHeader>{`Comments (${comments?.length || 0})`}</CommentListHeader>
       {comments &&
         comments.length &&
-        comments.map((comment, idx) => (
-          <RequestDetailsComment
-            key={idx}
-            postedBy={comment.username}
-            postedDate={comment.postedDate}
-            edited={comment.edited}
-            text={comment.text}
-          />
-        ))}
+        comments.map((comment, idx) => <RequestDetailsComment key={idx} comment={comment} />)}
     </RequestDetailsCommentListContainer>
   );
 };

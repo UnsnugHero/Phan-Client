@@ -260,6 +260,10 @@ export const RequestDetailsCommentListContainer = styled.div`
   flex-direction: column;
   max-width: 750px;
   width: 100%;
+
+  .request-details-comment-container:not(:last-child) {
+    margin-bottom: 24px;
+  }
 `;
 
 export const CommentListHeader = styled.span`
@@ -289,10 +293,22 @@ export const CommentHeaderText = styled.span``;
 export const CommentEditContainer = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const CommentHeaderEditedText = styled.span``;
 
 export const CommentText = styled.div`
   padding: 12px;
+`;
+
+export const EditIcon = styled.img`
+  width: 25px;
+  cursor: pointer;
+  margin-left: 10px;
+`;
+
+export const DeleteIcon = styled(EditIcon)`
+  width: 25px;
 `;

@@ -16,11 +16,11 @@ export const loadUser = () => async (dispatch) => {
 
     dispatch({
       type: 'USER_LOADED',
-      payload: response.user
+      payload: response,
     });
   } catch (error) {
     dispatch({
-      type: 'AUTH_ERROR'
+      type: 'AUTH_ERROR',
     });
   }
 };
@@ -31,20 +31,20 @@ export const login = (loginPayload) => async (dispatch) => {
 
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: response
+      payload: response,
     });
   } catch (error) {
     toast.error('Login failed. Try again');
 
     dispatch({
-      type: LOGIN_FAIL
+      type: LOGIN_FAIL,
     });
   }
 };
 
 export const logout = () => async (dispatch) => {
   dispatch({
-    type: LOGOUT
+    type: LOGOUT,
   });
 };
 
@@ -54,13 +54,13 @@ export const signup = (signupPayload) => async (dispatch) => {
 
     dispatch({
       type: SIGNUP_SUCCESS,
-      payload: response
+      payload: response,
     });
   } catch (error) {
     toast.error('Signup failed. Try again');
 
     dispatch({
-      type: SIGNUP_FAIL
+      type: SIGNUP_FAIL,
     });
   }
 };

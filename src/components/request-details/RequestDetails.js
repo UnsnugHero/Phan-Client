@@ -33,6 +33,14 @@ const RequestDetails = () => {
         text: 'Is this a truly real?',
         postedDate: '2021-07-31T23:18:55.160Z',
       },
+      {
+        edited: false,
+        _id: '6105da5f441a0f623cc2e42a',
+        userId: '61624a8a831bf0432457e58c',
+        username: 'wackojacko',
+        text: 'For real???',
+        postedDate: '2021-08-31T23:18:55.160Z',
+      },
     ],
   };
 
