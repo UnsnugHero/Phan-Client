@@ -1,39 +1,35 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router';
 
+import { getRequest } from '../../redux/actions/request.action';
 import { GeneralXLHeader } from '../styles/App.style';
 import { RequestDetailsContainer } from '../styles/Request.style';
 import RequestDetailsBody from './RequestDetailsBody';
 import RequestDetailsCommentList from './RequestDetailsCommentList';
 import Loader from '../general/Loader';
-import { getRequest } from '../../services/request.service';
 
-const RequestDetails = () => {
+const RequestDetails = ({ request, getRequest, loading, error }) => {
   const { requestId } = useParams();
-  const [postState, setPost] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const request = await getRequest(requestId);
-      if (request) {
-        setPost(request);
-      }
-    };
-
-    fetchData();
-  }, [requestId]);
+    getRequest(requestId);
+  }, [getRequest, requestId]);
 
   return (
     <RequestDetailsContainer>
       <GeneralXLHeader>Request Details</GeneralXLHeader>
-      {postState ? (
-        <>
-          <RequestDetailsBody request={postState} />
-          <RequestDetailsCommentList comments={postState.comments} />
-        </>
+      {loading || !request ? (
+        error && !loading ? (
+          <></>
+        ) : (
+          <Loader />
+        )
       ) : (
-        <Loader />
+        <>
+          <RequestDetailsBody request={request} />
+          <RequestDetailsCommentList comments={request.comments} />
+        </>
       )}
     </RequestDetailsContainer>
   );
@@ -41,6 +37,14 @@ const RequestDetails = () => {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+
+  loading: state.request.loading,
+  request: state.request.request,
+  error: state.request.error,
 });
 
-export default connect(mapStateToProps)(RequestDetails);
+const mapDispatchToProps = {
+  getRequest,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RequestDetails);

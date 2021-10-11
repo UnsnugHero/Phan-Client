@@ -10,13 +10,3 @@ export const makeRequest = async (makeRequestPayload, history, setLoadingFn) => 
     return false;
   }
 };
-
-export const getRequest = async (requestId) => {
-  try {
-    const { data } = await axios.get(`/api/requests/${requestId}`);
-    return data;
-  } catch (error) {
-    const errorMessage = error.response?.data?.message || 'Error loading request';
-    window.alert(errorMessage);
-  }
-};

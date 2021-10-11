@@ -9,6 +9,7 @@ import {
 const initialState = {
   loading: true,
   request: null,
+  error: false,
 };
 
 export const requestReducer = (state = initialState, action) => {
@@ -16,10 +17,21 @@ export const requestReducer = (state = initialState, action) => {
 
   switch (type) {
     case GET_REQUEST_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        request: payload,
+      };
     case ADD_REQUEST_COMMENT:
     case DELETE_REQUEST_COMMENT:
     case EDIT_REQUEST_COMMENT:
     case REQUEST_ERROR:
+      return {
+        ...state,
+        loading: false,
+        request: null,
+        error: true,
+      };
     default:
       return state;
   }
