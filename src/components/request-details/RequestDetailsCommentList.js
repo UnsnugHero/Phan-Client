@@ -8,9 +8,7 @@ const RequestDetailsCommentList = ({ comments }) => {
   return (
     <RequestDetailsCommentListContainer>
       <CommentListHeader>{`Comments (${comments?.length || 0})`}</CommentListHeader>
-      {comments &&
-        comments.length &&
-        comments.map((comment, idx) => <RequestDetailsComment key={idx} comment={comment} />)}
+      {comments?.length > 0 && comments.map((comment, idx) => <RequestDetailsComment key={idx} comment={comment} />)}
     </RequestDetailsCommentListContainer>
   );
 };

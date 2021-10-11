@@ -219,6 +219,7 @@ export const RequestDetailsContainer = styled.div`
 export const RequestDetailsBodyContainer = styled.div`
   max-width: 750px;
   margin-bottom: 24px;
+  width: 100%;
 `;
 
 export const RequestDetailsBodyTopInfo = styled.div`

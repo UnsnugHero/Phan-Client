@@ -38,7 +38,7 @@ const RequestDetailsBody = ({ request }) => {
           <RequestDetailsRow key={idx} className={`${row.valueKey}-row`}>
             <RequestDetailsRowHeader className={`${row.valueKey}-row-header`}>{row.header}</RequestDetailsRowHeader>
             <RequestDetailsRowBody className={`${row.valueKey}-row-body`}>
-              {request[row.valueKey]}
+              {request[row.valueKey] || 'Not Provided'}
             </RequestDetailsRowBody>
           </RequestDetailsRow>
         ))}
