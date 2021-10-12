@@ -13,6 +13,7 @@ const TextArea = (props) => {
         autoComplete='off'
         maxLength={props.maxLength}
         onChange={(e) => props.onTextAreaChange(e)}
+        onClick={(e) => props.onTextAreaClick(e)}
         placeholder={props.placeholder}
         rows={props.rows}
         value={props.value}
@@ -25,6 +26,7 @@ const TextArea = (props) => {
 TextArea.propTypes = {
   error: PropTypes.string,
   onTextAreaChange: PropTypes.func.isRequired,
+  onTextAreaClick: PropTypes.func,
   placeholder: PropTypes.string.isRequired,
   rows: PropTypes.number,
   value: PropTypes.string,

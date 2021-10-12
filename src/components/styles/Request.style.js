@@ -338,3 +338,32 @@ export const CancelEditIcon = styled(EditIcon)``;
 export const ConfirmEditIcon = styled(EditIcon)`
   magin-left: 10px;
 `;
+
+// Post Comment
+
+export const PostCommentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const PostCommentEditor = styled(TextArea)``;
+
+export const PostCommentButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
+  margin-top: 12px;
+`;
+
+export const PostCommentCancelButton = styled(Button)`
+  background-color: #333;
+
+  :hover {
+    background-color: #202020;
+  }
+`;
+
+export const PostCommentPostButton = styled(Button)`
+  margin-left: 10px;
+`;

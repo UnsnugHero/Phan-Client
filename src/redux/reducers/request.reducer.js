@@ -21,6 +21,7 @@ export const requestReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         request: payload,
+        error: false,
       };
     case ADD_REQUEST_COMMENT:
     case DELETE_REQUEST_COMMENT:

@@ -13,12 +13,9 @@ import clear from '../../assets/close.svg';
 import check from '../../assets/check.svg';
 
 const RequestCommentTextEditor = ({ currentText, cancelEdit, submitEdit }) => {
-  const [textEditorState, setState] = useState({
-    editText: currentText,
-  });
+  const [textEditorState, setState] = useState(currentText);
 
   const handleTextAreaChange = (event) => {
-    console.log(event.target.value);
     setState({
       editText: event.target.value,
     });
@@ -27,9 +24,9 @@ const RequestCommentTextEditor = ({ currentText, cancelEdit, submitEdit }) => {
   return (
     <CommentTextEditorContainer>
       <CommentTextEditor
-        placeholder={textEditorState.editText}
+        placeholder={textEditorState}
         onTextAreaChange={handleTextAreaChange}
-        value={textEditorState.editText}
+        value={textEditorState}
       />
       <TextEditorButtons>
         <CancelEditIcon src={clear} onClick={cancelEdit} />
