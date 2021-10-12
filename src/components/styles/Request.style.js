@@ -261,10 +261,6 @@ export const RequestDetailsCommentListContainer = styled.div`
   flex-direction: column;
   max-width: 750px;
   width: 100%;
-
-  .request-details-comment-container:not(:last-child) {
-    margin-bottom: 24px;
-  }
 `;
 
 export const CommentListHeader = styled.span`
@@ -315,6 +311,16 @@ export const EditIcon = styled.img`
 
 export const DeleteIcon = styled(EditIcon)`
   width: 25px;
+`;
+
+export const CommentsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+
+  .request-details-comment-container:not(:last-child) {
+    margin-bottom: 24px;
+  }
 `;
 
 // Comment Text Editor

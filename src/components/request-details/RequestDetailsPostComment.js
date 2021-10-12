@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { useParams } from 'react-router';
+import { postRequestComment } from '../../redux/actions/request.action';
 import {
   PostCommentButtonsContainer,
   PostCommentCancelButton,
@@ -7,7 +10,9 @@ import {
   PostCommentPostButton,
 } from '../styles/Request.style';
 
-const RequestDetailsPostComment = () => {
+const RequestDetailsPostComment = ({ postRequestComment }) => {
+  const { requestId } = useParams();
+
   const [formValue, setForm] = useState({
     commentValue: '',
     isActive: false,
@@ -21,7 +26,10 @@ const RequestDetailsPostComment = () => {
   };
 
   const handleTextAreaChange = (event) => {
-    setForm(event.target.value);
+    setForm({
+      ...formValue,
+      commentValue: event.target.value,
+    });
   };
 
   const handleCancelClick = () => {
@@ -32,9 +40,16 @@ const RequestDetailsPostComment = () => {
   };
 
   const handlePostClick = () => {
-    // post comment dispatch
+    const postRequestCommentPayload = {
+      text: formValue.commentValue,
+    };
 
-    setForm('');
+    postRequestComment(postRequestCommentPayload, requestId);
+
+    setForm({
+      commentValue: '',
+      isActive: false,
+    });
   };
 
   return (
@@ -55,4 +70,8 @@ const RequestDetailsPostComment = () => {
   );
 };
 
-export default RequestDetailsPostComment;
+const mapDispatchToProps = {
+  postRequestComment,
+};
+
+export default connect(null, mapDispatchToProps)(RequestDetailsPostComment);

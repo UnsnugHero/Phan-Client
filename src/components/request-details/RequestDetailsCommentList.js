@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { CommentListHeader, RequestDetailsCommentListContainer } from '../styles/Request.style';
+import { CommentListHeader, CommentsContainer, RequestDetailsCommentListContainer } from '../styles/Request.style';
 import RequestDetailsComment from './RequestDetailsComment';
 import RequestDetailsPostComment from './RequestDetailsPostComment';
 
@@ -11,7 +11,13 @@ const RequestDetailsCommentList = ({ comments, isAuthenticated }) => {
     <RequestDetailsCommentListContainer>
       <CommentListHeader>{`Comments (${comments?.length || 0})`}</CommentListHeader>
       {isAuthenticated && <RequestDetailsPostComment />}
-      {comments?.length > 0 && comments.map((comment, idx) => <RequestDetailsComment key={idx} comment={comment} />)}
+      {comments?.length > 0 && (
+        <CommentsContainer>
+          {comments.map((comment, idx) => (
+            <RequestDetailsComment key={idx} comment={comment} />
+          ))}
+        </CommentsContainer>
+      )}
     </RequestDetailsCommentListContainer>
   );
 };

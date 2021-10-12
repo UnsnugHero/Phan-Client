@@ -7,13 +7,19 @@ import { TextInputError } from '../styles/TextInput.style';
 const TextArea = (props) => {
   let hasInputError = !!props.error;
 
+  const handleOnClick = () => {
+    if (props.onTextAreaClick) {
+      props.onTextAreaClick();
+    }
+  };
+
   return (
     <TextAreaContainer className='text-area'>
       <StyledTextArea
         autoComplete='off'
         maxLength={props.maxLength}
         onChange={(e) => props.onTextAreaChange(e)}
-        onClick={(e) => props.onTextAreaClick(e)}
+        onClick={(e) => handleOnClick()}
         placeholder={props.placeholder}
         rows={props.rows}
         value={props.value}

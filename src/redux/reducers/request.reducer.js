@@ -1,5 +1,5 @@
 import {
-  ADD_REQUEST_COMMENT,
+  POST_REQUEST_COMMENT,
   DELETE_REQUEST_COMMENT,
   EDIT_REQUEST_COMMENT,
   GET_REQUEST_SUCCESS,
@@ -17,20 +17,19 @@ export const requestReducer = (state = initialState, action) => {
 
   switch (type) {
     case GET_REQUEST_SUCCESS:
+    case POST_REQUEST_COMMENT:
       return {
         ...state,
         loading: false,
         request: payload,
         error: false,
       };
-    case ADD_REQUEST_COMMENT:
     case DELETE_REQUEST_COMMENT:
     case EDIT_REQUEST_COMMENT:
     case REQUEST_ERROR:
       return {
         ...state,
         loading: false,
-        request: null,
         error: true,
       };
     default:
