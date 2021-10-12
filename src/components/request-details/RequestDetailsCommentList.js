@@ -12,7 +12,7 @@ const RequestDetailsCommentList = ({ comments, isAuthenticated }) => {
       <CommentListHeader>{`Comments (${comments?.length || 0})`}</CommentListHeader>
       {isAuthenticated && <RequestDetailsPostComment />}
       {comments?.length > 0 && (
-        <CommentsContainer>
+        <CommentsContainer className='comments-container'>
           {comments.map((comment, idx) => (
             <RequestDetailsComment key={idx} comment={comment} />
           ))}
