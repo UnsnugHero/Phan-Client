@@ -63,7 +63,7 @@ const RequestDetailsPostComment = ({ postRequestComment }) => {
       {formValue.isActive && (
         <PostCommentButtonsContainer>
           <PostCommentCancelButton text='Cancel' onButtonClick={handleCancelClick} />
-          <PostCommentPostButton text='Post' onButtonClick={handlePostClick} />
+          <PostCommentPostButton text='Post' onButtonClick={handlePostClick} disabled={formValue.commentValue === ''} />
         </PostCommentButtonsContainer>
       )}
     </PostCommentContainer>

@@ -4,13 +4,19 @@ import { StyledButton } from '../styles/Button.style';
 
 const Button = (props) => {
   return (
-    <StyledButton className={`button ${props.className}`} onClick={(e) => props.onButtonClick(e)}>
+    <StyledButton
+      disabled={props.disabled}
+      className={`button ${props.className}`}
+      style={{ cursor: props.disabled ? 'not-allowed' : '' }}
+      onClick={(e) => props.onButtonClick(e)}
+    >
       {props.text}
     </StyledButton>
   );
 };
 
 Button.propTypes = {
+  disabled: PropTypes.bool,
   className: PropTypes.string,
   onButtonClick: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,

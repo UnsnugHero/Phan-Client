@@ -372,4 +372,8 @@ export const PostCommentCancelButton = styled(Button)`
 
 export const PostCommentPostButton = styled(Button)`
   margin-left: 10px;
+
+  :hover {
+    background-color: #db1b0d !important;
+  }
 `;
