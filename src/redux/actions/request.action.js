@@ -1,6 +1,12 @@
 import axios from 'axios';
 
-import { DELETE_REQUEST_COMMENT, GET_REQUEST_SUCCESS, POST_REQUEST_COMMENT, REQUEST_ERROR } from './types';
+import {
+  DELETE_REQUEST_COMMENT,
+  EDIT_REQUEST_COMMENT,
+  GET_REQUEST_SUCCESS,
+  POST_REQUEST_COMMENT,
+  REQUEST_ERROR,
+} from './types';
 
 export const getRequest = (requestId) => async (dispatch) => {
   try {
@@ -23,6 +29,18 @@ export const postRequestComment = (postRequestCommentPayload, requestId) => asyn
     });
   } catch (error) {
     handleError(dispatch, error, 'Error posting request');
+  }
+};
+
+export const editRequestComment = (editRequestCommentPayload, requestId, commentId) => async (dispatch) => {
+  try {
+    const { data } = await axios.put(`/api/requests/comment/${requestId}/${commentId}`, editRequestCommentPayload);
+    dispatch({
+      type: EDIT_REQUEST_COMMENT,
+      payload: data.updatedRequest,
+    });
+  } catch (error) {
+    handleError(dispatch, error, 'Error updating comment');
   }
 };
 

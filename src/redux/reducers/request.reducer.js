@@ -19,13 +19,13 @@ export const requestReducer = (state = initialState, action) => {
     case GET_REQUEST_SUCCESS:
     case POST_REQUEST_COMMENT:
     case DELETE_REQUEST_COMMENT:
+    case EDIT_REQUEST_COMMENT:
       return {
         ...state,
         loading: false,
         request: payload,
         error: false,
       };
-    case EDIT_REQUEST_COMMENT:
     case REQUEST_ERROR:
       return {
         ...state,

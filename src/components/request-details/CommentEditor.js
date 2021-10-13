@@ -27,7 +27,7 @@ const CommentEditor = ({ currentText, cancelEdit, submitEdit }) => {
 
   const handleSubmitClick = () => {
     if (!textEditorState.isDisabled) {
-      submitEdit(textEditorState);
+      submitEdit(textEditorState.editText);
     }
   };
 

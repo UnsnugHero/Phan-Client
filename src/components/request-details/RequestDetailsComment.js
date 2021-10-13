@@ -13,14 +13,14 @@ import {
   EditIcon,
   RequestDetailsCommentContainer,
 } from '../styles/Request.style';
-import { deleteRequestComment } from '../../redux/actions/request.action';
+import { deleteRequestComment, editRequestComment } from '../../redux/actions/request.action';
 import CommentEditor from './CommentEditor';
 
 import editIcon from '../../assets/edit.svg';
 import deleteIcon from '../../assets/delete.svg';
 import { useParams } from 'react-router';
 
-const RequestDetailsComment = ({ comment, auth, deleteRequestComment }) => {
+const RequestDetailsComment = ({ comment, auth, editRequestComment, deleteRequestComment }) => {
   const { requestId } = useParams();
 
   const { _id: commentId, userId, username, postedDate, edited, text } = comment;
@@ -53,8 +53,13 @@ const RequestDetailsComment = ({ comment, auth, deleteRequestComment }) => {
     });
   };
 
-  const handleSubmitEdit = (editText) => () => {
-    // submit edit request
+  const handleSubmitEdit = (editText) => {
+    const editRequestCommentPayload = { text: editText };
+    editRequestComment(editRequestCommentPayload, requestId, commentId);
+    setState({
+      ...requestDetailsState,
+      isEditingComment: false,
+    });
   };
 
   return (
@@ -87,6 +92,8 @@ const RequestDetailsComment = ({ comment, auth, deleteRequestComment }) => {
 RequestDetailsComment.propTypes = {
   comment: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
+  editRequestComment: PropTypes.func.isRequired,
+  deleteRequestComment: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({ auth }) => ({
@@ -95,6 +102,7 @@ const mapStateToProps = ({ auth }) => ({
 
 const mapDispatchToProps = {
   deleteRequestComment,
+  editRequestComment,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RequestDetailsComment);
