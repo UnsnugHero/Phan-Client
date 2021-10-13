@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_REQUEST_SUCCESS, POST_REQUEST_COMMENT, REQUEST_ERROR } from './types';
+import { DELETE_REQUEST_COMMENT, GET_REQUEST_SUCCESS, POST_REQUEST_COMMENT, REQUEST_ERROR } from './types';
 
 export const getRequest = (requestId) => async (dispatch) => {
   try {
@@ -10,12 +10,7 @@ export const getRequest = (requestId) => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
-    const errorMessage = error.response?.data?.message || 'Error loading request';
-    window.alert(errorMessage);
-
-    dispatch({
-      type: REQUEST_ERROR,
-    });
+    handleError(dispatch, error, 'Error loading request');
   }
 };
 
@@ -27,11 +22,29 @@ export const postRequestComment = (postRequestCommentPayload, requestId) => asyn
       payload: data.updatedRequest,
     });
   } catch (error) {
-    const errorMessage = error.response?.data?.message || 'Error posting request';
-    window.alert(errorMessage);
+    handleError(dispatch, error, 'Error posting request');
+  }
+};
+
+export const deleteRequestComment = (requestId, commentId) => async (dispatch) => {
+  try {
+    const { data } = await axios.delete(`/api/requests/comment/${requestId}/${commentId}`);
+    window.alert(data.message);
 
     dispatch({
-      type: REQUEST_ERROR,
+      type: DELETE_REQUEST_COMMENT,
+      payload: data.updatedRequest,
     });
+  } catch (error) {
+    handleError(dispatch, error, 'Error deleting request comment');
   }
+};
+
+const handleError = (dispatch, error, defaultErrorMsg) => {
+  const errorMessage = error.response?.data?.message || defaultErrorMsg;
+  window.alert(errorMessage);
+
+  dispatch({
+    type: REQUEST_ERROR,
+  });
 };

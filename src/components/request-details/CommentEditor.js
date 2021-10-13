@@ -12,34 +12,48 @@ import {
 import clear from '../../assets/close.svg';
 import check from '../../assets/check.svg';
 
-const RequestCommentTextEditor = ({ currentText, cancelEdit, submitEdit }) => {
-  const [textEditorState, setState] = useState(currentText);
+const CommentEditor = ({ currentText, cancelEdit, submitEdit }) => {
+  const [textEditorState, setState] = useState({
+    isDisabled: false,
+    editText: currentText,
+  });
 
   const handleTextAreaChange = (event) => {
     setState({
+      isDisabled: event.target.value === '',
       editText: event.target.value,
     });
+  };
+
+  const handleSubmitClick = () => {
+    if (!textEditorState.isDisabled) {
+      submitEdit(textEditorState);
+    }
   };
 
   return (
     <CommentTextEditorContainer>
       <CommentTextEditor
-        placeholder={textEditorState}
+        placeholder={textEditorState.editText}
         onTextAreaChange={handleTextAreaChange}
-        value={textEditorState}
+        value={textEditorState.editText}
       />
       <TextEditorButtons>
         <CancelEditIcon src={clear} onClick={cancelEdit} />
-        <ConfirmEditIcon src={check} onClick={submitEdit} />
+        <ConfirmEditIcon
+          src={check}
+          style={{ cursor: textEditorState.isDisabled ? 'not-allowed' : '' }}
+          onClick={handleSubmitClick}
+        />
       </TextEditorButtons>
     </CommentTextEditorContainer>
   );
 };
 
-RequestCommentTextEditor.propTypes = {
+CommentEditor.propTypes = {
   currentText: PropTypes.string.isRequired,
   cancelEdit: PropTypes.func.isRequired,
   submitEdit: PropTypes.func.isRequired,
 };
 
-export default RequestCommentTextEditor;
+export default CommentEditor;

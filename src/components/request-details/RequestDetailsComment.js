@@ -13,13 +13,17 @@ import {
   EditIcon,
   RequestDetailsCommentContainer,
 } from '../styles/Request.style';
-import RequestCommentTextEditor from './RequestCommentTextEditor';
+import { deleteRequestComment } from '../../redux/actions/request.action';
+import CommentEditor from './CommentEditor';
 
 import editIcon from '../../assets/edit.svg';
 import deleteIcon from '../../assets/delete.svg';
+import { useParams } from 'react-router';
 
-const RequestDetailsComment = ({ comment, auth }) => {
-  const { userId, username, postedDate, edited, text } = comment;
+const RequestDetailsComment = ({ comment, auth, deleteRequestComment }) => {
+  const { requestId } = useParams();
+
+  const { _id: commentId, userId, username, postedDate, edited, text } = comment;
 
   const [requestDetailsState, setState] = useState({
     isEditingRequest: false,
@@ -38,7 +42,7 @@ const RequestDetailsComment = ({ comment, auth }) => {
     const shouldDelete = window.confirm('Delete Comment?');
 
     if (shouldDelete) {
-      // delete the comment
+      deleteRequestComment(requestId, commentId);
     }
   };
 
@@ -49,8 +53,8 @@ const RequestDetailsComment = ({ comment, auth }) => {
     });
   };
 
-  const handleSubmitEdit = () => {
-    // submit api call with edit text to edit the selected comment
+  const handleSubmitEdit = (editText) => () => {
+    // submit edit request
   };
 
   return (
@@ -71,7 +75,7 @@ const RequestDetailsComment = ({ comment, auth }) => {
       </CommentHeaderContainer>
       <CommentTextContainer>
         {requestDetailsState.isEditingComment ? (
-          <RequestCommentTextEditor currentText={text} cancelEdit={handleCancelEdit} submitEdit={handleSubmitEdit} />
+          <CommentEditor currentText={text} cancelEdit={handleCancelEdit} submitEdit={handleSubmitEdit} />
         ) : (
           <CommentText>{text}</CommentText>
         )}
@@ -85,8 +89,12 @@ RequestDetailsComment.propTypes = {
   auth: PropTypes.object.isRequired,
 };
 
-const mapDispatchToProps = ({ auth }) => ({
+const mapStateToProps = ({ auth }) => ({
   auth,
 });
 
-export default connect(mapDispatchToProps)(RequestDetailsComment);
+const mapDispatchToProps = {
+  deleteRequestComment,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RequestDetailsComment);
