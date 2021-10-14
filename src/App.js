@@ -48,6 +48,7 @@ const App = () => {
                 <Route exact path='/requests' component={RequestSearch} />
                 <Route exact path='/requests/:requestId' component={RequestDetails} />
                 <PrivateRoute exact path='/make-request' component={MakeRequest} />
+                {/* <PrivateRoute exact path='/edit-request' component={EditRequest} /> */}
               </Switch>
             </AppContainer>
           </AppBlackBackgroundContainer>

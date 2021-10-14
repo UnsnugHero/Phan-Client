@@ -216,6 +216,18 @@ export const RequestDetailsContainer = styled.div`
   align-items: center;
 `;
 
+export const EditRequestButton = styled(Button)``;
+
+export const DeleteRequestButton = styled(Button)`
+  margin-left: 24px;
+`;
+
+export const RequestDetailsTopButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 24px;
+`;
+
 export const RequestDetailsBodyContainer = styled.div`
   max-width: 750px;
   margin-bottom: 24px;
