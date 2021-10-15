@@ -21,19 +21,19 @@ const RequestSearch = ({ isAuthenticated }) => {
     areFiltersActive: false,
     filters: { hideCompleted: false },
     selectedSort: { sortOn: 'postedDate', sortDir: 'desc' },
-    isLoading: false,
   };
 
   const history = useHistory();
 
   const [formState, setForm] = useState(initialSearchForm);
-
+  const [isLoading, setLoading] = useState(true);
   const [resultsState, setResults] = useState([]);
 
   useEffect(() => {
     const execInitSearch = async () => {
       const searchResults = await searchRequests({ subject: '' });
       setResults(searchResults);
+      setLoading(false);
     };
 
     execInitSearch();
@@ -61,9 +61,11 @@ const RequestSearch = ({ isAuthenticated }) => {
   };
 
   const handleSearchButtonClick = async () => {
+    setLoading(true);
     const searchPayload = formSearchPayload();
     const searchResults = await searchRequests(searchPayload);
     setResults(searchResults);
+    setLoading(false);
   };
 
   const handleMakeRequestButtonClick = () => {
@@ -88,7 +90,7 @@ const RequestSearch = ({ isAuthenticated }) => {
         <RequestSearchButton text='Search' onButtonClick={handleSearchButtonClick} />
       </RequestSearchAndButtonContainer>
       <RequestFilterMenu onMenuAction={onMenuAction} />
-      <RequestList requests={resultsState} loading={formState.isLoading} />
+      <RequestList requests={resultsState} loading={isLoading} />
     </RequestSearchContainer>
   );
 };
