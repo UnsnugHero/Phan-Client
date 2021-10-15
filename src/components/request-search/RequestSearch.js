@@ -1,67 +1,43 @@
-import React, { useEffect, useCallback } from 'react';
-import { debounce } from 'lodash';
+import React, { useCallback, useEffect } from 'react';
 import { useState } from 'react';
 import { useHistory } from 'react-router';
 import { connect } from 'react-redux';
 
-import { MakeRequestButton, RequestSearchBar, RequestSearchContainer } from '../styles/Request.style';
+import {
+  MakeRequestButton,
+  RequestSearchAndButtonContainer,
+  RequestSearchBar,
+  RequestSearchButton,
+  RequestSearchContainer,
+} from '../styles/Request.style';
+import { searchRequests } from '../../services/request.service';
 import { GeneralXLHeader } from '../styles/App.style';
 import RequestFilterMenu from './RequestFilterMenu';
 import RequestList from './RequestList';
 
 const RequestSearch = ({ isAuthenticated }) => {
-  const mockRequests = [
-    {
-      id: 1,
-      subject: 'Help!',
-      location: 'Shinjuku',
-      completed: false,
-      postedDate: new Date('2021-10-1').toLocaleDateString('en-US'),
-      likesCount: 156,
-      comments: [],
-    },
-    {
-      id: 2,
-      subject: 'Someone please',
-      location: 'Chiba',
-      completed: true,
-      postedDate: new Date('2021-5-31').toLocaleDateString('en-US'),
-      likesCount: 81,
-      comments: [{}, {}],
-    },
-    {
-      id: 3,
-      subject: 'This needs to stop',
-      location: 'Shibuya',
-      completed: false,
-      postedDate: new Date('2021-9-13').toLocaleDateString('en-US'),
-      likesCount: 23,
-      comments: [{}, {}, {}, {}],
-    },
-  ];
-
-  const [formState, setForm] = useState({
+  const initialSearchForm = {
     subject: '',
     areFiltersActive: false,
     filters: { hideCompleted: false },
     selectedSort: { sortOn: 'postedDate', sortDir: 'desc' },
     isLoading: false,
-  });
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const search = useCallback(
-    debounce((searchPayload) => {
-      console.log('I just searched with ', searchPayload);
-    }, 300),
-    []
-  );
-
-  useEffect(() => {
-    search(formState);
-    // call search here yo
-  });
+  };
 
   const history = useHistory();
+
+  const [formState, setForm] = useState(initialSearchForm);
+
+  const [resultsState, setResults] = useState([]);
+
+  useEffect(() => {
+    const execInitSearch = async () => {
+      const searchResults = await searchRequests({ subject: '' });
+      setResults(searchResults);
+    };
+
+    execInitSearch();
+  }, []);
 
   const onMenuAction = useCallback((menuState) => {
     setForm((newState) => ({
@@ -76,6 +52,20 @@ const RequestSearch = ({ isAuthenticated }) => {
     setForm({ ...formState, subject: event.target.value });
   };
 
+  const formSearchPayload = () => {
+    const searchPayload = {
+      subject: formState.subject,
+    };
+
+    return searchPayload;
+  };
+
+  const handleSearchButtonClick = async () => {
+    const searchPayload = formSearchPayload();
+    const searchResults = await searchRequests(searchPayload);
+    setResults(searchResults);
+  };
+
   const handleMakeRequestButtonClick = () => {
     history.push('/make-request');
   };
@@ -86,16 +76,19 @@ const RequestSearch = ({ isAuthenticated }) => {
       {isAuthenticated && (
         <MakeRequestButton text='Make A Request' onButtonClick={handleMakeRequestButtonClick}></MakeRequestButton>
       )}
-      <RequestSearchBar
-        className='request-search-bar'
-        name='search'
-        placeholder='Search Requests'
-        onInputChange={handleInputChange}
-        type='text'
-        value={formState.subject}
-      />
+      <RequestSearchAndButtonContainer>
+        <RequestSearchBar
+          className='request-search-bar'
+          name='search'
+          placeholder='Search Requests'
+          onInputChange={handleInputChange}
+          type='text'
+          value={formState.subject}
+        />
+        <RequestSearchButton text='Search' onButtonClick={handleSearchButtonClick} />
+      </RequestSearchAndButtonContainer>
       <RequestFilterMenu onMenuAction={onMenuAction} />
-      <RequestList requests={mockRequests} loading={formState.isLoading} />
+      <RequestList requests={resultsState} loading={formState.isLoading} />
     </RequestSearchContainer>
   );
 };

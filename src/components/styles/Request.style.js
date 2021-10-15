@@ -16,9 +16,19 @@ export const MakeRequestButton = styled(Button)`
   margin-bottom: 44.22px;
 `;
 
+export const RequestSearchAndButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  max-width: 750px;
+  margin-bottom: 24px;
+`;
+
 export const RequestSearchBar = styled(TextInput)`
   width: 750px;
-  margin-bottom: 24px;
+`;
+
+export const RequestSearchButton = styled(Button)`
+  margin-left: 12px;
 `;
 
 // Filter Menu

@@ -19,11 +19,7 @@ const RequestList = ({ loading, requests }) => {
 
   return (
     <RequestListContainer>
-      {mappedRequests && mappedRequests.length
-        ? mappedRequests
-        : {
-            /* a no results for this search message here */
-          }}
+      {mappedRequests && mappedRequests.length ? mappedRequests : <>No Matching Requests</>}
     </RequestListContainer>
   );
 };

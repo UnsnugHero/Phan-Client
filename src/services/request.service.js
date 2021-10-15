@@ -1,5 +1,15 @@
 import axios from 'axios';
 
+export const searchRequests = async (searchRequestPayload) => {
+  try {
+    const { data } = await axios.post('/api/requests/search', searchRequestPayload);
+    return data.results;
+  } catch (error) {
+    handleError('Search failed');
+    return [];
+  }
+};
+
 export const makeRequest = async (makeRequestPayload, history) => {
   try {
     const { data } = await axios.post('/api/requests/create', makeRequestPayload);
