@@ -22,6 +22,7 @@ import MakeRequest from './components/make-request/MakeRequest';
 import ScrollToTop from './components/routing/ScrollToTop';
 import PrivateRoute from './components/routing/PrivateRoute';
 import storageService from './services/storage.service';
+import EditRequest from './components/edit-request/EditRequest';
 
 if (storageService.getItem(AUTH_TOKEN_STORAGE_KEY)) {
   setAxiosHeaderAuthToken(storageService.getItem(AUTH_TOKEN_STORAGE_KEY));
@@ -48,7 +49,7 @@ const App = () => {
                 <Route exact path='/requests' component={RequestSearch} />
                 <Route exact path='/requests/:requestId' component={RequestDetails} />
                 <PrivateRoute exact path='/make-request' component={MakeRequest} />
-                {/* <PrivateRoute exact path='/edit-request' component={EditRequest} /> */}
+                <PrivateRoute exact path='/edit-request/:requestId' component={EditRequest} />
               </Switch>
             </AppContainer>
           </AppBlackBackgroundContainer>

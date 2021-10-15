@@ -1,11 +1,20 @@
 import axios from 'axios';
 
+export const getRequest = async (requestId) => {
+  try {
+    const { data } = await axios.get(`/api/requests/${requestId}`);
+    return data;
+  } catch (error) {
+    handleError(error, 'Error loading request');
+  }
+};
+
 export const searchRequests = async (searchRequestPayload) => {
   try {
     const { data } = await axios.post('/api/requests/search', searchRequestPayload);
     return data.results;
   } catch (error) {
-    handleError('Search failed');
+    handleError(error, 'Search failed');
     return [];
   }
 };
@@ -16,7 +25,18 @@ export const makeRequest = async (makeRequestPayload, history) => {
     history.push(`/requests/${data._id}`);
     return true;
   } catch (error) {
-    handleError('Make request failed');
+    handleError(error, 'Make request failed');
+    return false;
+  }
+};
+
+export const editRequest = async (editRequestPayload, requestId, history) => {
+  try {
+    await axios.put(`/api/requests/${requestId}`, editRequestPayload);
+    history.push(`/requests/${requestId}`);
+    return true;
+  } catch (error) {
+    handleError(error, 'Edit request failed');
     return false;
   }
 };

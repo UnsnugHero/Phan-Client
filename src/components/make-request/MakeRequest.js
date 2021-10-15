@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { isEmpty, isNil, omitBy } from 'lodash';
 
 import { GeneralXLHeader } from '../styles/App.style';
@@ -11,17 +11,19 @@ import {
   MakeRequestInput,
   MakeRequestTextArea,
 } from '../styles/Request.style';
-import { makeRequest } from '../../services/request.service';
+import { editRequest, makeRequest } from '../../services/request.service';
 import Button from '../general/Button';
 import Loader from '../general/Loader';
 
-const MakeRequest = () => {
+const MakeRequest = ({ isEdit = false, getRequestError = false, subject, description, location }) => {
   const history = useHistory();
 
+  const { requestId } = useParams();
+
   const [makeRequestState, setForm] = useState({
-    subject: '',
-    description: '',
-    location: '',
+    subject: isEdit ? subject : '',
+    description: isEdit ? description : '',
+    location: isEdit ? location : '',
     errors: { subject: null, location: null },
   });
 
@@ -62,7 +64,14 @@ const MakeRequest = () => {
       setLoading(true);
       const { subject, location, description } = makeRequestState;
       const makeRequestPayload = { subject, location, description };
-      const success = await makeRequest(makeRequestPayload, history);
+
+      if (isEdit) {
+        makeRequestPayload['edited'] = true;
+      }
+
+      const success = await (isEdit
+        ? editRequest(makeRequestPayload, requestId, history)
+        : makeRequest(makeRequestPayload, history));
 
       if (!success) {
         setLoading(false);
@@ -79,12 +88,14 @@ const MakeRequest = () => {
         name='subject'
         onInputChange={handleInputChange('subject')}
         error={makeRequestState.errors.subject}
+        value={makeRequestState.subject}
       />
       <MakeRequestTextArea
         onTextAreaChange={handleInputChange('description')}
         placeholder='Description'
         rows={14}
         maxLength={250}
+        value={makeRequestState.description}
       />
       <MakeRequestInput
         maxLength={30}
@@ -93,6 +104,7 @@ const MakeRequest = () => {
         name='location'
         onInputChange={handleInputChange('location')}
         error={makeRequestState.errors.location}
+        value={makeRequestState.location}
       />
       <MakeRequestButtons>
         <CancelButton text='Cancel' onButtonClick={handleCancel} />
@@ -101,9 +113,18 @@ const MakeRequest = () => {
     </MakeRequestForm>
   );
 
+  if (getRequestError) {
+    return (
+      <MakeRequestContainer>
+        <GeneralXLHeader>{`${isEdit ? 'Edit' : 'Make'} Request`}</GeneralXLHeader>
+        <>Oops!</>
+      </MakeRequestContainer>
+    );
+  }
+
   return (
     <MakeRequestContainer>
-      <GeneralXLHeader>Make Request</GeneralXLHeader>
+      <GeneralXLHeader>{`${isEdit ? 'Edit' : 'Make'} Request`}</GeneralXLHeader>
       {isLoading ? <Loader /> : requestForm}
     </MakeRequestContainer>
   );
