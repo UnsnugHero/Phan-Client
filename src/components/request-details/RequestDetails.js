@@ -3,19 +3,20 @@ import { connect } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
 
 import { getRequest } from '../../redux/actions/request.action';
+import { deleteRequest } from '../../services/request.service';
 import { GeneralXLHeader } from '../styles/App.style';
 import {
   DeleteRequestButton,
   EditRequestButton,
+  MarkCompletedButton,
   RequestDetailsContainer,
   RequestDetailsTopButtonsContainer,
 } from '../styles/Request.style';
 import RequestDetailsBody from './RequestDetailsBody';
 import RequestDetailsCommentList from './RequestDetailsCommentList';
 import Loader from '../general/Loader';
-import { deleteRequest } from '../../services/request.service';
 
-const RequestDetails = ({ request, getRequest, loading, error }) => {
+const RequestDetails = ({ request, getRequest, loading, error, user }) => {
   const { requestId } = useParams();
 
   const history = useHistory();
@@ -23,6 +24,8 @@ const RequestDetails = ({ request, getRequest, loading, error }) => {
   useEffect(() => {
     getRequest(requestId);
   }, [getRequest, requestId]);
+
+  const handleMarkCompletedClick = () => {};
 
   const handleEditRequestClick = () => {
     history.push(`/edit-request/${requestId}`);
@@ -52,7 +55,7 @@ const RequestDetails = ({ request, getRequest, loading, error }) => {
       ) : (
         <>
           <RequestDetailsTopButtonsContainer>
-            {/* Button here to mark complete, only owning user or admin can do this */}
+            <MarkCompletedButton text='Mark Completed' onButtonClick={handleMarkCompletedClick} />
             <EditRequestButton text='Edit' onButtonClick={handleEditRequestClick} />
             <DeleteRequestButton text='Delete' onButtonClick={handleDeleteRequestClick} />
           </RequestDetailsTopButtonsContainer>

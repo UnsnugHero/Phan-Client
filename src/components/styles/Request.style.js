@@ -226,7 +226,17 @@ export const RequestDetailsContainer = styled.div`
   align-items: center;
 `;
 
-export const EditRequestButton = styled(Button)``;
+export const MarkCompletedButton = styled(Button)`
+  background-color: #0cab12;
+
+  :hover {
+    background-color: #0a780e;
+  }
+`;
+
+export const EditRequestButton = styled(Button)`
+  margin-left: 24px;
+`;
 
 export const DeleteRequestButton = styled(Button)`
   margin-left: 24px;
@@ -235,6 +245,7 @@ export const DeleteRequestButton = styled(Button)`
 export const RequestDetailsTopButtonsContainer = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
   margin-bottom: 24px;
 `;
 
