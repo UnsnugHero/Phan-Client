@@ -16,7 +16,7 @@ export const MakeRequestButton = styled(Button)`
   margin-bottom: 44.22px;
 `;
 
-export const RequestSearchAndButtonContainer = styled.div`
+export const RequestSearchAndButtonContainer = styled.form`
   display: flex;
   flex-direction: row;
   max-width: 750px;

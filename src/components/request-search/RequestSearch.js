@@ -71,7 +71,8 @@ const RequestSearch = ({ isAuthenticated }) => {
     return searchPayload;
   };
 
-  const handleSearchButtonClick = async () => {
+  const handleSearchButtonClick = async (e) => {
+    e.preventDefault();
     setLoading(true);
     const searchPayload = formSearchPayload();
     const searchResults = await searchRequests(searchPayload);
