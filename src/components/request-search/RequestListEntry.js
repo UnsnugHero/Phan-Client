@@ -17,11 +17,11 @@ import {
 import thumbsUp from '../../assets/thumbs-up-solid.svg';
 import commentIcon from '../../assets/chat_white_24dp.svg';
 
-const RequestListEntry = ({ id, subject, location, likesCount, postedDate, completed, comments }) => {
+const RequestListEntry = ({ _id, subject, location, likesCount, postedDate, completed, comments }) => {
   const history = useHistory();
 
   const handleEntryClick = () => {
-    history.push(`/requests/${id}`);
+    history.push(`/requests/${_id}`);
   };
 
   return (
