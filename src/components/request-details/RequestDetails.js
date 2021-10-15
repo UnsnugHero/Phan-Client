@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
 
-import { getRequest } from '../../redux/actions/request.action';
+import { getRequest, markRequestComplete } from '../../redux/actions/request.action';
 import { deleteRequest } from '../../services/request.service';
 import { GeneralXLHeader } from '../styles/App.style';
 import {
@@ -16,7 +16,7 @@ import RequestDetailsBody from './RequestDetailsBody';
 import RequestDetailsCommentList from './RequestDetailsCommentList';
 import Loader from '../general/Loader';
 
-const RequestDetails = ({ request, getRequest, loading, error, user }) => {
+const RequestDetails = ({ request, getRequest, loading, error, user, markRequestComplete }) => {
   const { requestId } = useParams();
 
   const history = useHistory();
@@ -25,7 +25,15 @@ const RequestDetails = ({ request, getRequest, loading, error, user }) => {
     getRequest(requestId);
   }, [getRequest, requestId]);
 
-  const handleMarkCompletedClick = () => {};
+  const handleMarkCompletedClick = () => {
+    const shouldMarkComplete = window.confirm('Mark this request as complete?');
+
+    if (shouldMarkComplete) {
+      const { subject, description, location } = request;
+      const editRequestPayload = { subject, description, location };
+      markRequestComplete(editRequestPayload, requestId);
+    }
+  };
 
   const handleEditRequestClick = () => {
     history.push(`/edit-request/${requestId}`);
@@ -48,7 +56,7 @@ const RequestDetails = ({ request, getRequest, loading, error, user }) => {
       <GeneralXLHeader>Request Details</GeneralXLHeader>
       {loading || !request ? (
         error && !loading ? (
-          <></>
+          <>Oops!</>
         ) : (
           <Loader />
         )
@@ -77,6 +85,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   getRequest,
+  markRequestComplete,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RequestDetails);

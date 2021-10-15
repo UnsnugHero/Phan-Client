@@ -3,6 +3,7 @@ import axios from 'axios';
 import {
   DELETE_REQUEST_COMMENT,
   EDIT_REQUEST_COMMENT,
+  EDIT_REQUEST_SUCCESS,
   GET_REQUEST_SUCCESS,
   POST_REQUEST_COMMENT,
   REQUEST_ERROR,
@@ -17,6 +18,22 @@ export const getRequest = (requestId) => async (dispatch) => {
     });
   } catch (error) {
     handleError(dispatch, error, 'Error loading request');
+  }
+};
+
+export const markRequestComplete = (editRequestPayload, requestId) => async (dispatch) => {
+  try {
+    const { data } = await axios.put(`/api/requests/${requestId}`, {
+      ...editRequestPayload,
+      completed: true,
+      edited: true,
+    });
+    dispatch({
+      type: EDIT_REQUEST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    handleError(dispatch, error, 'Error editing request');
   }
 };
 

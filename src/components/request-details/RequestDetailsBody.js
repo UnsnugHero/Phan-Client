@@ -23,8 +23,8 @@ const RequestDetailsBody = ({ request }) => {
         <RequestCompletionStatus className='completion-status'>
           <span className='status-text'>
             Completion Status:{' '}
-            <span style={{ color: request.isCompleted ? 'green' : '#db1b0d' }}>
-              {request.isCompleted ? 'Completed' : 'Open'}
+            <span style={{ color: request.completed ? 'green' : '#db1b0d' }}>
+              {request.completed ? 'Completed' : 'Open'}
             </span>
           </span>
         </RequestCompletionStatus>
