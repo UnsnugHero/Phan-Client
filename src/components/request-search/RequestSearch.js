@@ -53,9 +53,20 @@ const RequestSearch = ({ isAuthenticated }) => {
   };
 
   const formSearchPayload = () => {
-    const searchPayload = {
+    let searchPayload = {
       subject: formState.subject,
     };
+
+    if (formState.areFiltersActive) {
+      searchPayload = {
+        ...searchPayload,
+        ...formState.selectedSort,
+      };
+
+      if (formState.filters.hideCompleted) {
+        searchPayload['completed'] = false;
+      }
+    }
 
     return searchPayload;
   };
