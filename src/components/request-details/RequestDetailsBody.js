@@ -15,8 +15,14 @@ import {
 import { REQUEST_DETAILS_ROWS } from './RequestDetails.constants';
 
 import thumbsUp from '../../assets/thumbs-up-solid.svg';
+import { connect } from 'react-redux';
 
-const RequestDetailsBody = ({ request }) => {
+const RequestDetailsBody = ({ request, isAuthenticated }) => {
+  const handleOnThumbsUpClick = () => {
+    if (isAuthenticated) {
+    }
+  };
+
   return (
     <RequestDetailsBodyContainer className='request-details-body-container'>
       <RequestDetailsBodyTopInfo className='body-top-info'>
@@ -29,7 +35,7 @@ const RequestDetailsBody = ({ request }) => {
           </span>
         </RequestCompletionStatus>
         <RequestListEntryCountsContainer style={{ marginRight: '12px' }}>
-          <Icon src={thumbsUp} style={{ paddingBottom: '10px' }} />
+          <Icon src={thumbsUp} style={{ paddingBottom: '10px' }} onClick={handleOnThumbsUpClick} />
           <span>{request.likesCount}</span>
         </RequestListEntryCountsContainer>
       </RequestDetailsBodyTopInfo>
@@ -51,4 +57,8 @@ RequestDetailsBody.propTypes = {
   request: PropTypes.object.isRequired,
 };
 
-export default RequestDetailsBody;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps)(RequestDetailsBody);
