@@ -5,6 +5,8 @@ import {
   GET_REQUEST_SUCCESS,
   REQUEST_ERROR,
   EDIT_REQUEST_SUCCESS,
+  LIKE_REQUEST,
+  UNLIKE_REQUEST,
 } from '../actions/types';
 
 const initialState = {
@@ -19,6 +21,8 @@ export const requestReducer = (state = initialState, action) => {
   switch (type) {
     case GET_REQUEST_SUCCESS:
     case EDIT_REQUEST_SUCCESS:
+    case LIKE_REQUEST:
+    case UNLIKE_REQUEST:
     case POST_REQUEST_COMMENT:
     case DELETE_REQUEST_COMMENT:
     case EDIT_REQUEST_COMMENT:

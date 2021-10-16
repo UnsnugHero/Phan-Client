@@ -5,8 +5,10 @@ import {
   EDIT_REQUEST_COMMENT,
   EDIT_REQUEST_SUCCESS,
   GET_REQUEST_SUCCESS,
+  LIKE_REQUEST,
   POST_REQUEST_COMMENT,
   REQUEST_ERROR,
+  UNLIKE_REQUEST,
 } from './types';
 
 export const getRequest = (requestId) => async (dispatch) => {
@@ -72,6 +74,32 @@ export const deleteRequestComment = (requestId, commentId) => async (dispatch) =
     });
   } catch (error) {
     handleError(dispatch, error, 'Error deleting request comment');
+  }
+};
+
+export const likeRequest = (requestId) => async (dispatch) => {
+  try {
+    const { data } = await axios.put(`/api/requests/like/${requestId}`);
+
+    dispatch({
+      type: LIKE_REQUEST,
+      payload: data.request,
+    });
+  } catch (error) {
+    handleError(dispatch, error, 'Error liking request');
+  }
+};
+
+export const unlikeRequest = (requestId) => async (dispatch) => {
+  try {
+    const { data } = await axios.put(`/api/requests/unlike/${requestId}`);
+
+    dispatch({
+      type: UNLIKE_REQUEST,
+      payload: data.request,
+    });
+  } catch (error) {
+    handleError(dispatch, error, 'Error unliking request');
   }
 };
 
