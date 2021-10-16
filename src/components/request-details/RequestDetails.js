@@ -16,7 +16,7 @@ import RequestDetailsBody from './RequestDetailsBody';
 import RequestDetailsCommentList from './RequestDetailsCommentList';
 import Loader from '../general/Loader';
 
-const RequestDetails = ({ request, getRequest, loading, error, user, markRequestComplete }) => {
+const RequestDetails = ({ request, getRequest, loading, error, isAuthenticated, user, markRequestComplete }) => {
   const { requestId } = useParams();
 
   const history = useHistory();
@@ -51,22 +51,31 @@ const RequestDetails = ({ request, getRequest, loading, error, user, markRequest
     }
   };
 
+  if (error) {
+    <RequestDetailsContainer>
+      <GeneralXLHeader>Request Details</GeneralXLHeader>
+      <>Oops!</>
+    </RequestDetailsContainer>;
+  }
+
   return (
     <RequestDetailsContainer>
       <GeneralXLHeader>Request Details</GeneralXLHeader>
-      {loading || !request ? (
-        error && !loading ? (
-          <>Oops!</>
-        ) : (
-          <Loader />
-        )
+      {loading ? (
+        <Loader />
       ) : (
         <>
-          <RequestDetailsTopButtonsContainer>
-            <MarkCompletedButton text='Mark Completed' onButtonClick={handleMarkCompletedClick} />
-            <EditRequestButton text='Edit' onButtonClick={handleEditRequestClick} />
-            <DeleteRequestButton text='Delete' onButtonClick={handleDeleteRequestClick} />
-          </RequestDetailsTopButtonsContainer>
+          {isAuthenticated && (
+            <RequestDetailsTopButtonsContainer>
+              {(user._id === request.user || user.role === 'admin') && (
+                <MarkCompletedButton text='Mark Completed' onButtonClick={handleMarkCompletedClick} />
+              )}
+              {user._id === request.user && <EditRequestButton text='Edit' onButtonClick={handleEditRequestClick} />}
+              {(user._id === request.user || user.role === 'admin') && (
+                <DeleteRequestButton text='Delete' onButtonClick={handleDeleteRequestClick} />
+              )}
+            </RequestDetailsTopButtonsContainer>
+          )}
           <RequestDetailsBody request={request} />
           <RequestDetailsCommentList comments={request.comments} />
         </>
@@ -76,6 +85,7 @@ const RequestDetails = ({ request, getRequest, loading, error, user, markRequest
 };
 
 const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
   user: state.auth.user,
 
   loading: state.request.loading,
