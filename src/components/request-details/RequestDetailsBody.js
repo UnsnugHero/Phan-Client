@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { useParams } from 'react-router';
 
 import {
   Icon,
@@ -13,13 +15,20 @@ import {
   RequestListEntryCountsContainer,
 } from '../styles/Request.style';
 import { REQUEST_DETAILS_ROWS } from './RequestDetails.constants';
+import { likeRequest, unlikeRequest } from '../../redux/actions/request.action';
 
 import thumbsUp from '../../assets/thumbs-up-solid.svg';
-import { connect } from 'react-redux';
 
-const RequestDetailsBody = ({ request, isAuthenticated }) => {
+const RequestDetailsBody = ({ request, isAuthenticated, user, likeRequest, unlikeRequest }) => {
+  const { requestId } = useParams();
+
   const handleOnThumbsUpClick = () => {
     if (isAuthenticated) {
+      if (request.likes.includes(user._id)) {
+        unlikeRequest(requestId);
+      } else {
+        likeRequest(requestId);
+      }
     }
   };
 
@@ -35,7 +44,11 @@ const RequestDetailsBody = ({ request, isAuthenticated }) => {
           </span>
         </RequestCompletionStatus>
         <RequestListEntryCountsContainer style={{ marginRight: '12px' }}>
-          <Icon src={thumbsUp} style={{ paddingBottom: '10px' }} onClick={handleOnThumbsUpClick} />
+          <Icon
+            src={thumbsUp}
+            style={{ paddingBottom: '10px', cursor: isAuthenticated ? 'pointer' : '' }}
+            onClick={handleOnThumbsUpClick}
+          />
           <span>{request.likesCount}</span>
         </RequestListEntryCountsContainer>
       </RequestDetailsBodyTopInfo>
@@ -59,6 +72,12 @@ RequestDetailsBody.propTypes = {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user,
 });
 
-export default connect(mapStateToProps)(RequestDetailsBody);
+const mapDispatchToProps = {
+  likeRequest,
+  unlikeRequest,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RequestDetailsBody);
