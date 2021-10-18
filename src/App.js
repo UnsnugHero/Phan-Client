@@ -7,7 +7,7 @@ import { store } from './redux/store';
 import { setAxiosHeaderAuthToken } from './util/helpers';
 import { useEffect } from 'react';
 import { loadUser } from './redux/actions/auth.action';
-import { AUTH_TOKEN_STORAGE_KEY } from './util/constants';
+import { AUTH_TOKEN_STORAGE_KEY, NOT_IMPLEMENTED_ROUTES } from './util/constants';
 import { AppBlackBackgroundContainer, AppContainer } from './components/styles/App.style';
 
 import Landing from './components/landing/Landing';
@@ -24,6 +24,8 @@ import EditRequest from './components/edit-request/EditRequest';
 import ScrollToTop from './components/routing/ScrollToTop';
 import PrivateRoute from './components/routing/PrivateRoute';
 import storageService from './services/storage.service';
+import NotFound from './components/general/NotFound';
+import NotImplemented from './components/general/NotImplemented';
 
 if (storageService.getItem(AUTH_TOKEN_STORAGE_KEY)) {
   setAxiosHeaderAuthToken(storageService.getItem(AUTH_TOKEN_STORAGE_KEY));
@@ -51,6 +53,8 @@ const App = () => {
                 <Route exact path='/requests/:requestId' component={RequestDetails} />
                 <PrivateRoute exact path='/make-request' component={MakeRequest} />
                 <PrivateRoute exact path='/edit-request/:requestId' component={EditRequest} />
+                <Route exact path={NOT_IMPLEMENTED_ROUTES} component={NotImplemented} />
+                <Route component={NotFound} />
               </Switch>
             </AppContainer>
           </AppBlackBackgroundContainer>
