@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router';
 import { GeneralXLHeader } from '../styles/App.style';
 
 import {
@@ -9,18 +8,10 @@ import {
   ProfileRowBody,
   ProfileRowHeader,
   ProfileRowsContainer,
-  ProfileButtonsContainer,
-  EditProfileButton,
 } from '../styles/Profile';
 import { PROFILE_ROWS } from './Profile.constants';
 
 const Profile = ({ user }) => {
-  const history = useHistory();
-
-  const handleEditProfileClick = () => {
-    history.push('/edit-request');
-  };
-
   return (
     <ProfileContainer>
       <GeneralXLHeader>Profile</GeneralXLHeader>
@@ -32,9 +23,6 @@ const Profile = ({ user }) => {
           </ProfileRow>
         ))}
       </ProfileRowsContainer>
-      <ProfileButtonsContainer>
-        <EditProfileButton text='Edit' onButtonClick={handleEditProfileClick} />
-      </ProfileButtonsContainer>
     </ProfileContainer>
   );
 };
