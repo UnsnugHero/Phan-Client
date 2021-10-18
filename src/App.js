@@ -15,14 +15,15 @@ import Login from './components/login/Login';
 import Signup from './components/signup/Signup';
 import Header from './components/general/Header';
 import Footer from './components/general/Footer';
+import Profile from './components/profile/Profile';
 import RequestSearch from './components/request-search/RequestSearch';
 import RequestDetails from './components/request-details/RequestDetails';
 import MakeRequest from './components/make-request/MakeRequest';
+import EditRequest from './components/edit-request/EditRequest';
 
 import ScrollToTop from './components/routing/ScrollToTop';
 import PrivateRoute from './components/routing/PrivateRoute';
 import storageService from './services/storage.service';
-import EditRequest from './components/edit-request/EditRequest';
 
 if (storageService.getItem(AUTH_TOKEN_STORAGE_KEY)) {
   setAxiosHeaderAuthToken(storageService.getItem(AUTH_TOKEN_STORAGE_KEY));
@@ -45,7 +46,7 @@ const App = () => {
               <Switch>
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/signup' component={Signup} />
-                {/* <Route exact path='/profile/:id' /> */}
+                <PrivateRoute exact path='/profile' component={Profile} />
                 <Route exact path='/requests' component={RequestSearch} />
                 <Route exact path='/requests/:requestId' component={RequestDetails} />
                 <PrivateRoute exact path='/make-request' component={MakeRequest} />
