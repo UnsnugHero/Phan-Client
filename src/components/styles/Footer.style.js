@@ -5,7 +5,7 @@ export const FooterContainer = styled.div`
   border-top: 3px solid #db1b0d;
   height: 100%;
   padding: 15px;
-  width: 98%;
+  width: 100%;
   background-color: black;
 
   display: flex;

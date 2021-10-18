@@ -20,12 +20,13 @@ import RequestSearch from './components/request-search/RequestSearch';
 import RequestDetails from './components/request-details/RequestDetails';
 import MakeRequest from './components/make-request/MakeRequest';
 import EditRequest from './components/edit-request/EditRequest';
+import NotFound from './components/general/NotFound';
+import NotImplemented from './components/general/NotImplemented';
+import About from './components/about/About';
 
 import ScrollToTop from './components/routing/ScrollToTop';
 import PrivateRoute from './components/routing/PrivateRoute';
 import storageService from './services/storage.service';
-import NotFound from './components/general/NotFound';
-import NotImplemented from './components/general/NotImplemented';
 
 if (storageService.getItem(AUTH_TOKEN_STORAGE_KEY)) {
   setAxiosHeaderAuthToken(storageService.getItem(AUTH_TOKEN_STORAGE_KEY));
@@ -53,6 +54,9 @@ const App = () => {
                 <Route exact path='/requests/:requestId' component={RequestDetails} />
                 <PrivateRoute exact path='/make-request' component={MakeRequest} />
                 <PrivateRoute exact path='/edit-request/:requestId' component={EditRequest} />
+
+                <Route exact path='/about' component={About} />
+
                 <Route exact path={NOT_IMPLEMENTED_ROUTES} component={NotImplemented} />
                 <Route component={NotFound} />
               </Switch>
