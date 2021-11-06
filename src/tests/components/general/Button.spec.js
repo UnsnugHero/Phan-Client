@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 
-import Button from '../../components/general/Button';
+import Button from '../../../components/general/Button';
 
 describe('button tests', () => {
   test('should render a button with proper values', () => {
