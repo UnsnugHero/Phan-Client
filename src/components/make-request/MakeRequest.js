@@ -59,6 +59,7 @@ const MakeRequest = ({ isEdit = false, getRequestError = false, subject, descrip
 
     const errors = getFormErrors();
     setForm({ ...makeRequestState, errors });
+    console.log(makeRequestState);
 
     if (isEmpty(errors)) {
       setLoading(true);
@@ -80,7 +81,7 @@ const MakeRequest = ({ isEdit = false, getRequestError = false, subject, descrip
   };
 
   const requestForm = (
-    <MakeRequestForm>
+    <MakeRequestForm onSubmit={handleSubmitRequest}>
       <MakeRequestInput
         maxLength={30}
         placeholder='Subject'
@@ -108,7 +109,7 @@ const MakeRequest = ({ isEdit = false, getRequestError = false, subject, descrip
       />
       <MakeRequestButtons>
         <CancelButton text='Cancel' onButtonClick={handleCancel} />
-        <Button text='Submit' onButtonClick={handleSubmitRequest} />
+        <Button text='Submit' />
       </MakeRequestButtons>
     </MakeRequestForm>
   );

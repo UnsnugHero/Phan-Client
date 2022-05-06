@@ -1,6 +1,5 @@
 body {
   height: 100%;
-  width: 100%;
   color: white;
 
   background-image: url('./assets/bg-gif.gif');
@@ -14,4 +13,10 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
 }

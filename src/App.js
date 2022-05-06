@@ -1,6 +1,6 @@
 import './App.css';
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import { store } from './redux/store';
@@ -45,8 +45,8 @@ const App = () => {
           <Header />
           <AppBlackBackgroundContainer className='app-black-background-container'>
             <AppContainer className='app-container'>
-              <Route exact path='/' component={Landing} />
               <Switch>
+                <Route exact path='/' component={Landing} />
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/signup' component={Signup} />
                 <PrivateRoute exact path='/profile' component={Profile} />
@@ -58,7 +58,8 @@ const App = () => {
                 <Route exact path='/about' component={About} />
 
                 <Route exact path={NOT_IMPLEMENTED_ROUTES} component={NotImplemented} />
-                <Route component={NotFound} />
+                <Route exact path='/404' component={NotFound} />
+                <Redirect to='/404' />
               </Switch>
             </AppContainer>
           </AppBlackBackgroundContainer>

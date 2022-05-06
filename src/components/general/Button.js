@@ -8,7 +8,7 @@ const Button = (props) => {
       disabled={props.disabled}
       className={`button ${props.className}`}
       style={{ cursor: props.disabled ? 'not-allowed' : '' }}
-      onClick={(e) => props.onButtonClick(e)}
+      onClick={(e) => props.onButtonClick && props.onButtonClick(e)}
     >
       {props.text}
     </StyledButton>
@@ -18,7 +18,7 @@ const Button = (props) => {
 Button.propTypes = {
   disabled: PropTypes.bool,
   className: PropTypes.string,
-  onButtonClick: PropTypes.func.isRequired,
+  onButtonClick: PropTypes.func,
   text: PropTypes.string.isRequired,
 };
 
