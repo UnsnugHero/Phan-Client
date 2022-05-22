@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { votePoll } from '../../services/poll.service';
 
 import { PollFormContainer, PollVoteButton, PollVoteButtonsContainer } from '../styles/Poll.style';
 
-const PollForm = ({ isAuthenticated }) => {
+const PollForm = ({ isAuthenticated, pollId }) => {
   useEffect(() => {
     // load what the user has voted for, if any, here
     return () => {
@@ -11,9 +12,10 @@ const PollForm = ({ isAuthenticated }) => {
     };
   }, []);
 
-  const onVoteButtonClick = (isYesVote) => () => {
-    // make a backend call here, no need for redux since not important to store the state,
-    // the vote count will only go up on page loads
+  const onVoteButtonClick = (isYesVote) => async () => {
+    const vote = isYesVote ? 'yes' : 'no';
+
+    const result = await votePoll();
   };
 
   return (

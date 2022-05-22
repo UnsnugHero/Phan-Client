@@ -7,17 +7,27 @@ import {
   PollQuestionTextContainer,
 } from '../styles/Poll.style';
 
-const PollQuestion = () => {
+const PollQuestion = ({ pollTitle }) => {
+  const splitTitle = pollTitle.split(' ');
+  const lastTwo = splitTitle.splice(splitTitle.length - 2, 2);
+
+  const newTitle = splitTitle.join(' ');
+  const redTitle = lastTwo.join(' ');
+
   return (
     <PollQuestionContainer>
       <PollQuestionLabel>Q</PollQuestionLabel>
       <PollQuestionTextContainer>
         <PollQuestionText>
-          Do you believe in the <PollQuestionRedText>Phantom Thieves</PollQuestionRedText>?
+          {newTitle} <PollQuestionRedText>{redTitle}</PollQuestionRedText>?
         </PollQuestionText>
       </PollQuestionTextContainer>
     </PollQuestionContainer>
   );
+};
+
+PollQuestion.defaultProps = {
+  pollTitle: '',
 };
 
 export default PollQuestion;
