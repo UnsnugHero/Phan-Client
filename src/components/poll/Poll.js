@@ -22,7 +22,6 @@ const Poll = () => {
   useEffect(() => {
     const loadPoll = async () => {
       const poll = await getPoll();
-      console.log(poll);
       setPoll(poll);
       setLoading(false);
     };
@@ -30,35 +29,33 @@ const Poll = () => {
     loadPoll();
   }, []);
 
-  if (isLoading) {
-    return (
-      <PollContainer>
-        <LoadingGif src={loader} />
-      </PollContainer>
-    );
-  }
-
-  const yesVotes = pollState.poll?.yesVotes;
-  const totalVotes = pollState.poll?.noVotes + yesVotes;
+  const yesVotes = pollState?.poll?.yesVotes;
+  const totalVotes = pollState?.poll?.noVotes + yesVotes;
 
   const yesVotePercentage = totalVotes ? ((yesVotes / totalVotes) * 100).toFixed(1) : 0;
   const wholeNumber = Math.floor(yesVotePercentage);
-  const decimalNumber = (yesVotePercentage % 1) * 10;
+  const decimalNumber = Math.floor((yesVotePercentage % 1) * 10);
 
   return (
     <PollContainer>
       <GeneralXLHeader className='poll-header'>Poll</GeneralXLHeader>
-      <PollQuestionAndPercentContainer className='poll-question-and-percent-container'>
-        <PollQuestion pollTitle={pollState.poll?.title} />
-        <div>
-          <PollPercentageWholeNumber className='percentage-number-whole'>{wholeNumber}.</PollPercentageWholeNumber>
-          <PollPercentageDecimalAndPercent className='percentage-number-decimal'>
-            {decimalNumber}%
-          </PollPercentageDecimalAndPercent>
-        </div>
-      </PollQuestionAndPercentContainer>
-      <PollPercentageBar yesVotePercentage={yesVotePercentage} />
-      <PollForm />
+      {isLoading ? (
+        <LoadingGif src={loader} />
+      ) : (
+        <>
+          <PollQuestionAndPercentContainer className='poll-question-and-percent-container'>
+            <PollQuestion pollTitle={pollState?.poll?.title} />
+            <div>
+              <PollPercentageWholeNumber className='percentage-number-whole'>{wholeNumber}.</PollPercentageWholeNumber>
+              <PollPercentageDecimalAndPercent className='percentage-number-decimal'>
+                {decimalNumber}%
+              </PollPercentageDecimalAndPercent>
+            </div>
+          </PollQuestionAndPercentContainer>
+          <PollPercentageBar yesVotePercentage={yesVotePercentage} />
+          <PollForm pollId={pollState?.poll?._id} />
+        </>
+      )}
     </PollContainer>
   );
 };

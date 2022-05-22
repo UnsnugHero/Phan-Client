@@ -1,21 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { votePoll } from '../../services/poll.service';
 
 import { PollFormContainer, PollVoteButton, PollVoteButtonsContainer } from '../styles/Poll.style';
 
-const PollForm = ({ isAuthenticated, pollId }) => {
-  useEffect(() => {
-    // load what the user has voted for, if any, here
-    return () => {
-      // cleanup
-    };
-  }, []);
-
+const PollForm = ({ isAuthenticated, pollId, user, updateUser }) => {
   const onVoteButtonClick = (isYesVote) => async () => {
     const vote = isYesVote ? 'yes' : 'no';
 
-    const result = await votePoll();
+    await votePoll(pollId, vote);
   };
 
   return (
@@ -32,6 +25,7 @@ const PollForm = ({ isAuthenticated, pollId }) => {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user,
 });
 
 export default connect(mapStateToProps)(PollForm);
