@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from './axiosAdapter';
 
 export const handleError = (error) => {
   const phanError = error.response.data;
@@ -18,12 +18,4 @@ export const setAxiosHeaderAuthToken = (token) => {
   } else {
     delete axios.defaults.headers.common['x-auth-token'];
   }
-};
-
-export const withDelay = (delay, response) => (config) => {
-  return new Promise(function (resolve, reject) {
-    setTimeout(function () {
-      resolve(response);
-    }, delay);
-  });
 };
