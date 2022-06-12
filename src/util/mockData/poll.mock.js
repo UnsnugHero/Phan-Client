@@ -1,8 +1,8 @@
 export const getPoll = {
   message: 'Current poll successfully retrieved',
   poll: {
-    yesVotes: 27,
-    noVotes: 3,
+    yesVotes: 319,
+    noVotes: 32,
     _id: '62897d032bdba2515c927672',
     active: true,
     title: 'Do you believe in the Phantom Thieves',
