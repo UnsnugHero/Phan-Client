@@ -13,4 +13,5 @@ mockRequestInstance(mockAdapter);
 mockPollInstance(mockAdapter);
 mockUserInstance(mockAdapter);
 
+console.log(process.env.AXIOS_MOCK);
 export default process.env.AXIOS_MOCK ? axiosMockInstance : axiosLiveInstance;
