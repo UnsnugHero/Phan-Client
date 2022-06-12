@@ -3,7 +3,6 @@ import { searchRequests, getRequests, makeRequest } from '../mockData/request.mo
 
 const apiUrl = '/api/requests';
 const resFn = (splitIdx) => (config) => {
-  debugger;
   const id = config.url.split('/')[splitIdx];
   const request = getRequests[id];
   return [200, request];
