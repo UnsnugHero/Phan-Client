@@ -42,7 +42,7 @@ export const login = (loginPayload) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
-  process.env.AXIOS_MOCK &&
+  !process.env.REACT_APP_MOCK &&
     dispatch({
       type: LOGOUT,
     });

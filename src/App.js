@@ -37,7 +37,7 @@ const App = () => {
     store.dispatch(loadUser());
   });
 
-  if (process.env.AXIOS_MOCK) {
+  if (process.env.REACT_APP_MOCK) {
     alert('This app is in display mode, so many actions will do nothing.');
   }
 
