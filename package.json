@@ -47,6 +47,7 @@
   "proxy": "http://localhost:5000",
   "devDependencies": {
     "@types/react-router-dom": "^5.1.8",
-    "axios-mock-adapter": "^1.21.1"
+    "axios-mock-adapter": "^1.21.1",
+    "dotenv-webpack": "^7.1.0"
   }
 }
