@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from './axiosAdapter';
 
 export const handleError = (error) => {
   const phanError = error.response.data;

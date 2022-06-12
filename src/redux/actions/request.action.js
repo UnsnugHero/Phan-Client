@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../util/axiosAdapter';
 
 import {
   DELETE_REQUEST_COMMENT,
@@ -44,10 +44,10 @@ export const postRequestComment = (postRequestCommentPayload, requestId) => asyn
     const { data } = await axios.post(`/api/requests/comment/${requestId}`, postRequestCommentPayload);
     dispatch({
       type: POST_REQUEST_COMMENT,
-      payload: data.updatedRequest,
+      payload: data,
     });
   } catch (error) {
-    handleError(dispatch, error, 'Error posting request');
+    handleError(dispatch, error, 'Error posting comment');
   }
 };
 
@@ -83,7 +83,7 @@ export const likeRequest = (requestId) => async (dispatch) => {
 
     dispatch({
       type: LIKE_REQUEST,
-      payload: data.request,
+      payload: data,
     });
   } catch (error) {
     handleError(dispatch, error, 'Error liking request');
@@ -96,7 +96,7 @@ export const unlikeRequest = (requestId) => async (dispatch) => {
 
     dispatch({
       type: UNLIKE_REQUEST,
-      payload: data.request,
+      payload: data,
     });
   } catch (error) {
     handleError(dispatch, error, 'Error unliking request');

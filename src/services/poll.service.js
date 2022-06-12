@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../util/axiosAdapter';
 
 export const getPoll = async () => {
   try {

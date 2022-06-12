@@ -1,8 +1,9 @@
-import axios from 'axios';
+import axios from '../util/axiosAdapter';
 
 export const getRequest = async (requestId) => {
   try {
-    const { data } = await axios.get(`/api/requests/${requestId}`);
+    const url = `/api/requests/${requestId}`;
+    const { data } = await axios.get(url);
     return data;
   } catch (error) {
     handleError(error, 'Error loading request');

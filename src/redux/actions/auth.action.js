@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../util/axiosAdapter';
 
 import storageService from '../../services/storage.service';
 import { setAxiosHeaderAuthToken } from '../../util/helpers';
@@ -42,9 +42,10 @@ export const login = (loginPayload) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
-  dispatch({
-    type: LOGOUT,
-  });
+  process.env.AXIOS_MOCK &&
+    dispatch({
+      type: LOGOUT,
+    });
 };
 
 export const signup = (signupPayload) => async (dispatch) => {
