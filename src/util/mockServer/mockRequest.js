@@ -1,5 +1,5 @@
 import { withDelay } from '../helpers';
-import { searchRequests, getRequests, makeRequest, commentRequest, likeRequest } from '../mockData/request.mocks';
+import { searchRequests, getRequests, makeRequest } from '../mockData/request.mocks';
 
 const apiUrl = '/api/requests';
 const resFn = (splitIdx) => (config) => {

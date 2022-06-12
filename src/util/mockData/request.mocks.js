@@ -126,11 +126,3 @@ export const getRequests = {
 
 export const searchRequests = Object.values(getRequests);
 export const makeRequest = Object.values(getRequests)[0];
-export const commentRequest = {
-  message: 'Comment added',
-  updatedRequest: Object.values(getRequests)[0],
-};
-export const likeRequest = {
-  message: 'Request successfully liked',
-  request: Object.values(getRequests)[0],
-};
