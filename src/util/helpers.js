@@ -19,3 +19,11 @@ export const setAxiosHeaderAuthToken = (token) => {
     delete axios.defaults.headers.common['x-auth-token'];
   }
 };
+
+export const withDelay = (delay, response) => (config) => {
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      resolve(response);
+    }, delay);
+  });
+};
