@@ -44,7 +44,7 @@ export const postRequestComment = (postRequestCommentPayload, requestId) => asyn
     const { data } = await axios.post(`/api/requests/comment/${requestId}`, postRequestCommentPayload);
     dispatch({
       type: POST_REQUEST_COMMENT,
-      payload: data,
+      payload: data.updatedRequest,
     });
   } catch (error) {
     handleError(dispatch, error, 'Error posting comment');
@@ -80,10 +80,10 @@ export const deleteRequestComment = (requestId, commentId) => async (dispatch) =
 export const likeRequest = (requestId) => async (dispatch) => {
   try {
     const { data } = await axios.put(`/api/requests/like/${requestId}`);
-
+    debugger;
     dispatch({
       type: LIKE_REQUEST,
-      payload: data,
+      payload: data.request,
     });
   } catch (error) {
     handleError(dispatch, error, 'Error liking request');
@@ -96,7 +96,7 @@ export const unlikeRequest = (requestId) => async (dispatch) => {
 
     dispatch({
       type: UNLIKE_REQUEST,
-      payload: data,
+      payload: data.request,
     });
   } catch (error) {
     handleError(dispatch, error, 'Error unliking request');
