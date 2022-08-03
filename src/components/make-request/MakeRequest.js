@@ -59,7 +59,6 @@ const MakeRequest = ({ isEdit = false, getRequestError = false, subject, descrip
 
     const errors = getFormErrors();
     setForm({ ...makeRequestState, errors });
-    console.log(makeRequestState);
 
     if (isEmpty(errors)) {
       setLoading(true);
