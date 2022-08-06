@@ -47,7 +47,6 @@
   "proxy": "http://localhost:5000",
   "devDependencies": {
     "@types/react-router-dom": "^5.1.8",
-    "axios-mock-adapter": "^1.21.1",
     "gulp": "^4.0.2",
     "gulp-inline-source": "^4.0.0",
     "gulp-replace": "^1.1.3"
