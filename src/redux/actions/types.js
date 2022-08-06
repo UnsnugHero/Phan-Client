@@ -18,4 +18,8 @@ export const POST_REQUEST_COMMENT = 'POST_REQUEST_COMMENT';
 export const DELETE_REQUEST_COMMENT = 'DELETE_REQUEST_COMMENT';
 export const EDIT_REQUEST_COMMENT = 'EDIT_REQUEST_COMMENT';
 export const REQUEST_ERROR = 'REQUEST_ERROR';
-// maybe request liking
+
+// Poll Actions
+export const VOTE_SUCCESS = 'VOTE_SUCCESS';
+export const GET_POLL_SUCCESS = 'GET_POLL_SUCCESS';
+export const GET_POLL_ERROR = 'GET_POLL_ERROR';

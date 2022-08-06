@@ -40,7 +40,9 @@ const Poll = () => {
     <PollContainer>
       <GeneralXLHeader className='poll-header'>Poll</GeneralXLHeader>
       {isLoading ? (
-        <LoadingGif src={loader} />
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+          <LoadingGif src={loader} />
+        </div>
       ) : (
         <>
           <PollQuestionAndPercentContainer className='poll-question-and-percent-container'>
