@@ -1,65 +1,54 @@
-import React, { useEffect, useState } from 'react';
-import { getPoll } from '../../services/poll.service';
-import { GeneralXLHeader } from '../styles/App.style';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
-import {
-  PollContainer,
-  PollPercentageDecimalAndPercent,
-  PollPercentageWholeNumber,
-  PollQuestionAndPercentContainer,
-} from '../styles/Poll.style';
+import { getPoll } from '../../redux/actions/poll.action';
+import { GeneralXLHeader } from '../styles/App.style';
+import { PollContainer } from '../styles/Poll.style';
 import { LoadingGif } from '../styles/Request.style';
+import PollPercent from './PollPercent';
 import PollForm from './PollForm';
-import PollPercentageBar from './PollPercentageBar';
-import PollQuestion from './PollQuestion';
 
 import loader from '../../assets/take_your_time.gif';
 
-const Poll = () => {
-  const [isLoading, setLoading] = useState(true);
-  const [pollState, setPoll] = useState({});
-
+const Poll = ({ loading, poll, error, getPoll }) => {
   useEffect(() => {
-    const loadPoll = async () => {
-      const poll = await getPoll();
-      setPoll(poll);
-      setLoading(false);
-    };
+    getPoll();
+  }, [getPoll]);
 
-    loadPoll();
-  }, []);
-
-  const yesVotes = pollState?.poll?.yesVotes;
-  const totalVotes = pollState?.poll?.noVotes + yesVotes;
-
-  const yesVotePercentage = totalVotes ? ((yesVotes / totalVotes) * 100).toFixed(1) : 0;
-  const wholeNumber = Math.floor(yesVotePercentage);
-  const decimalNumber = Math.floor((yesVotePercentage % 1) * 10);
+  if (error) {
+    return (
+      <PollContainer style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <GeneralXLHeader className='poll-header'>Poll</GeneralXLHeader>
+        <>Error Loading Poll</>
+      </PollContainer>
+    );
+  }
 
   return (
     <PollContainer>
       <GeneralXLHeader className='poll-header'>Poll</GeneralXLHeader>
-      {isLoading ? (
+      {loading ? (
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
           <LoadingGif src={loader} />
         </div>
       ) : (
         <>
-          <PollQuestionAndPercentContainer className='poll-question-and-percent-container'>
-            <PollQuestion pollTitle={pollState?.poll?.title} />
-            <div>
-              <PollPercentageWholeNumber className='percentage-number-whole'>{wholeNumber}.</PollPercentageWholeNumber>
-              <PollPercentageDecimalAndPercent className='percentage-number-decimal'>
-                {decimalNumber}%
-              </PollPercentageDecimalAndPercent>
-            </div>
-          </PollQuestionAndPercentContainer>
-          <PollPercentageBar yesVotePercentage={yesVotePercentage} />
-          <PollForm pollId={pollState?.poll?._id} />
+          <PollPercent poll={poll}></PollPercent>
+          <PollForm pollId={poll._id} />
         </>
       )}
     </PollContainer>
   );
 };
 
-export default Poll;
+const mapStateToProps = (state) => ({
+  loading: state.poll.loading,
+  poll: state.poll.poll,
+  error: state.poll.error,
+});
+
+const mapDispatchToProps = {
+  getPoll,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Poll);

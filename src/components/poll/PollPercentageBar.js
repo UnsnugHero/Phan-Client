@@ -14,7 +14,7 @@ const PollPercentageBar = ({ yesVotePercentage }) => {
 };
 
 PollPercentageBar.propTypes = {
-  yesVotePercentage: PropTypes.string.isRequired,
+  yesVotePercentage: PropTypes.any.isRequired,
 };
 
 export default PollPercentageBar;

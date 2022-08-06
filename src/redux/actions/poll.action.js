@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../util/axiosAdapter';
 import { GET_POLL_ERROR, GET_POLL_SUCCESS } from './types';
 
 export const getPoll = () => async (dispatch) => {

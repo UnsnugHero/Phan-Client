@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { votePoll } from '../../services/poll.service';
+import { votePoll } from '../../redux/actions/poll.action';
 
 import { PollFormContainer, PollVoteButton, PollVoteButtonsContainer } from '../styles/Poll.style';
 
-const PollForm = ({ isAuthenticated, pollId, user, updateUser }) => {
+const PollForm = ({ isAuthenticated, pollId, votePoll }) => {
   const onVoteButtonClick = (isYesVote) => async () => {
     const vote = isYesVote ? 'yes' : 'no';
 
-    await votePoll(pollId, vote);
+    votePoll(vote, pollId);
   };
 
   return (
@@ -28,4 +28,8 @@ const mapStateToProps = (state) => ({
   user: state.auth.user,
 });
 
-export default connect(mapStateToProps)(PollForm);
+const mapDispatchToProps = {
+  votePoll,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PollForm);
