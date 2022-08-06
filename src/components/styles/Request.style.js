@@ -20,11 +20,13 @@ export const RequestSearchAndButtonContainer = styled.form`
   display: flex;
   flex-direction: row;
   max-width: 750px;
+  width: 100%;
   margin-bottom: 24px;
 `;
 
 export const RequestSearchBar = styled(TextInput)`
-  width: 750px;
+  width: 100%;
+  max-width: 750px;
 `;
 
 export const RequestSearchButton = styled(Button)`
@@ -34,7 +36,8 @@ export const RequestSearchButton = styled(Button)`
 // Filter Menu
 
 export const RequestFilterMenuContainer = styled.div`
-  width: 750px;
+  max-width: 750px;
+  width: 100%;
   margin-bottom: 48px;
 `;
 
