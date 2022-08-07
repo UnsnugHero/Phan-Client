@@ -7,7 +7,7 @@ import { GeneralXLHeader } from '../styles/App.style';
 import ChatForm from './ChatForm';
 import ChatCommentList from './ChatCommentList';
 
-const socketUrl = process.env.NODE_ENV === 'production' ? 'http://p5phansite.com' : 'http://localhost:5000';
+const socketUrl = process.env.NODE_ENV === 'production' ? 'https://p5phansite.com' : 'http://localhost:5000';
 
 const socket = io(socketUrl);
 
