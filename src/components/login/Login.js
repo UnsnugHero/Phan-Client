@@ -11,12 +11,9 @@ import {
   LoginForm,
   LoginFormFooter,
   LoginFormInput,
-  LogoImage,
   SignUpLink,
   SignUpText,
 } from '../styles/Login.style';
-
-import logo from '../../assets/logo-with-text.png';
 
 const Login = ({ isAuthenticated, login }) => {
   const [loginFormContent, setForm] = useState({
@@ -96,7 +93,6 @@ const Login = ({ isAuthenticated, login }) => {
           </SignUpText>
         </LoginFormFooter>
       </LoginForm>
-      <LogoImage src={logo} />
     </LoginContainer>
   );
 };

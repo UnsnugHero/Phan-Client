@@ -40,7 +40,7 @@ const Header = ({ isAuthenticated, loading, logout }) => {
               <HeaderLink to='/requests'>Requests</HeaderLink>
             </li>
             <li>
-              <HeaderLink to='/forum'>Forum</HeaderLink>
+              <HeaderLink to='/mission'>Mission</HeaderLink>
             </li>
           </HeaderList>
           <LogoLink to='/'>

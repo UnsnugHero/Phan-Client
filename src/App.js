@@ -22,7 +22,7 @@ import MakeRequest from './components/make-request/MakeRequest';
 import EditRequest from './components/edit-request/EditRequest';
 import NotFound from './components/general/NotFound';
 import NotImplemented from './components/general/NotImplemented';
-import About from './components/about/About';
+import Mission from './components/mission/Mission';
 
 import ScrollToTop from './components/routing/ScrollToTop';
 import PrivateRoute from './components/routing/PrivateRoute';
@@ -55,7 +55,7 @@ const App = () => {
                 <PrivateRoute exact path='/make-request' component={MakeRequest} />
                 <PrivateRoute exact path='/edit-request/:requestId' component={EditRequest} />
 
-                <Route exact path='/about' component={About} />
+                <Route exact path='/mission' component={Mission} />
 
                 <Route exact path={NOT_IMPLEMENTED_ROUTES} component={NotImplemented} />
                 <Route exact path='/404' component={NotFound} />

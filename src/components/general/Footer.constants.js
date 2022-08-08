@@ -1,5 +1,4 @@
 export const FOOTER_ABOUT_LINKS = [
-  { path: '/about', displayText: 'About' },
   { path: '/contact', displayText: 'Contact' },
   { path: '/faq', displayText: 'FAQ' },
 ];
