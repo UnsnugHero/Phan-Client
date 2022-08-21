@@ -43,7 +43,7 @@ const Header = ({ isAuthenticated, loading, logout }) => {
     }
   }, [width]);
 
-  history.listen((location) => {
+  history.listen(() => {
     setMenuOpen(false);
   });
 
