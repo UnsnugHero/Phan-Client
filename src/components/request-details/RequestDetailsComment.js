@@ -24,6 +24,7 @@ const RequestDetailsComment = ({ comment, auth, editRequestComment, deleteReques
   const { requestId } = useParams();
 
   const { _id: commentId, userId, username, postedDate, edited, text } = comment;
+  const formattedDate = new Date(postedDate).toLocaleDateString('en-US');
 
   const [requestDetailsState, setState] = useState({
     isEditingRequest: false,
@@ -66,7 +67,7 @@ const RequestDetailsComment = ({ comment, auth, editRequestComment, deleteReques
     <RequestDetailsCommentContainer className='request-details-comment-container'>
       <CommentHeaderContainer>
         <CommentHeaderText>
-          {username} - {postedDate}
+          {username} - {formattedDate}
         </CommentHeaderText>
         <CommentEditContainer>
           <CommentHeaderEditedText>{edited ? '(edited)' : ''}</CommentHeaderEditedText>

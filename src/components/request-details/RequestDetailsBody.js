@@ -32,6 +32,8 @@ const RequestDetailsBody = ({ request, isAuthenticated, user, likeRequest, unlik
     }
   };
 
+  const formattedRequest = { ...request, postedDate: new Date(request.postedDate).toLocaleDateString('en-US') };
+
   return (
     <RequestDetailsBodyContainer className='request-details-body-container'>
       <RequestDetailsBodyTopInfo className='body-top-info'>
@@ -57,7 +59,7 @@ const RequestDetailsBody = ({ request, isAuthenticated, user, likeRequest, unlik
           <RequestDetailsRow key={idx} className={`${row.valueKey}-row`}>
             <RequestDetailsRowHeader className={`${row.valueKey}-row-header`}>{row.header}</RequestDetailsRowHeader>
             <RequestDetailsRowBody className={`${row.valueKey}-row-body`}>
-              {request[row.valueKey] || 'Not Provided'}
+              {formattedRequest[row.valueKey] || 'Not Provided'}
             </RequestDetailsRowBody>
           </RequestDetailsRow>
         ))}

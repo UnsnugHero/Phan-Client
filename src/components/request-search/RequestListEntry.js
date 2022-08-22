@@ -19,6 +19,7 @@ import commentIcon from '../../assets/chat_white_24dp.svg';
 
 const RequestListEntry = ({ _id, subject, location, likesCount, postedDate, completed, comments }) => {
   const history = useHistory();
+  const formattedDate = new Date(postedDate).toLocaleDateString('en-US');
 
   const handleEntryClick = () => {
     history.push(`/requests/${_id}`);
@@ -42,7 +43,7 @@ const RequestListEntry = ({ _id, subject, location, likesCount, postedDate, comp
           </RequestListEntryLeftBottomRow>
         </RequestListEntryLeftInfo>
         <RequestListEntryRightInfo className='list-entry-right-info'>
-          <RequestListEntryText style={{ marginBottom: '12px' }}>{postedDate}</RequestListEntryText>
+          <RequestListEntryText style={{ marginBottom: '12px' }}>{formattedDate}</RequestListEntryText>
           <RequestListEntryText style={{ color: completed ? 'green' : '#db1b0d' }}>{`${
             completed ? 'Completed' : 'Open'
           }`}</RequestListEntryText>

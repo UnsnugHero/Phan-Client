@@ -12,6 +12,7 @@ import {
 import { PROFILE_ROWS } from './Profile.constants';
 
 const Profile = ({ user }) => {
+  const formattedUser = { ...user, createdAt: new Date(user.createdAt).toLocaleDateString('en-US') };
   return (
     <ProfileContainer>
       <GeneralXLHeader>Profile</GeneralXLHeader>
@@ -19,7 +20,7 @@ const Profile = ({ user }) => {
         {PROFILE_ROWS.map((row, idx) => (
           <ProfileRow key={idx}>
             <ProfileRowHeader>{row.header}</ProfileRowHeader>
-            <ProfileRowBody>{user[row.key]}</ProfileRowBody>
+            <ProfileRowBody>{formattedUser[row.key]}</ProfileRowBody>
           </ProfileRow>
         ))}
       </ProfileRowsContainer>
